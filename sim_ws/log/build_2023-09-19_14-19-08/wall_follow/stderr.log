@@ -1,0 +1,27 @@
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:20:30:[m[K [01;35m[Kwarning: [m[Kcharacter constant too long for its type
+   20 |     std::string scan_range = [01;35m[K'scan_range'[m[K;
+      |                              [01;35m[K^~~~~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:20:30:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[Kint[m[K’ to non-scalar type ‘[01m[Kstd::string[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’} requested
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In constructor ‘[01m[KWallFollow::WallFollow()[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:40:33:[m[K [01;31m[Kerror: [m[K‘[01m[KSCAN_RANGE[m[K’ was not declared in this scope
+   40 |         this->declare_parameter([01;31m[KSCAN_RANGE[m[K, 4.7);
+      |                                 [01;31m[K^~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1[m[K:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_range(std::vector<float>, double)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:179:104:[m[K [01;31m[Kerror: [m[K‘[01m[Kscan_angle_range[m[K’ was not declared in this scope; did you mean ‘[01m[Kscan_angle_min[m[K’?
+  179 | ->get_logger(), "Range: %f", range_data[(int)((angle - scan_angle_min)/[01;31m[Kscan_angle_range[m[K)]);
+      |                                                                        [01;31m[K^~~~~~~~~~~~~~~~[m[K
+
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

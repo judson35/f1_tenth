@@ -1,0 +1,47 @@
+[0.554s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake /home/judson35/f1_tenth/sim_ws/src/wall_follow -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/judson35/f1_tenth/sim_ws/install/wall_follow
+[0.578s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.625s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.023s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.040s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.106s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.112s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.337s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.440s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.443s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.730s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[1.731s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[1.797s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[1.946s] -- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)
+[2.010s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[2.159s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[2.354s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.356s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.357s] -- Configured cppcheck include dirs: /home/judson35/f1_tenth/sim_ws/src/wall_follow/include
+[2.357s] -- Configured cppcheck exclude dirs and/or files: 
+[2.360s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.360s] -- Configured cpplint exclude dirs and/or files: 
+[2.362s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.362s] -- Added test 'lint_cmake' to check CMake code style
+[2.365s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[2.365s] -- Added test 'uncrustify' to check C / C++ code style
+[2.365s] -- Configured uncrustify additional arguments: 
+[2.366s] -- Added test 'xmllint' to check XML markup files
+[2.373s] -- Configuring done
+[2.405s] -- Generating done
+[2.409s] -- Build files have been written to: /home/judson35/f1_tenth/sim_ws/build/wall_follow
+[2.432s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake /home/judson35/f1_tenth/sim_ws/src/wall_follow -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/judson35/f1_tenth/sim_ws/install/wall_follow
+[2.434s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[2.521s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[2.598s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[5.502s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[5.502s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:130:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+[5.502s]   130 |         double error = get_eror(scan_msg.[01;31m[Kranges[m[K, 90.0); //angle at 90 deg
+[5.502s]       |                                          [01;31m[K^~~~~~[m[K
+[5.504s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:130:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_eror[m[K’ was not declared in this scope; did you mean ‘[01m[Kget_error[m[K’?
+[5.505s]   130 |         double error = [01;31m[Kget_eror[m[K(scan_msg.ranges, 90.0); //angle at 90 deg
+[5.505s]       |                        [01;31m[K^~~~~~~~[m[K
+[5.505s]       |                        [32m[Kget_error[m[K
+[8.138s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+[8.138s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+[8.139s] make: *** [Makefile:141: all] Error 2
+[8.141s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8

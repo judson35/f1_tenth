@@ -1,0 +1,61 @@
+[0.507s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/safety_node -- -j8 -l8
+[0.574s] [35m[1mScanning dependencies of target safety_node[0m
+[0.619s] [ 50%] [32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o[0m
+[2.902s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:37:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kackermann_drive[m[K’ was not declared in this scope; did you mean ‘[01m[Kackermann_msgs[m[K’?
+[2.902s]    37 |     rclcpp::Publisher<[01;31m[Kackermann_drive[m[K::msg::AckermannDriveStamped>::SharedPtr publisher_;
+[2.902s]       |                       [01;31m[K^~~~~~~~~~~~~~~[m[K
+[2.903s]       |                       [32m[Kackermann_msgs[m[K
+[2.903s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:37:66:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[2.903s]    37 | rclcpp::Publisher<ackermann_drive::msg::AckermannDriveStamped[01;31m[K>[m[K::SharedPtr publisher_;
+[2.903s]       |                                                              [01;31m[K^[m[K
+[2.903s] 
+[2.903s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:37:69:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+[2.903s]    37 | cpp::Publisher<ackermann_drive::msg::AckermannDriveStamped>::[01;31m[KSharedPtr[m[K publisher_;
+[2.903s]       |                                                              [01;31m[K^~~~~~~~~[m[K
+[2.903s]       |                                                                       [32m[K;[m[K
+[2.907s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:37:79:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ does not name a type; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[2.907s]    37 | ::Publisher<ackermann_drive::msg::AckermannDriveStamped>::SharedPtr [01;31m[Kpublisher_[m[K;
+[2.907s]       |                                                                     [01;31m[K^~~~~~~~~~[m[K
+[2.907s]       |                                                                     [32m[Krcl_publisher_t[m[K
+[2.961s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In constructor ‘[01m[KSafety::Safety()[m[K’:
+[2.961s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:28:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krcl_publisher_t[m[K’?
+[2.961s]    28 |        [01;31m[Kpublisher_[m[K = this->create_publisher<ackermann_msgs::msg::AckermannDriveStamped>("drive", 1);
+[2.961s]       |        [01;31m[K^~~~~~~~~~[m[K
+[2.962s]       |        [32m[Krcl_publisher_t[m[K
+[2.994s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::drive_callback(nav_msgs::msg::Odometry_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[2.995s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:43:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Ktwist[m[K’
+[2.995s]    43 |         speed = msg.[01;31m[Ktwist[m[K.twist.linear.x;
+[2.995s]       |                     [01;31m[K^~~~~[m[K
+[3.000s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[3.000s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:48:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_max[m[K’
+[3.001s]    48 |         float range = scan_msg.[01;31m[Kangle_max[m[K - scan_msg.angle_min;
+[3.001s]       |                                [01;31m[K^~~~~~~~~[m[K
+[3.001s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:48:53:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_min[m[K’
+[3.001s]    48 |         float range = scan_msg.angle_max - scan_msg.[01;31m[Kangle_min[m[K;
+[3.001s]       |                                                     [01;31m[K^~~~~~~~~[m[K
+[3.001s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:49:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+[3.002s]    49 |         int length = sizeof(scan_msg.[01;31m[Kranges[m[K)/sizeof(scan_msg.ranges[0]);
+[3.002s]       |                                      [01;31m[K^~~~~~[m[K
+[3.002s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:49:62:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+[3.002s]    49 |         int length = sizeof(scan_msg.ranges)/sizeof(scan_msg.[01;31m[Kranges[m[K[0]);
+[3.002s]       |                                                              [01;31m[K^~~~~~[m[K
+[3.002s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:52:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_min[m[K’
+[3.002s]    52 |             float r_dot = this->speed * cos(scan_msg.[01;31m[Kangle_min[m[K + i*scan_msg.angle_increment);
+[3.002s]       |                                                      [01;31m[K^~~~~~~~~[m[K
+[3.003s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:52:77:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_increment[m[K’
+[3.003s]    52 | oat r_dot = this->speed * cos(scan_msg.angle_min + i*scan_msg.[01;31m[Kangle_increment[m[K);
+[3.003s]       |                                                               [01;31m[K^~~~~~~~~~~~~~~[m[K
+[3.003s] 
+[3.003s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:53:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+[3.003s]    53 |             iTTC = std::min(scan_msg.[01;31m[Kranges[m[K[i] / std::max(r_dot, 0.0f), iTTC);
+[3.003s]       |                                      [01;31m[K^~~~~~[m[K
+[3.003s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:59:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass Safety[m[K’ has no member named ‘[01m[Kpublisher_[m[K’
+[3.003s]    59 |             this->[01;31m[Kpublisher_[m[K->publish(message);
+[3.004s]       |                   [01;31m[K^~~~~~~~~~[m[K
+[3.004s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:48:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Krange[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[3.004s]    48 |         float [01;35m[Krange[m[K = scan_msg.angle_max - scan_msg.angle_min;
+[3.004s]       |               [01;35m[K^~~~~[m[K
+[6.380s] make[2]: *** [CMakeFiles/safety_node.dir/build.make:63: CMakeFiles/safety_node.dir/src/safety_node.cpp.o] Error 1
+[6.381s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/safety_node.dir/all] Error 2
+[6.381s] make: *** [Makefile:141: all] Error 2
+[6.384s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/safety_node' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/safety_node -- -j8 -l8

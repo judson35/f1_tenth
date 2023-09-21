@@ -1,0 +1,21 @@
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_range(float*, double)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   51 |     double get_range([01;35m[Kfloat* range_data[m[K, double angle)
+      |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kangle[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   51 |     double get_range(float* range_data, [01;35m[Kdouble angle[m[K)
+      |                                         [01;35m[K~~~~~~~^~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_error(float*, double)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   74 |     double get_error([01;35m[Kfloat* range_data[m[K, double dist)
+      |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdist[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   74 |     double get_error(float* range_data, [01;35m[Kdouble dist[m[K)
+      |                                         [01;35m[K~~~~~~~^~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kerror[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   95 |     void pid_control([01;35m[Kdouble error[m[K, double velocity)
+      |                      [01;35m[K~~~~~~~^~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kvelocity[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   95 |     void pid_control(double error, [01;35m[Kdouble velocity[m[K)
+      |                                    [01;35m[K~~~~~~~^~~~~~~~[m[K

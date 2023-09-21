@@ -1,0 +1,152 @@
+[35m[1mScanning dependencies of target safety_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o[0m
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In constructor ‘[01m[KSafety::Safety()[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:28:44:[m[K [01;31m[Kerror: [m[K‘[01m[Ktutorial_interfaces[m[K’ was not declared in this scope; did you mean ‘[01m[Krcl_interfaces[m[K’?
+   28 |        publisher_ = this->create_publisher<[01;31m[Ktutorial_interfaces[m[K::msg::Num>("drive", 10);
+      |                                            [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |                                            [32m[Krcl_interfaces[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:28:27:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+   28 |        publisher_ = this->[01;31m[Kcreate_publisher<tutorial_interfaces::msg::Num>[m[K("drive", 10);
+      |                           [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:28:86:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSafety::create_publisher<<expression error> >(const char [6], int)[m[K’
+   28 | ->create_publisher<tutorial_interfaces::msg::Num>("drive", 10[01;31m[K)[m[K;
+      |                                                              [01;31m[K^[m[K
+
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:1[m[K:
+[01m[K/opt/ros/foxy/include/rclcpp/node.hpp:184:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+  184 |   [01;36m[Kcreate_publisher[m[K(
+      |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/node.hpp:184:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:28:86:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   28 | ->create_publisher<tutorial_interfaces::msg::Num>("drive", 10[01;31m[K)[m[K;
+      |                                                              [01;31m[K^[m[K
+
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::drive_callback(nav_msgs::msg::Odometry_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:43:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Ktwist[m[K’
+   43 |         speed = msg.[01;31m[Ktwist[m[K.twist.linear.x;
+      |                     [01;31m[K^~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:48:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_max[m[K’
+   48 |         float range = scan_msg.[01;31m[Kangle_max[m[K - scan_msg.angle_min;
+      |                                [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:48:53:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_min[m[K’
+   48 |         float range = scan_msg.angle_max - scan_msg.[01;31m[Kangle_min[m[K;
+      |                                                     [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:49:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+   49 |         int length = sizeof(scan_msg.[01;31m[Kranges[m[K)/sizeof(scan_msg.ranges[0]);
+      |                                      [01;31m[K^~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:49:62:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+   49 |         int length = sizeof(scan_msg.ranges)/sizeof(scan_msg.[01;31m[Kranges[m[K[0]);
+      |                                                              [01;31m[K^~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:52:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_min[m[K’
+   52 |             float r_dot = this->speed * cos(scan_msg.[01;31m[Kangle_min[m[K + i*scan_msg.angle_increment);
+      |                                                      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:52:77:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kangle_increment[m[K’
+   52 | oat r_dot = this->speed * cos(scan_msg.angle_min + i*scan_msg.[01;31m[Kangle_increment[m[K);
+      |                                                               [01;31m[K^~~~~~~~~~~~~~~[m[K
+
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:53:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+   53 |             iTTC = std::min(scan_msg.[01;31m[Kranges[m[K[i] / std::max(r_dot, 0.0), iTTC);
+      |                                      [01;31m[K^~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:53:69:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmax(float&, double)[m[K’
+   53 |             iTTC = std::min(scan_msg.ranges[i] / std::max(r_dot, 0.0[01;31m[K)[m[K, iTTC);
+      |                                                                     [01;31m[K^[m[K
+In file included from [01m[K/usr/include/c++/9/memory:62[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:1[m[K:
+[01m[K/usr/include/c++/9/bits/stl_algobase.h:222:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp& std::max(const _Tp&, const _Tp&)[m[K’
+  222 |     [01;36m[Kmax[m[K(const _Tp& __a, const _Tp& __b)
+      |     [01;36m[K^~~[m[K
+[01m[K/usr/include/c++/9/bits/stl_algobase.h:222:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:53:69:[m[K [01;36m[Knote: [m[K  deduced conflicting types for parameter ‘[01m[Kconst _Tp[m[K’ (‘[01m[Kfloat[m[K’ and ‘[01m[Kdouble[m[K’)
+   53 |             iTTC = std::min(scan_msg.ranges[i] / std::max(r_dot, 0.0[01;36m[K)[m[K, iTTC);
+      |                                                                     [01;36m[K^[m[K
+In file included from [01m[K/usr/include/c++/9/memory:62[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:1[m[K:
+[01m[K/usr/include/c++/9/bits/stl_algobase.h:268:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class _Compare> constexpr const _Tp& std::max(const _Tp&, const _Tp&, _Compare)[m[K’
+  268 |     [01;36m[Kmax[m[K(const _Tp& __a, const _Tp& __b, _Compare __comp)
+      |     [01;36m[K^~~[m[K
+[01m[K/usr/include/c++/9/bits/stl_algobase.h:268:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:53:69:[m[K [01;36m[Knote: [m[K  deduced conflicting types for parameter ‘[01m[Kconst _Tp[m[K’ (‘[01m[Kfloat[m[K’ and ‘[01m[Kdouble[m[K’)
+   53 |             iTTC = std::min(scan_msg.ranges[i] / std::max(r_dot, 0.0[01;36m[K)[m[K, iTTC);
+      |                                                                     [01;36m[K^[m[K
+In file included from [01m[K/usr/include/c++/9/algorithm:62[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:1[m[K:
+[01m[K/usr/include/c++/9/bits/stl_algo.h:3462:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> constexpr _Tp std::max(std::initializer_list<_Tp>)[m[K’
+ 3462 |     [01;36m[Kmax[m[K(initializer_list<_Tp> __l)
+      |     [01;36m[K^~~[m[K
+[01m[K/usr/include/c++/9/bits/stl_algo.h:3462:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:53:69:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kstd::initializer_list<_Tp>[m[K’ and ‘[01m[Kfloat[m[K’
+   53 |             iTTC = std::min(scan_msg.ranges[i] / std::max(r_dot, 0.0[01;36m[K)[m[K, iTTC);
+      |                                                                     [01;36m[K^[m[K
+In file included from [01m[K/usr/include/c++/9/algorithm:62[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:1[m[K:
+[01m[K/usr/include/c++/9/bits/stl_algo.h:3468:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class _Compare> constexpr _Tp std::max(std::initializer_list<_Tp>, _Compare)[m[K’
+ 3468 |     [01;36m[Kmax[m[K(initializer_list<_Tp> __l, _Compare __comp)
+      |     [01;36m[K^~~[m[K
+[01m[K/usr/include/c++/9/bits/stl_algo.h:3468:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:53:69:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kstd::initializer_list<_Tp>[m[K’ and ‘[01m[Kfloat[m[K’
+   53 |             iTTC = std::min(scan_msg.ranges[i] / std::max(r_dot, 0.0[01;36m[K)[m[K, iTTC);
+      |                                                                     [01;36m[K^[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:59:46:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Krclcpp::Publisher<sensor_msgs::msg::LaserScan_<std::allocator<void> > >::publish(ackermann_msgs::msg::AckermannDriveStamped_<std::allocator<void> >&)[m[K’
+   59 |             this->publisher_->publish(message[01;31m[K)[m[K;
+      |                                              [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:31[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:1[m[K:
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:185:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid rclcpp::Publisher<MessageT, AllocatorT>::publish(std::unique_ptr<MessageT, typename std::conditional<std::is_same<typename std::allocator_traits<typename std::allocator_traits<_Alloc>::rebind_traits<MessageT>::allocator_type>::rebind_alloc<MessageT>, typename std::allocator<void>::rebind<_Tp1>::other>::value, std::default_delete<_Tp>, rclcpp::allocator::AllocatorDeleter<typename std::allocator_traits<_Alloc>::rebind_traits<MessageT>::allocator_type> >::type>) [with MessageT = sensor_msgs::msg::LaserScan_<std::allocator<void> >; AllocatorT = std::allocator<void>; typename std::conditional<std::is_same<typename std::allocator_traits<typename std::allocator_traits<_Alloc>::rebind_traits<MessageT>::allocator_type>::rebind_alloc<MessageT>, typename std::allocator<void>::rebind<_Tp1>::other>::value, std::default_delete<_Tp>, rclcpp::allocator::AllocatorDeleter<typename std::allocator_traits<_Alloc>::rebind_traits<MessageT>::allocator_type> >::type = std::default_delete<sensor_msgs::msg::LaserScan_<std::allocator<void> > >][m[K’
+  185 |   [01;36m[Kpublish[m[K(std::unique_ptr<MessageT, MessageDeleter> msg)
+      |   [01;36m[K^~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:185:53:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kackermann_msgs::msg::AckermannDriveStamped_<std::allocator<void> >[m[K’ to ‘[01m[Kstd::unique_ptr<sensor_msgs::msg::LaserScan_<std::allocator<void> >, std::default_delete<sensor_msgs::msg::LaserScan_<std::allocator<void> > > >[m[K’
+  185 |   publish([01;36m[Kstd::unique_ptr<MessageT, MessageDeleter> msg[m[K)
+      |           [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:209:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid rclcpp::Publisher<MessageT, AllocatorT>::publish(const MessageT&) [with MessageT = sensor_msgs::msg::LaserScan_<std::allocator<void> >; AllocatorT = std::allocator<void>][m[K’
+  209 |   [01;36m[Kpublish[m[K(const MessageT & msg)
+      |   [01;36m[K^~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:209:28:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kackermann_msgs::msg::AckermannDriveStamped_<std::allocator<void> >[m[K’ to ‘[01m[Kconst sensor_msgs::msg::LaserScan_<std::allocator<void> >&[m[K’
+  209 |   publish([01;36m[Kconst MessageT & msg[m[K)
+      |           [01;36m[K~~~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:226:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid rclcpp::Publisher<MessageT, AllocatorT>::publish(const rcl_serialized_message_t&) [with MessageT = sensor_msgs::msg::LaserScan_<std::allocator<void> >; AllocatorT = std::allocator<void>; rcl_serialized_message_t = rcutils_uint8_array_t][m[K’
+  226 |   [01;36m[Kpublish[m[K(const rcl_serialized_message_t & serialized_msg)
+      |   [01;36m[K^~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:226:44:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kackermann_msgs::msg::AckermannDriveStamped_<std::allocator<void> >[m[K’ to ‘[01m[Kconst rcl_serialized_message_t&[m[K’ {aka ‘[01m[Kconst rcutils_uint8_array_t&[m[K’}
+  226 |   publish([01;36m[Kconst rcl_serialized_message_t & serialized_msg[m[K)
+      |           [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:232:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid rclcpp::Publisher<MessageT, AllocatorT>::publish(const rclcpp::SerializedMessage&) [with MessageT = sensor_msgs::msg::LaserScan_<std::allocator<void> >; AllocatorT = std::allocator<void>][m[K’
+  232 |   [01;36m[Kpublish[m[K(const SerializedMessage & serialized_msg)
+      |   [01;36m[K^~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:232:37:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kackermann_msgs::msg::AckermannDriveStamped_<std::allocator<void> >[m[K’ to ‘[01m[Kconst rclcpp::SerializedMessage&[m[K’
+  232 |   publish([01;36m[Kconst SerializedMessage & serialized_msg[m[K)
+      |           [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:246:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid rclcpp::Publisher<MessageT, AllocatorT>::publish(rclcpp::LoanedMessage<MessageT, AllocatorT>&&) [with MessageT = sensor_msgs::msg::LaserScan_<std::allocator<void> >; AllocatorT = std::allocator<void>][m[K’
+  246 |   [01;36m[Kpublish[m[K(rclcpp::LoanedMessage<MessageT, AllocatorT> && loaned_msg)
+      |   [01;36m[K^~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/publisher.hpp:246:58:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kackermann_msgs::msg::AckermannDriveStamped_<std::allocator<void> >[m[K’ to ‘[01m[Krclcpp::LoanedMessage<sensor_msgs::msg::LaserScan_<std::allocator<void> >, std::allocator<void> >&&[m[K’
+  246 |   publish([01;36m[Krclcpp::LoanedMessage<MessageT, AllocatorT> && loaned_msg[m[K)
+      |           [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:48:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Krange[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   48 |         float [01;35m[Krange[m[K = scan_msg.angle_max - scan_msg.angle_min;
+      |               [01;35m[K^~~~~[m[K
+make[2]: *** [CMakeFiles/safety_node.dir/build.make:63: CMakeFiles/safety_node.dir/src/safety_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/safety_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

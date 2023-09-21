@@ -1,0 +1,41 @@
+[0.533s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[0.604s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.660s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[3.253s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In constructor ‘[01m[KWallFollow::WallFollow()[m[K’:
+[3.253s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:15:147:[m[K [01;31m[Kerror: [m[K‘[01m[K_1[m[K’ was not declared in this scope; did you mean ‘[01m[Kstd::placeholders::_1[m[K’?
+[3.253s]    15 |         scan_subscriber_ = this->create_subscription<sensor_msgs::msg::LaserScan>(lidarscan_topic, 1, std::bind(&WallFollow::scan_callback, this, [01;31m[K_1[m[K));
+[3.254s]       |                                                                                                                                                   [01;31m[K^~[m[K
+[3.254s]       |                                                                                                                                                   [32m[Kstd::placeholders::_1[m[K
+[3.254s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/context.hpp:19[m[K,
+[3.254s]                  from [01m[K/opt/ros/foxy/include/rclcpp/contexts/default_context.hpp:18[m[K,
+[3.254s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:32[m[K,
+[3.255s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[3.255s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[3.255s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[3.255s]                  from [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1[m[K:
+[3.256s] [01m[K/usr/include/c++/9/functional:211:34:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::placeholders::_1[m[K’ declared here
+[3.256s]   211 |     extern const _Placeholder<1> [01;36m[K_1[m[K;
+[3.256s]       |                                  [01;36m[K^~[m[K
+[3.256s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:17:42:[m[K [01;31m[Kerror: [m[Kunable to find numeric literal operator ‘[01m[Koperator""ms[m[K’
+[3.256s]    17 |         timer_ = this->create_wall_timer([01;31m[K1ms[m[K, std::bind(&MinimalParam::timer_callback, this));
+[3.256s]       |                                          [01;31m[K^~~[m[K
+[3.257s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:17:58:[m[K [01;31m[Kerror: [m[K‘[01m[KMinimalParam[m[K’ has not been declared
+[3.257s]    17 |         timer_ = this->create_wall_timer(1ms, std::bind(&[01;31m[KMinimalParam[m[K::timer_callback, this));
+[3.257s]       |                                                          [01;31m[K^~~~~~~~~~~~[m[K
+[3.261s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’:
+[3.261s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:101:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kderivative[m[K’ was not declared in this scope
+[3.261s]   101 |         [01;31m[Kderivative[m[K = kd * (error - prev_error) / dt;
+[3.262s]       |         [01;31m[K^~~~~~~~~~[m[K
+[3.266s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:103:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksteering_angle[m[K’ was not declared in this scope
+[3.266s]   103 |         [01;31m[Ksteering_angle[m[K = (kp * error) + integral + derivative;
+[3.266s]       |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.278s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:98:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kangle[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[3.278s]    98 |         double [01;35m[Kangle[m[K = 0.0;
+[3.279s]       |                [01;35m[K^~~~~[m[K
+[3.279s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:86:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kvelocity[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.279s]    86 |     void pid_control(double error, [01;35m[Kdouble velocity[m[K)
+[3.279s]       |                                    [01;35m[K~~~~~~~^~~~~~~~[m[K
+[4.740s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+[4.741s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+[4.741s] make: *** [Makefile:141: all] Error 2
+[4.744s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8

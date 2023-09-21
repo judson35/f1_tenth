@@ -1,0 +1,156 @@
+[0.000000] (-) TimerEvent: {}
+[0.001045] (-) JobUnselected: {'identifier': 'f1tenth_gym_ros'}
+[0.001115] (-) JobUnselected: {'identifier': 'safety_node'}
+[0.001161] (wall_follow) JobQueued: {'identifier': 'wall_follow', 'dependencies': OrderedDict()}
+[0.001681] (wall_follow) JobStarted: {'identifier': 'wall_follow'}
+[0.030680] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'cmake'}
+[0.032534] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'build'}
+[0.034092] (wall_follow) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/judson35/f1_tenth/sim_ws/build/wall_follow', '--', '-j8', '-l8'], 'cwd': '/home/judson35/f1_tenth/sim_ws/build/wall_follow', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'judson35'), ('SSH_AGENT_PID', '1359'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/judson35'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('TERM_PROGRAM_VERSION', '1.82.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1110'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '46101'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'judson35'), ('JOURNAL_STREAM', '8:40994'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'judson35'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/home/judson35/.local/bin:/home/judson35/bin:/opt/ros/foxy/bin:/home/judson35/.local/bin:/home/judson35/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/judson35-XPS-13-7390:@/tmp/.ICE-unix/1422,unix/judson35-XPS-13-7390:/tmp/.ICE-unix/1422'), ('INVOCATION_ID', '879333b9be3a4203a85737b487af5c56'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-7e441bcefb.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '35'), ('AMENT_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', '--ms-enable-electron-run-as-node'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/judson35/f1_tenth/sim_ws/build/wall_follow'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[0.099523] (-) TimerEvent: {}
+[0.115619] (wall_follow) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wall_follow_node\x1b[0m\n'}
+[0.169052] (wall_follow) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o\x1b[0m\n'}
+[0.199613] (-) TimerEvent: {}
+[0.300030] (-) TimerEvent: {}
+[0.400454] (-) TimerEvent: {}
+[0.500824] (-) TimerEvent: {}
+[0.601282] (-) TimerEvent: {}
+[0.701794] (-) TimerEvent: {}
+[0.802207] (-) TimerEvent: {}
+[0.902604] (-) TimerEvent: {}
+[1.003062] (-) TimerEvent: {}
+[1.103557] (-) TimerEvent: {}
+[1.204021] (-) TimerEvent: {}
+[1.304465] (-) TimerEvent: {}
+[1.404944] (-) TimerEvent: {}
+[1.505633] (-) TimerEvent: {}
+[1.606238] (-) TimerEvent: {}
+[1.706632] (-) TimerEvent: {}
+[1.807102] (-) TimerEvent: {}
+[1.907584] (-) TimerEvent: {}
+[2.008028] (-) TimerEvent: {}
+[2.108443] (-) TimerEvent: {}
+[2.208837] (-) TimerEvent: {}
+[2.309252] (-) TimerEvent: {}
+[2.409669] (-) TimerEvent: {}
+[2.510124] (-) TimerEvent: {}
+[2.610575] (-) TimerEvent: {}
+[2.711012] (-) TimerEvent: {}
+[2.811476] (-) TimerEvent: {}
+[2.911905] (-) TimerEvent: {}
+[3.012283] (-) TimerEvent: {}
+[3.102004] (wall_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[3.102477] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[3.102707] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[3.102900] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[3.103106] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[3.103315] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[3.103534] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[3.103757] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[3.104001] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[3.104215] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[3.104449] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1\x1b[m\x1b[K:\n'}
+[3.104614] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.104746] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:241:57:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator-\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Kbuiltin_interfaces::msg::Time_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kbuiltin_interfaces::msg::Time_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[3.104874] (wall_follow) StderrLine: {'line': b'  241 |         RCLCPP_INFO(this->get_logger(), "%f", \x1b[32m\x1b[Kcurr_time\x1b[m\x1b[K \x1b[01;31m\x1b[K-\x1b[m\x1b[K \x1b[34m\x1b[Kprev_time\x1b[m\x1b[K);\n'}
+[3.104994] (wall_follow) StderrLine: {'line': b'      |                                               \x1b[32m\x1b[K~~~~~~~~~\x1b[m\x1b[K \x1b[01;31m\x1b[K^\x1b[m\x1b[K \x1b[34m\x1b[K~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.105112] (wall_follow) StderrLine: {'line': b'      |                                               \x1b[32m\x1b[K|\x1b[m\x1b[K           \x1b[34m\x1b[K|\x1b[m\x1b[K\n'}
+[3.105229] (wall_follow) StderrLine: {'line': b'      |                                               \x1b[32m\x1b[K|\x1b[m\x1b[K           \x1b[34m\x1b[KTime_<[...]>\x1b[m\x1b[K\n'}
+[3.105345] (wall_follow) StderrLine: {'line': b'      |                                               \x1b[32m\x1b[KTime_<[...]>\x1b[m\x1b[K\n'}
+[3.105459] (wall_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/bits/stl_algobase.h:67\x1b[m\x1b[K,\n'}
+[3.105572] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/memory:62\x1b[m\x1b[K,\n'}
+[3.105687] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144\x1b[m\x1b[K,\n'}
+[3.105801] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1\x1b[m\x1b[K:\n'}
+[3.105917] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:415:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.106039] (wall_follow) StderrLine: {'line': b'  415 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const reverse_iterator<_IteratorL>& __x,\n'}
+[3.106232] (wall_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.106433] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:415:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.106619] (wall_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[3.106800] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[3.107000] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[3.107223] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[3.107438] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[3.107670] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[3.107894] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[3.108104] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[3.108326] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[3.108495] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[3.108617] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1\x1b[m\x1b[K:\n'}
+[3.108746] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:241:59:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kbuiltin_interfaces::msg::Time_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::reverse_iterator<_Iterator>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.108884] (wall_follow) StderrLine: {'line': b'  241 |         RCLCPP_INFO(this->get_logger(), "%f", curr_time - \x1b[01;36m\x1b[Kprev_time\x1b[m\x1b[K);\n'}
+[3.109000] (wall_follow) StderrLine: {'line': b'      |                                                           \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.109115] (wall_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/bits/stl_algobase.h:67\x1b[m\x1b[K,\n'}
+[3.109228] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/memory:62\x1b[m\x1b[K,\n'}
+[3.109343] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144\x1b[m\x1b[K,\n'}
+[3.109458] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1\x1b[m\x1b[K:\n'}
+[3.109573] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:1209:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.109700] (wall_follow) StderrLine: {'line': b' 1209 |     \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const move_iterator<_IteratorL>& __x,\n'}
+[3.109815] (wall_follow) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.109929] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_iterator.h:1209:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[3.110046] (wall_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[3.110230] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[3.110432] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[3.110629] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[3.110814] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[3.111047] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[3.111264] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[3.111484] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[3.111710] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[3.111944] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[3.112167] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1\x1b[m\x1b[K:\n'}
+[3.112383] (-) TimerEvent: {}
+[3.112610] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:241:59:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kbuiltin_interfaces::msg::Time_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 is not derived from \xe2\x80\x98\x1b[01m\x1b[Kconst std::move_iterator<_IteratorL>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.112863] (wall_follow) StderrLine: {'line': b'  241 |         RCLCPP_INFO(this->get_logger(), "%f", curr_time - \x1b[01;36m\x1b[Kprev_time\x1b[m\x1b[K);\n'}
+[3.113084] (wall_follow) StderrLine: {'line': b'      |                                                           \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.113284] (wall_follow) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/vector:68\x1b[m\x1b[K,\n'}
+[3.113411] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:27\x1b[m\x1b[K,\n'}
+[3.113527] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[3.113642] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[3.113756] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[3.113884] (wall_follow) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1\x1b[m\x1b[K:\n'}
+[3.114001] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_bvector.h:214:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.114180] (wall_follow) StderrLine: {'line': b'  214 |   \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)\n'}
+[3.114381] (wall_follow) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.114565] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_bvector.h:214:39:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kbuiltin_interfaces::msg::Time_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst std::_Bit_iterator_base&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.114762] (wall_follow) StderrLine: {'line': b'  214 |   operator-(\x1b[01;36m\x1b[Kconst _Bit_iterator_base& __x\x1b[m\x1b[K, const _Bit_iterator_base& __y)\n'}
+[3.114963] (wall_follow) StderrLine: {'line': b'      |             \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[3.115168] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:256:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass WallFollow\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kprev_time\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.115420] (wall_follow) StderrLine: {'line': b'  256 |         this->\x1b[01;31m\x1b[Kprev_time\x1b[m\x1b[K = curr_time;\n'}
+[3.115643] (wall_follow) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.212514] (-) TimerEvent: {}
+[3.312987] (-) TimerEvent: {}
+[3.413358] (-) TimerEvent: {}
+[3.513739] (-) TimerEvent: {}
+[3.614148] (-) TimerEvent: {}
+[3.714565] (-) TimerEvent: {}
+[3.814960] (-) TimerEvent: {}
+[3.915354] (-) TimerEvent: {}
+[4.015749] (-) TimerEvent: {}
+[4.116166] (-) TimerEvent: {}
+[4.216592] (-) TimerEvent: {}
+[4.317027] (-) TimerEvent: {}
+[4.417460] (-) TimerEvent: {}
+[4.517850] (-) TimerEvent: {}
+[4.618233] (-) TimerEvent: {}
+[4.718589] (-) TimerEvent: {}
+[4.818992] (-) TimerEvent: {}
+[4.919378] (-) TimerEvent: {}
+[5.019806] (-) TimerEvent: {}
+[5.120173] (-) TimerEvent: {}
+[5.220532] (-) TimerEvent: {}
+[5.320884] (-) TimerEvent: {}
+[5.421273] (-) TimerEvent: {}
+[5.521655] (-) TimerEvent: {}
+[5.622046] (-) TimerEvent: {}
+[5.722428] (-) TimerEvent: {}
+[5.822780] (-) TimerEvent: {}
+[5.923199] (-) TimerEvent: {}
+[6.023552] (-) TimerEvent: {}
+[6.123954] (-) TimerEvent: {}
+[6.224355] (-) TimerEvent: {}
+[6.262755] (wall_follow) StderrLine: {'line': b'make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1\n'}
+[6.263216] (wall_follow) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2\n'}
+[6.263600] (wall_follow) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[6.267384] (wall_follow) CommandEnded: {'returncode': 2}
+[6.326072] (-) TimerEvent: {}
+[6.340608] (wall_follow) JobEnded: {'identifier': 'wall_follow', 'rc': 2}
+[6.351368] (-) EventReactorShutdown: {}

@@ -1,0 +1,8 @@
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:240:75:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst _header_type[m[K’ {aka ‘[01m[Kconst struct std_msgs::msg::Header_<std::allocator<void> >[m[K’} has no member named ‘[01m[Knanosec[m[K’
+  240 |        double curr_time = scan_msg->header.stamp.sec + (scan_msg->header.[01;31m[Knanosec[m[K / 1e-9);
+      |                                                                          [01;31m[K^~~~~~~[m[K
+
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

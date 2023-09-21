@@ -1,0 +1,55 @@
+[0.040s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[0.112s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.160s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[2.909s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_range(float*, double)[m[K’:
+[2.910s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.910s]    51 |     double get_range([01;35m[Kfloat* range_data[m[K, double angle)
+[2.910s]       |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[2.910s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kangle[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.910s]    51 |     double get_range(float* range_data, [01;35m[Kdouble angle[m[K)
+[2.911s]       |                                         [01;35m[K~~~~~~~^~~~~[m[K
+[2.911s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_error(float*, double)[m[K’:
+[2.911s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.911s]    74 |     double get_error([01;35m[Kfloat* range_data[m[K, double dist)
+[2.911s]       |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[2.912s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdist[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.912s]    74 |     double get_error(float* range_data, [01;35m[Kdouble dist[m[K)
+[2.912s]       |                                         [01;35m[K~~~~~~~^~~~[m[K
+[2.912s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’:
+[2.912s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kerror[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.913s]    95 |     void pid_control([01;35m[Kdouble error[m[K, double velocity)
+[2.913s]       |                      [01;35m[K~~~~~~~^~~~~[m[K
+[2.913s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kvelocity[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[2.913s]    95 |     void pid_control(double error, [01;35m[Kdouble velocity[m[K)
+[2.913s]       |                                    [01;35m[K~~~~~~~^~~~~~~~[m[K
+[10.466s] [100%] [32m[1mLinking CXX executable wall_follow_node[0m
+[10.996s] [100%] Built target wall_follow_node
+[11.016s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[11.074s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/judson35/f1_tenth/sim_ws/build/wall_follow
+[11.088s] -- Install configuration: ""
+[11.089s] -- Execute custom install script
+[11.090s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node
+[11.090s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.sh
+[11.091s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.dsv
+[11.092s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py
+[11.092s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node.py
+[11.093s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/launch/wall_follow.yaml
+[11.093s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/launch/wall_follow_launch.py
+[11.094s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/config/wall_follow.yaml
+[11.094s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/ament_index/resource_index/package_run_dependencies/wall_follow
+[11.095s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/ament_index/resource_index/parent_prefix_path/wall_follow
+[11.095s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.sh
+[11.096s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.dsv
+[11.096s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/path.sh
+[11.097s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/path.dsv
+[11.097s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.bash
+[11.097s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.sh
+[11.098s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.zsh
+[11.098s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.dsv
+[11.099s] -- Symlinking: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.dsv
+[11.115s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/ament_index/resource_index/packages/wall_follow
+[11.115s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig.cmake
+[11.115s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig-version.cmake
+[11.116s] -- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.xml
+[11.182s] Listing '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow'...
+[11.195s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/judson35/f1_tenth/sim_ws/build/wall_follow

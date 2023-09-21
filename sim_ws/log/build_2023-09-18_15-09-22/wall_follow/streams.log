@@ -1,0 +1,11 @@
+[0.038s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[0.113s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.172s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[3.047s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_error(std::vector<float>, double)[m[K’:
+[3.047s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:91:39:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+[3.047s]    91 |         for (float range : random_data[01;31m[K)[m[K {
+[3.047s]       |                                       [01;31m[K^[m[K
+[6.374s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+[6.374s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+[6.375s] make: *** [Makefile:141: all] Error 2
+[6.378s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8

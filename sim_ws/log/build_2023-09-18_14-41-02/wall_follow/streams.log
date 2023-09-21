@@ -1,0 +1,40 @@
+[0.035s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[0.120s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.180s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[3.288s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_range(float*, double)[m[K’:
+[3.288s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:71:19:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K}[m[K’ token
+[3.288s]    71 |         return 0.0
+[3.288s]       |                   [01;31m[K^[m[K
+[3.288s]       |                   [32m[K;[m[K
+[3.289s]    72 |     [32m[K}[m[K
+[3.289s]       |     [32m[K~[m[K              
+[3.289s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.289s]    51 |     double get_range([01;35m[Kfloat* range_data[m[K, double angle)
+[3.289s]       |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[3.289s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kangle[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.289s]    51 |     double get_range(float* range_data, [01;35m[Kdouble angle[m[K)
+[3.289s]       |                                         [01;35m[K~~~~~~~^~~~~[m[K
+[3.290s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_error(float*, double)[m[K’:
+[3.290s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:92:19:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K}[m[K’ token
+[3.290s]    92 |         return 0.0
+[3.290s]       |                   [01;31m[K^[m[K
+[3.291s]       |                   [32m[K;[m[K
+[3.291s]    93 |     [32m[K}[m[K
+[3.291s]       |     [32m[K~[m[K              
+[3.291s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.291s]    74 |     double get_error([01;35m[Kfloat* range_data[m[K, double dist)
+[3.292s]       |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[3.292s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdist[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.292s]    74 |     double get_error(float* range_data, [01;35m[Kdouble dist[m[K)
+[3.292s]       |                                         [01;35m[K~~~~~~~^~~~[m[K
+[3.293s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’:
+[3.293s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kerror[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.293s]    95 |     void pid_control([01;35m[Kdouble error[m[K, double velocity)
+[3.293s]       |                      [01;35m[K~~~~~~~^~~~~[m[K
+[3.294s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kvelocity[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.294s]    95 |     void pid_control(double error, [01;35m[Kdouble velocity[m[K)
+[3.294s]       |                                    [01;35m[K~~~~~~~^~~~~~~~[m[K
+[6.517s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+[6.517s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+[6.518s] make: *** [Makefile:141: all] Error 2
+[6.522s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8

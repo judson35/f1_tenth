@@ -1,0 +1,50 @@
+[35m[1mScanning dependencies of target wall_follow_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:89:10:[m[K [01;31m[Kerror: [m[K‘[01m[Ktime[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a type
+   89 |     std::[01;31m[Ktime[m[K prev_time;
+      |          [01;31m[K^~~~[m[K
+In file included from [01m[K/usr/include/pthread.h:23[m[K,
+                 from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/gthr-default.h:35[m[K,
+                 from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/gthr.h:148[m[K,
+                 from [01m[K/usr/include/c++/9/ext/atomicity.h:35[m[K,
+                 from [01m[K/usr/include/c++/9/memory:73[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1[m[K:
+[01m[K/usr/include/time.h:75:15:[m[K [01;36m[Knote: [m[K‘[01m[Ktime_t time(time_t*)[m[K’ declared here
+   75 | extern time_t [01;36m[Ktime[m[K (time_t *__timer) __THROW;
+      |               [01;36m[K^~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:240:18:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kcurr_time[m[K’
+  240 |         std::time[01;31m[K [m[K[32m[Kcurr_time[m[K = scan_msg->header.time;
+      |                  [01;31m[K^[m[K[32m[K~~~~~~~~~[m[K
+      |                  [32m[K;[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:240:14:[m[K [01;35m[Kwarning: [m[Kstatement is a reference, not call, to function ‘[01m[Ktime[m[K’ [[01;35m[K-Waddress[m[K]
+  240 |         [01;35m[Kstd::time[m[K curr_time = scan_msg->header.time;
+      |         [01;35m[K~~~~~^~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:240:14:[m[K [01;35m[Kwarning: [m[Kstatement has no effect [[01;35m[K-Wunused-value[m[K]
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1[m[K:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:241:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurr_time[m[K’ was not declared in this scope
+  241 |         RCLCPP_INFO(this->get_logger(), "%f", [01;31m[Kcurr_time[m[K - prev_time);
+      |                                               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:241:59:[m[K [01;31m[Kerror: [m[K‘[01m[Kprev_time[m[K’ was not declared in this scope
+  241 |         RCLCPP_INFO(this->get_logger(), "%f", curr_time - [01;31m[Kprev_time[m[K);
+      |                                                           [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:256:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass WallFollow[m[K’ has no member named ‘[01m[Kprev_time[m[K’
+  256 |         this->[01;31m[Kprev_time[m[K = curr_time;
+      |               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:256:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurr_time[m[K’ was not declared in this scope
+  256 |         this->prev_time = [01;31m[Kcurr_time[m[K;
+      |                           [01;31m[K^~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

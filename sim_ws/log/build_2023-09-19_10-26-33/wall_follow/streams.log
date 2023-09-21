@@ -1,0 +1,9 @@
+[0.040s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[0.116s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.173s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[12.269s] [100%] [32m[1mLinking CXX executable wall_follow_node[0m
+[12.743s] make[2]: *** Deleting file 'wall_follow_node'
+[12.745s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:151: wall_follow_node] Interrupt
+[12.745s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Interrupt
+[12.746s] make: *** [Makefile:141: all] Interrupt
+[12.749s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8

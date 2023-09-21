@@ -1,0 +1,41 @@
+[0.031s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[0.107s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.162s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[2.769s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:89:10:[m[K [01;31m[Kerror: [m[K‘[01m[Ktime[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a type
+[2.769s]    89 |     std::[01;31m[Ktime[m[K prev_time;
+[2.769s]       |          [01;31m[K^~~~[m[K
+[2.769s] In file included from [01m[K/usr/include/pthread.h:23[m[K,
+[2.770s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/gthr-default.h:35[m[K,
+[2.770s]                  from [01m[K/usr/include/x86_64-linux-gnu/c++/9/bits/gthr.h:148[m[K,
+[2.770s]                  from [01m[K/usr/include/c++/9/ext/atomicity.h:35[m[K,
+[2.770s]                  from [01m[K/usr/include/c++/9/memory:73[m[K,
+[2.770s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144[m[K,
+[2.770s]                  from [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1[m[K:
+[2.770s] [01m[K/usr/include/time.h:75:15:[m[K [01;36m[Knote: [m[K‘[01m[Ktime_t time(time_t*)[m[K’ declared here
+[2.770s]    75 | extern time_t [01;36m[Ktime[m[K (time_t *__timer) __THROW;
+[2.771s]       |               [01;36m[K^~~~[m[K
+[2.868s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[2.868s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:240:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst _header_type[m[K’ {aka ‘[01m[Kconst struct std_msgs::msg::Header_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktime[m[K’
+[2.868s]   240 |         auto curr_time = scan_msg->header.[01;31m[Ktime[m[K;
+[2.869s]       |                                           [01;31m[K^~~~[m[K
+[2.873s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[2.873s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[2.874s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[2.875s]                  from [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:1[m[K:
+[2.875s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:241:59:[m[K [01;31m[Kerror: [m[K‘[01m[Kprev_time[m[K’ was not declared in this scope
+[2.875s]   241 |         RCLCPP_INFO(this->get_logger(), "%f", curr_time - [01;31m[Kprev_time[m[K);
+[2.875s]       |                                                           [01;31m[K^~~~~~~~~[m[K
+[2.875s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:256:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass WallFollow[m[K’ has no member named ‘[01m[Kprev_time[m[K’
+[2.875s]   256 |         this->[01;31m[Kprev_time[m[K = curr_time;
+[2.875s]       |               [01;31m[K^~~~~~~~~[m[K
+[6.012s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+[6.012s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+[6.012s] make: *** [Makefile:141: all] Error 2
+[6.015s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8

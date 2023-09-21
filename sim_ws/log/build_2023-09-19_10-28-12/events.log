@@ -1,0 +1,170 @@
+[0.000000] (-) TimerEvent: {}
+[0.001725] (-) JobUnselected: {'identifier': 'f1tenth_gym_ros'}
+[0.001817] (-) JobUnselected: {'identifier': 'safety_node'}
+[0.001869] (wall_follow) JobQueued: {'identifier': 'wall_follow', 'dependencies': OrderedDict()}
+[0.001989] (wall_follow) JobStarted: {'identifier': 'wall_follow'}
+[0.023514] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'cmake'}
+[0.025207] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'build'}
+[0.027223] (wall_follow) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/judson35/f1_tenth/sim_ws/build/wall_follow', '--', '-j8', '-l8'], 'cwd': '/home/judson35/f1_tenth/sim_ws/build/wall_follow', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'judson35'), ('SSH_AGENT_PID', '1359'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/judson35'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('TERM_PROGRAM_VERSION', '1.82.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1110'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '46101'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'judson35'), ('JOURNAL_STREAM', '8:40994'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'judson35'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/home/judson35/.local/bin:/home/judson35/bin:/opt/ros/foxy/bin:/home/judson35/.local/bin:/home/judson35/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/judson35-XPS-13-7390:@/tmp/.ICE-unix/1422,unix/judson35-XPS-13-7390:/tmp/.ICE-unix/1422'), ('INVOCATION_ID', '879333b9be3a4203a85737b487af5c56'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-7e441bcefb.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '35'), ('AMENT_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', '--ms-enable-electron-run-as-node'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/judson35/f1_tenth/sim_ws/build/wall_follow'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[0.099627] (-) TimerEvent: {}
+[0.101874] (wall_follow) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wall_follow_node\x1b[0m\n'}
+[0.152125] (wall_follow) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o\x1b[0m\n'}
+[0.199756] (-) TimerEvent: {}
+[0.300140] (-) TimerEvent: {}
+[0.400491] (-) TimerEvent: {}
+[0.500868] (-) TimerEvent: {}
+[0.601235] (-) TimerEvent: {}
+[0.701588] (-) TimerEvent: {}
+[0.802026] (-) TimerEvent: {}
+[0.902417] (-) TimerEvent: {}
+[1.002751] (-) TimerEvent: {}
+[1.103068] (-) TimerEvent: {}
+[1.203399] (-) TimerEvent: {}
+[1.303715] (-) TimerEvent: {}
+[1.404097] (-) TimerEvent: {}
+[1.504442] (-) TimerEvent: {}
+[1.604908] (-) TimerEvent: {}
+[1.705326] (-) TimerEvent: {}
+[1.805731] (-) TimerEvent: {}
+[1.906046] (-) TimerEvent: {}
+[2.006376] (-) TimerEvent: {}
+[2.106748] (-) TimerEvent: {}
+[2.207123] (-) TimerEvent: {}
+[2.307473] (-) TimerEvent: {}
+[2.407817] (-) TimerEvent: {}
+[2.508181] (-) TimerEvent: {}
+[2.608533] (-) TimerEvent: {}
+[2.708915] (-) TimerEvent: {}
+[2.809234] (-) TimerEvent: {}
+[2.909574] (-) TimerEvent: {}
+[3.009911] (-) TimerEvent: {}
+[3.110359] (-) TimerEvent: {}
+[3.210687] (-) TimerEvent: {}
+[3.311002] (-) TimerEvent: {}
+[3.411384] (-) TimerEvent: {}
+[3.511811] (-) TimerEvent: {}
+[3.612237] (-) TimerEvent: {}
+[3.712617] (-) TimerEvent: {}
+[3.813020] (-) TimerEvent: {}
+[3.913412] (-) TimerEvent: {}
+[4.013755] (-) TimerEvent: {}
+[4.114094] (-) TimerEvent: {}
+[4.214476] (-) TimerEvent: {}
+[4.314810] (-) TimerEvent: {}
+[4.415161] (-) TimerEvent: {}
+[4.515652] (-) TimerEvent: {}
+[4.616072] (-) TimerEvent: {}
+[4.716477] (-) TimerEvent: {}
+[4.816884] (-) TimerEvent: {}
+[4.917240] (-) TimerEvent: {}
+[5.017583] (-) TimerEvent: {}
+[5.117943] (-) TimerEvent: {}
+[5.218356] (-) TimerEvent: {}
+[5.318884] (-) TimerEvent: {}
+[5.419261] (-) TimerEvent: {}
+[5.519624] (-) TimerEvent: {}
+[5.620010] (-) TimerEvent: {}
+[5.720358] (-) TimerEvent: {}
+[5.820749] (-) TimerEvent: {}
+[5.921144] (-) TimerEvent: {}
+[6.021477] (-) TimerEvent: {}
+[6.121825] (-) TimerEvent: {}
+[6.222142] (-) TimerEvent: {}
+[6.322475] (-) TimerEvent: {}
+[6.422799] (-) TimerEvent: {}
+[6.523168] (-) TimerEvent: {}
+[6.623529] (-) TimerEvent: {}
+[6.723945] (-) TimerEvent: {}
+[6.824299] (-) TimerEvent: {}
+[6.924622] (-) TimerEvent: {}
+[7.025038] (-) TimerEvent: {}
+[7.125396] (-) TimerEvent: {}
+[7.225732] (-) TimerEvent: {}
+[7.326066] (-) TimerEvent: {}
+[7.426520] (-) TimerEvent: {}
+[7.526965] (-) TimerEvent: {}
+[7.627268] (-) TimerEvent: {}
+[7.727619] (-) TimerEvent: {}
+[7.827989] (-) TimerEvent: {}
+[7.928372] (-) TimerEvent: {}
+[8.028769] (-) TimerEvent: {}
+[8.129136] (-) TimerEvent: {}
+[8.229578] (-) TimerEvent: {}
+[8.329885] (-) TimerEvent: {}
+[8.430183] (-) TimerEvent: {}
+[8.530515] (-) TimerEvent: {}
+[8.630880] (-) TimerEvent: {}
+[8.731217] (-) TimerEvent: {}
+[8.831581] (-) TimerEvent: {}
+[8.931974] (-) TimerEvent: {}
+[9.032360] (-) TimerEvent: {}
+[9.132741] (-) TimerEvent: {}
+[9.233083] (-) TimerEvent: {}
+[9.333405] (-) TimerEvent: {}
+[9.433730] (-) TimerEvent: {}
+[9.534043] (-) TimerEvent: {}
+[9.634414] (-) TimerEvent: {}
+[9.734799] (-) TimerEvent: {}
+[9.835142] (-) TimerEvent: {}
+[9.935478] (-) TimerEvent: {}
+[10.035883] (-) TimerEvent: {}
+[10.136251] (-) TimerEvent: {}
+[10.236597] (-) TimerEvent: {}
+[10.336928] (-) TimerEvent: {}
+[10.437332] (-) TimerEvent: {}
+[10.537680] (-) TimerEvent: {}
+[10.638052] (-) TimerEvent: {}
+[10.738400] (-) TimerEvent: {}
+[10.838764] (-) TimerEvent: {}
+[10.939139] (-) TimerEvent: {}
+[11.039515] (-) TimerEvent: {}
+[11.139877] (-) TimerEvent: {}
+[11.240313] (-) TimerEvent: {}
+[11.340655] (-) TimerEvent: {}
+[11.441114] (-) TimerEvent: {}
+[11.541662] (-) TimerEvent: {}
+[11.642043] (-) TimerEvent: {}
+[11.742372] (-) TimerEvent: {}
+[11.750824] (wall_follow) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable wall_follow_node\x1b[0m\n'}
+[11.842524] (-) TimerEvent: {}
+[11.943009] (-) TimerEvent: {}
+[12.043373] (-) TimerEvent: {}
+[12.143749] (-) TimerEvent: {}
+[12.244107] (-) TimerEvent: {}
+[12.344494] (-) TimerEvent: {}
+[12.351295] (wall_follow) StdoutLine: {'line': b'[100%] Built target wall_follow_node\n'}
+[12.373964] (wall_follow) CommandEnded: {'returncode': 0}
+[12.416624] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'install'}
+[12.446743] (wall_follow) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/judson35/f1_tenth/sim_ws/build/wall_follow'], 'cwd': '/home/judson35/f1_tenth/sim_ws/build/wall_follow', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'judson35'), ('SSH_AGENT_PID', '1359'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/judson35'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('TERM_PROGRAM_VERSION', '1.82.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1110'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '46101'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'judson35'), ('JOURNAL_STREAM', '8:40994'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'judson35'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/home/judson35/.local/bin:/home/judson35/bin:/opt/ros/foxy/bin:/home/judson35/.local/bin:/home/judson35/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/judson35-XPS-13-7390:@/tmp/.ICE-unix/1422,unix/judson35-XPS-13-7390:/tmp/.ICE-unix/1422'), ('INVOCATION_ID', '879333b9be3a4203a85737b487af5c56'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-7e441bcefb.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '35'), ('AMENT_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', '--ms-enable-electron-run-as-node'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/judson35/f1_tenth/sim_ws/build/wall_follow'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[12.451509] (-) TimerEvent: {}
+[12.478233] (wall_follow) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[12.480192] (wall_follow) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[12.482753] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node\n'}
+[12.484606] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.sh\n'}
+[12.485971] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.dsv\n'}
+[12.489446] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py\n'}
+[12.491166] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node.py\n'}
+[12.494036] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/launch/wall_follow_launch.py\n'}
+[12.495687] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/config/wall_follow.yaml\n'}
+[12.497384] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/ament_index/resource_index/package_run_dependencies/wall_follow\n'}
+[12.499461] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/ament_index/resource_index/parent_prefix_path/wall_follow\n'}
+[12.501107] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.sh\n'}
+[12.502218] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.dsv\n'}
+[12.503469] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/path.sh\n'}
+[12.504871] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/environment/path.dsv\n'}
+[12.506222] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.bash\n'}
+[12.507535] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.sh\n'}
+[12.508850] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.zsh\n'}
+[12.510130] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/local_setup.dsv\n'}
+[12.511227] (wall_follow) StdoutLine: {'line': b'-- Symlinking: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.dsv\n'}
+[12.544213] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/ament_index/resource_index/packages/wall_follow\n'}
+[12.545244] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig.cmake\n'}
+[12.546128] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig-version.cmake\n'}
+[12.546947] (wall_follow) StdoutLine: {'line': b'-- Up-to-date symlink: /home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.xml\n'}
+[12.551724] (-) TimerEvent: {}
+[12.652533] (-) TimerEvent: {}
+[12.674867] (wall_follow) StdoutLine: {'line': b"Listing '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow'...\n"}
+[12.688776] (wall_follow) CommandEnded: {'returncode': 0}
+[12.752707] (-) TimerEvent: {}
+[12.801609] (wall_follow) JobEnded: {'identifier': 'wall_follow', 'rc': 0}
+[12.803814] (-) EventReactorShutdown: {}

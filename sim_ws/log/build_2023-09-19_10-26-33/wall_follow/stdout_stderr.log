@@ -1,0 +1,7 @@
+[35m[1mScanning dependencies of target wall_follow_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable wall_follow_node[0m
+make[2]: *** Deleting file 'wall_follow_node'
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:151: wall_follow_node] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Interrupt
+make: *** [Makefile:141: all] Interrupt

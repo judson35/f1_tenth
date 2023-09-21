@@ -1,0 +1,171 @@
+[0.644s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install', '--packages-select', 'wall_follow']
+[0.645s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f2113031400>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=['wall_follow'], packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=8, paths=None, symlink_install=True, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f2113031400>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f2113031940>)
+[0.694s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.695s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.695s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.695s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.695s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.695s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.695s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/judson35/f1_tenth/sim_ws'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.732s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.732s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.732s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.732s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.733s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.733s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.733s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.733s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.733s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.733s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.734s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.734s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.734s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.734s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.734s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.735s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.736s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.736s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.736s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.736s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.736s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'ignore'
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'ignore_ament_install'
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['colcon_pkg']
+[0.737s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'colcon_pkg'
+[0.738s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['colcon_meta']
+[0.738s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'colcon_meta'
+[0.738s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extensions ['ros']
+[0.738s] Level 1:colcon.colcon_core.package_identification:_identify(src/f1tenth_gym_ros) by extension 'ros'
+[0.744s] DEBUG:colcon.colcon_core.package_identification:Package 'src/f1tenth_gym_ros' with type 'ros.ament_python' and name 'f1tenth_gym_ros'
+[0.744s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extensions ['ignore', 'ignore_ament_install']
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extension 'ignore'
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extension 'ignore_ament_install'
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extensions ['colcon_pkg']
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extension 'colcon_pkg'
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extensions ['colcon_meta']
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extension 'colcon_meta'
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extensions ['ros']
+[0.745s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_node) by extension 'ros'
+[0.747s] DEBUG:colcon.colcon_core.package_identification:Package 'src/safety_node' with type 'ros.ament_cmake' and name 'safety_node'
+[0.748s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extensions ['ignore', 'ignore_ament_install']
+[0.748s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extension 'ignore'
+[0.748s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extension 'ignore_ament_install'
+[0.748s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extensions ['colcon_pkg']
+[0.748s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extension 'colcon_pkg'
+[0.748s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extensions ['colcon_meta']
+[0.748s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extension 'colcon_meta'
+[0.749s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extensions ['ros']
+[0.749s] Level 1:colcon.colcon_core.package_identification:_identify(src/wall_follow) by extension 'ros'
+[0.752s] DEBUG:colcon.colcon_core.package_identification:Package 'src/wall_follow' with type 'ros.ament_cmake' and name 'wall_follow'
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.794s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'f1tenth_gym_ros' in 'src/f1tenth_gym_ros'
+[0.794s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'safety_node' in 'src/safety_node'
+[0.796s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.796s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.802s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /home/judson35/f1_tenth/sim_ws/install
+[0.805s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 198 installed packages in /opt/ros/foxy
+[0.807s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'cmake_args' from command line to 'None'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'cmake_target' from command line to 'None'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'cmake_clean_cache' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'cmake_clean_first' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'cmake_force_configure' from command line to 'False'
+[0.905s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'ament_cmake_args' from command line to 'None'
+[0.906s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'catkin_cmake_args' from command line to 'None'
+[0.906s] Level 5:colcon.colcon_core.verb:set package 'wall_follow' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.906s] DEBUG:colcon.colcon_core.verb:Building package 'wall_follow' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/judson35/f1_tenth/sim_ws/build/wall_follow', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/judson35/f1_tenth/sim_ws/install/wall_follow', 'merge_install': False, 'path': '/home/judson35/f1_tenth/sim_ws/src/wall_follow', 'symlink_install': True, 'test_result_base': None}
+[0.907s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.914s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.915s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/judson35/f1_tenth/sim_ws/src/wall_follow' with build type 'ament_cmake'
+[0.915s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/judson35/f1_tenth/sim_ws/src/wall_follow'
+[0.924s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.924s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.924s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.948s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[11.886s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[11.943s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/judson35/f1_tenth/sim_ws/build/wall_follow
+[12.059s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wall_follow)
+[12.061s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/judson35/f1_tenth/sim_ws/build/wall_follow
+[12.071s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow' for CMake module files
+[12.072s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow' for CMake config files
+[12.072s] Level 1:colcon.colcon_core.shell:create_environment_hook('wall_follow', 'cmake_prefix_path')
+[12.076s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/cmake_prefix_path.ps1'
+[12.077s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/cmake_prefix_path.dsv'
+[12.078s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/cmake_prefix_path.sh'
+[12.080s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib'
+[12.080s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/bin'
+[12.081s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/pkgconfig/wall_follow.pc'
+[12.081s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages'
+[12.081s] Level 1:colcon.colcon_core.shell:create_environment_hook('wall_follow', 'pythonpath')
+[12.084s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/pythonpath.ps1'
+[12.085s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/pythonpath.dsv'
+[12.085s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/pythonpath.sh'
+[12.086s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/bin'
+[12.089s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.ps1'
+[12.090s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.dsv'
+[12.091s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.sh'
+[12.093s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.bash'
+[12.095s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.zsh'
+[12.096s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/colcon-core/packages/wall_follow)
+[12.139s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wall_follow)
+[12.145s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow' for CMake module files
+[12.146s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow' for CMake config files
+[12.147s] Level 1:colcon.colcon_core.shell:create_environment_hook('wall_follow', 'cmake_prefix_path')
+[12.150s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/cmake_prefix_path.ps1'
+[12.151s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/cmake_prefix_path.dsv'
+[12.152s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/cmake_prefix_path.sh'
+[12.153s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib'
+[12.153s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/bin'
+[12.153s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/pkgconfig/wall_follow.pc'
+[12.153s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages'
+[12.154s] Level 1:colcon.colcon_core.shell:create_environment_hook('wall_follow', 'pythonpath')
+[12.157s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/pythonpath.ps1'
+[12.158s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/pythonpath.dsv'
+[12.158s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/hook/pythonpath.sh'
+[12.160s] Level 1:colcon.colcon_core.environment:checking '/home/judson35/f1_tenth/sim_ws/install/wall_follow/bin'
+[12.164s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.ps1'
+[12.166s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.dsv'
+[12.167s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.sh'
+[12.168s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.bash'
+[12.169s] INFO:colcon.colcon_core.shell:Creating package script '/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/wall_follow/package.zsh'
+[12.169s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/judson35/f1_tenth/sim_ws/install/wall_follow/share/colcon-core/packages/wall_follow)
+[12.170s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[12.171s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[12.171s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[12.171s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[12.182s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[12.182s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[12.182s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[12.211s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[12.215s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/judson35/f1_tenth/sim_ws/install/local_setup.ps1'
+[12.217s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/judson35/f1_tenth/sim_ws/install/_local_setup_util_ps1.py'
+[12.221s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/judson35/f1_tenth/sim_ws/install/setup.ps1'
+[12.225s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/judson35/f1_tenth/sim_ws/install/local_setup.sh'
+[12.227s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/judson35/f1_tenth/sim_ws/install/_local_setup_util_sh.py'
+[12.228s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/judson35/f1_tenth/sim_ws/install/setup.sh'
+[12.232s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/judson35/f1_tenth/sim_ws/install/local_setup.bash'
+[12.233s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/judson35/f1_tenth/sim_ws/install/setup.bash'
+[12.236s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/judson35/f1_tenth/sim_ws/install/local_setup.zsh'
+[12.237s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/judson35/f1_tenth/sim_ws/install/setup.zsh'

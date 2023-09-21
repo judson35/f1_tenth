@@ -1,0 +1,37 @@
+[0.026s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/safety_node -- -j8 -l8
+[0.090s] [35m[1mScanning dependencies of target safety_node[0m
+[0.144s] [ 50%] [32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o[0m
+[2.561s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[2.561s] [01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:48:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Krange[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[2.561s]    48 |         float [01;35m[Krange[m[K = scan_msg->angle_max - scan_msg->angle_min;
+[2.562s]       |               [01;35m[K^~~~~[m[K
+[11.599s] [100%] [32m[1mLinking CXX executable safety_node[0m
+[12.170s] [100%] Built target safety_node
+[12.189s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/safety_node' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/safety_node -- -j8 -l8
+[12.243s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/judson35/f1_tenth/sim_ws/build/safety_node
+[12.257s] -- Install configuration: ""
+[12.257s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/safety_node/safety_node
+[12.261s] -- Set runtime path of "/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/safety_node/safety_node" to ""
+[12.261s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.sh
+[12.261s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.dsv
+[12.262s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node
+[12.262s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py
+[12.328s] Listing '/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node'...
+[12.328s] Compiling '/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py'...
+[12.335s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/safety_node/safety_node.py
+[12.336s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/ament_index/resource_index/package_run_dependencies/safety_node
+[12.336s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/ament_index/resource_index/parent_prefix_path/safety_node
+[12.336s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.sh
+[12.337s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.dsv
+[12.337s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/path.sh
+[12.338s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/path.dsv
+[12.338s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.bash
+[12.338s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.sh
+[12.338s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.zsh
+[12.339s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.dsv
+[12.339s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/package.dsv
+[12.339s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/ament_index/resource_index/packages/safety_node
+[12.339s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig.cmake
+[12.340s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig-version.cmake
+[12.340s] -- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/package.xml
+[12.344s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/safety_node' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/judson35/f1_tenth/sim_ws/build/safety_node

@@ -1,0 +1,114 @@
+[0.000000] (-) TimerEvent: {}
+[0.000524] (-) JobUnselected: {'identifier': 'f1tenth_gym_ros'}
+[0.001081] (-) JobUnselected: {'identifier': 'safety_node'}
+[0.001433] (wall_follow) JobQueued: {'identifier': 'wall_follow', 'dependencies': OrderedDict()}
+[0.002050] (wall_follow) JobStarted: {'identifier': 'wall_follow'}
+[0.026737] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'cmake'}
+[0.028198] (wall_follow) JobProgress: {'identifier': 'wall_follow', 'progress': 'build'}
+[0.030311] (wall_follow) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/judson35/f1_tenth/sim_ws/build/wall_follow', '--', '-j8', '-l8'], 'cwd': '/home/judson35/f1_tenth/sim_ws/build/wall_follow', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'judson35'), ('SSH_AGENT_PID', '1359'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/judson35'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('TERM_PROGRAM_VERSION', '1.82.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1110'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '46101'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'judson35'), ('JOURNAL_STREAM', '8:40994'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'judson35'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/home/judson35/.local/bin:/home/judson35/bin:/opt/ros/foxy/bin:/home/judson35/.local/bin:/home/judson35/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/judson35-XPS-13-7390:@/tmp/.ICE-unix/1422,unix/judson35-XPS-13-7390:/tmp/.ICE-unix/1422'), ('INVOCATION_ID', '879333b9be3a4203a85737b487af5c56'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-7e441bcefb.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '35'), ('AMENT_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', '--ms-enable-electron-run-as-node'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/judson35/f1_tenth/sim_ws/build/wall_follow'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/wall_follow:/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[0.099559] (-) TimerEvent: {}
+[0.121965] (wall_follow) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wall_follow_node\x1b[0m\n'}
+[0.181821] (wall_follow) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o\x1b[0m\n'}
+[0.199660] (-) TimerEvent: {}
+[0.300121] (-) TimerEvent: {}
+[0.400588] (-) TimerEvent: {}
+[0.500953] (-) TimerEvent: {}
+[0.601337] (-) TimerEvent: {}
+[0.701744] (-) TimerEvent: {}
+[0.802191] (-) TimerEvent: {}
+[0.902541] (-) TimerEvent: {}
+[1.002914] (-) TimerEvent: {}
+[1.103429] (-) TimerEvent: {}
+[1.203843] (-) TimerEvent: {}
+[1.304314] (-) TimerEvent: {}
+[1.404759] (-) TimerEvent: {}
+[1.505140] (-) TimerEvent: {}
+[1.605580] (-) TimerEvent: {}
+[1.706082] (-) TimerEvent: {}
+[1.806453] (-) TimerEvent: {}
+[1.906870] (-) TimerEvent: {}
+[2.007198] (-) TimerEvent: {}
+[2.107526] (-) TimerEvent: {}
+[2.207951] (-) TimerEvent: {}
+[2.308336] (-) TimerEvent: {}
+[2.408760] (-) TimerEvent: {}
+[2.509209] (-) TimerEvent: {}
+[2.609599] (-) TimerEvent: {}
+[2.710104] (-) TimerEvent: {}
+[2.810492] (-) TimerEvent: {}
+[2.910910] (-) TimerEvent: {}
+[3.011317] (-) TimerEvent: {}
+[3.111747] (-) TimerEvent: {}
+[3.212162] (-) TimerEvent: {}
+[3.289637] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kdouble WallFollow::get_range(float*, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.290118] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:71:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K}\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[3.290262] (wall_follow) StderrLine: {'line': b'   71 |         return 0.0\n'}
+[3.290382] (wall_follow) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.290498] (wall_follow) StderrLine: {'line': b'      |                   \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[3.290610] (wall_follow) StderrLine: {'line': b'   72 |     \x1b[32m\x1b[K}\x1b[m\x1b[K\n'}
+[3.290721] (wall_follow) StderrLine: {'line': b'      |     \x1b[32m\x1b[K~\x1b[m\x1b[K              \n'}
+[3.290831] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krange_data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.290957] (wall_follow) StderrLine: {'line': b'   51 |     double get_range(\x1b[01;35m\x1b[Kfloat* range_data\x1b[m\x1b[K, double angle)\n'}
+[3.291069] (wall_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~~^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.291181] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:51:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kangle\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.291293] (wall_follow) StderrLine: {'line': b'   51 |     double get_range(float* range_data, \x1b[01;35m\x1b[Kdouble angle\x1b[m\x1b[K)\n'}
+[3.291417] (wall_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[3.291627] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kdouble WallFollow::get_error(float*, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.291830] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:92:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K}\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[3.292056] (wall_follow) StderrLine: {'line': b'   92 |         return 0.0\n'}
+[3.292316] (wall_follow) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.292571] (wall_follow) StderrLine: {'line': b'      |                   \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[3.292799] (wall_follow) StderrLine: {'line': b'   93 |     \x1b[32m\x1b[K}\x1b[m\x1b[K\n'}
+[3.293020] (wall_follow) StderrLine: {'line': b'      |     \x1b[32m\x1b[K~\x1b[m\x1b[K              \n'}
+[3.293238] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krange_data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.293451] (wall_follow) StderrLine: {'line': b'   74 |     double get_error(\x1b[01;35m\x1b[Kfloat* range_data\x1b[m\x1b[K, double dist)\n'}
+[3.293673] (wall_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~~^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.293913] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:74:48:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kdist\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.294210] (wall_follow) StderrLine: {'line': b'   74 |     double get_error(float* range_data, \x1b[01;35m\x1b[Kdouble dist\x1b[m\x1b[K)\n'}
+[3.294433] (wall_follow) StderrLine: {'line': b'      |                                         \x1b[01;35m\x1b[K~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[3.294644] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid WallFollow::pid_control(double, double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.294863] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kerror\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.295079] (wall_follow) StderrLine: {'line': b'   95 |     void pid_control(\x1b[01;35m\x1b[Kdouble error\x1b[m\x1b[K, double velocity)\n'}
+[3.295301] (wall_follow) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[3.295503] (wall_follow) StderrLine: {'line': b'\x1b[01m\x1b[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:95:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kvelocity\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.295711] (wall_follow) StderrLine: {'line': b'   95 |     void pid_control(double error, \x1b[01;35m\x1b[Kdouble velocity\x1b[m\x1b[K)\n'}
+[3.295914] (wall_follow) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[3.312292] (-) TimerEvent: {}
+[3.412689] (-) TimerEvent: {}
+[3.513040] (-) TimerEvent: {}
+[3.613392] (-) TimerEvent: {}
+[3.713831] (-) TimerEvent: {}
+[3.814277] (-) TimerEvent: {}
+[3.914707] (-) TimerEvent: {}
+[4.015162] (-) TimerEvent: {}
+[4.115570] (-) TimerEvent: {}
+[4.215979] (-) TimerEvent: {}
+[4.316460] (-) TimerEvent: {}
+[4.416943] (-) TimerEvent: {}
+[4.517412] (-) TimerEvent: {}
+[4.617879] (-) TimerEvent: {}
+[4.718285] (-) TimerEvent: {}
+[4.818647] (-) TimerEvent: {}
+[4.919074] (-) TimerEvent: {}
+[5.019433] (-) TimerEvent: {}
+[5.119870] (-) TimerEvent: {}
+[5.220315] (-) TimerEvent: {}
+[5.320742] (-) TimerEvent: {}
+[5.421174] (-) TimerEvent: {}
+[5.521598] (-) TimerEvent: {}
+[5.622009] (-) TimerEvent: {}
+[5.722464] (-) TimerEvent: {}
+[5.822908] (-) TimerEvent: {}
+[5.923346] (-) TimerEvent: {}
+[6.023754] (-) TimerEvent: {}
+[6.124195] (-) TimerEvent: {}
+[6.224622] (-) TimerEvent: {}
+[6.325039] (-) TimerEvent: {}
+[6.425456] (-) TimerEvent: {}
+[6.519020] (wall_follow) StderrLine: {'line': b'make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1\n'}
+[6.519441] (wall_follow) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2\n'}
+[6.519732] (wall_follow) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[6.523092] (wall_follow) CommandEnded: {'returncode': 2}
+[6.526261] (-) TimerEvent: {}
+[6.603078] (wall_follow) JobEnded: {'identifier': 'wall_follow', 'rc': 2}
+[6.614174] (-) EventReactorShutdown: {}

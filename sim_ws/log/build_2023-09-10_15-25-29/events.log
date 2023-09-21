@@ -1,0 +1,179 @@
+[0.000000] (-) TimerEvent: {}
+[0.000647] (-) JobUnselected: {'identifier': 'f1tenth_gym_ros'}
+[0.000727] (safety_node) JobQueued: {'identifier': 'safety_node', 'dependencies': OrderedDict()}
+[0.000857] (safety_node) JobStarted: {'identifier': 'safety_node'}
+[0.025403] (safety_node) JobProgress: {'identifier': 'safety_node', 'progress': 'cmake'}
+[0.026859] (safety_node) JobProgress: {'identifier': 'safety_node', 'progress': 'build'}
+[0.028463] (safety_node) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/judson35/f1_tenth/sim_ws/build/safety_node', '--', '-j8', '-l8'], 'cwd': '/home/judson35/f1_tenth/sim_ws/build/safety_node', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'judson35'), ('SSH_AGENT_PID', '1359'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/judson35'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1110'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5772'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'judson35'), ('JOURNAL_STREAM', '8:40994'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'judson35'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/judson35/.local/bin:/home/judson35/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/judson35-XPS-13-7390:@/tmp/.ICE-unix/1422,unix/judson35-XPS-13-7390:/tmp/.ICE-unix/1422'), ('INVOCATION_ID', '879333b9be3a4203a85737b487af5c56'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '35'), ('AMENT_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:bf114ab9-3d51-4d13-a0e0-2fab00907f05'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/judson35/f1_tenth/sim_ws/build/safety_node'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[0.098861] (-) TimerEvent: {}
+[0.118675] (safety_node) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target safety_node\x1b[0m\n'}
+[0.188117] (safety_node) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o\x1b[0m\n'}
+[0.198970] (-) TimerEvent: {}
+[0.299449] (-) TimerEvent: {}
+[0.399935] (-) TimerEvent: {}
+[0.500361] (-) TimerEvent: {}
+[0.600808] (-) TimerEvent: {}
+[0.701271] (-) TimerEvent: {}
+[0.801676] (-) TimerEvent: {}
+[0.902062] (-) TimerEvent: {}
+[1.002454] (-) TimerEvent: {}
+[1.102938] (-) TimerEvent: {}
+[1.203389] (-) TimerEvent: {}
+[1.303859] (-) TimerEvent: {}
+[1.404436] (-) TimerEvent: {}
+[1.504916] (-) TimerEvent: {}
+[1.605390] (-) TimerEvent: {}
+[1.705803] (-) TimerEvent: {}
+[1.806254] (-) TimerEvent: {}
+[1.906648] (-) TimerEvent: {}
+[2.007042] (-) TimerEvent: {}
+[2.107389] (-) TimerEvent: {}
+[2.207771] (-) TimerEvent: {}
+[2.308177] (-) TimerEvent: {}
+[2.408593] (-) TimerEvent: {}
+[2.508959] (-) TimerEvent: {}
+[2.609368] (-) TimerEvent: {}
+[2.709817] (-) TimerEvent: {}
+[2.810182] (-) TimerEvent: {}
+[2.910548] (-) TimerEvent: {}
+[3.010918] (-) TimerEvent: {}
+[3.111352] (-) TimerEvent: {}
+[3.211816] (-) TimerEvent: {}
+[3.312268] (-) TimerEvent: {}
+[3.412678] (-) TimerEvent: {}
+[3.513080] (-) TimerEvent: {}
+[3.613502] (-) TimerEvent: {}
+[3.713924] (-) TimerEvent: {}
+[3.814325] (-) TimerEvent: {}
+[3.914791] (-) TimerEvent: {}
+[4.015314] (-) TimerEvent: {}
+[4.115671] (-) TimerEvent: {}
+[4.216067] (-) TimerEvent: {}
+[4.316442] (-) TimerEvent: {}
+[4.416823] (-) TimerEvent: {}
+[4.517179] (-) TimerEvent: {}
+[4.617555] (-) TimerEvent: {}
+[4.717925] (-) TimerEvent: {}
+[4.818288] (-) TimerEvent: {}
+[4.918634] (-) TimerEvent: {}
+[5.019038] (-) TimerEvent: {}
+[5.119439] (-) TimerEvent: {}
+[5.219829] (-) TimerEvent: {}
+[5.320211] (-) TimerEvent: {}
+[5.420638] (-) TimerEvent: {}
+[5.521034] (-) TimerEvent: {}
+[5.621404] (-) TimerEvent: {}
+[5.721778] (-) TimerEvent: {}
+[5.822158] (-) TimerEvent: {}
+[5.922543] (-) TimerEvent: {}
+[6.022954] (-) TimerEvent: {}
+[6.123381] (-) TimerEvent: {}
+[6.223793] (-) TimerEvent: {}
+[6.324186] (-) TimerEvent: {}
+[6.424583] (-) TimerEvent: {}
+[6.524996] (-) TimerEvent: {}
+[6.625416] (-) TimerEvent: {}
+[6.725823] (-) TimerEvent: {}
+[6.826306] (-) TimerEvent: {}
+[6.926801] (-) TimerEvent: {}
+[7.027248] (-) TimerEvent: {}
+[7.127638] (-) TimerEvent: {}
+[7.228052] (-) TimerEvent: {}
+[7.328463] (-) TimerEvent: {}
+[7.428886] (-) TimerEvent: {}
+[7.529313] (-) TimerEvent: {}
+[7.629760] (-) TimerEvent: {}
+[7.730194] (-) TimerEvent: {}
+[7.830577] (-) TimerEvent: {}
+[7.930942] (-) TimerEvent: {}
+[8.031348] (-) TimerEvent: {}
+[8.131779] (-) TimerEvent: {}
+[8.232179] (-) TimerEvent: {}
+[8.332627] (-) TimerEvent: {}
+[8.432988] (-) TimerEvent: {}
+[8.533312] (-) TimerEvent: {}
+[8.633721] (-) TimerEvent: {}
+[8.734163] (-) TimerEvent: {}
+[8.834580] (-) TimerEvent: {}
+[8.934980] (-) TimerEvent: {}
+[9.035438] (-) TimerEvent: {}
+[9.135910] (-) TimerEvent: {}
+[9.236239] (-) TimerEvent: {}
+[9.336593] (-) TimerEvent: {}
+[9.436963] (-) TimerEvent: {}
+[9.537339] (-) TimerEvent: {}
+[9.637722] (-) TimerEvent: {}
+[9.738208] (-) TimerEvent: {}
+[9.838765] (-) TimerEvent: {}
+[9.939139] (-) TimerEvent: {}
+[10.039512] (-) TimerEvent: {}
+[10.139882] (-) TimerEvent: {}
+[10.240278] (-) TimerEvent: {}
+[10.340651] (-) TimerEvent: {}
+[10.441094] (-) TimerEvent: {}
+[10.541549] (-) TimerEvent: {}
+[10.641907] (-) TimerEvent: {}
+[10.742255] (-) TimerEvent: {}
+[10.842624] (-) TimerEvent: {}
+[10.942973] (-) TimerEvent: {}
+[11.043373] (-) TimerEvent: {}
+[11.143706] (-) TimerEvent: {}
+[11.244091] (-) TimerEvent: {}
+[11.344444] (-) TimerEvent: {}
+[11.444841] (-) TimerEvent: {}
+[11.545350] (-) TimerEvent: {}
+[11.645767] (-) TimerEvent: {}
+[11.746166] (-) TimerEvent: {}
+[11.846575] (-) TimerEvent: {}
+[11.947078] (-) TimerEvent: {}
+[12.047869] (-) TimerEvent: {}
+[12.148240] (-) TimerEvent: {}
+[12.248580] (-) TimerEvent: {}
+[12.348955] (-) TimerEvent: {}
+[12.449339] (-) TimerEvent: {}
+[12.549672] (-) TimerEvent: {}
+[12.650097] (-) TimerEvent: {}
+[12.750566] (-) TimerEvent: {}
+[12.850964] (-) TimerEvent: {}
+[12.923408] (safety_node) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable safety_node\x1b[0m\n'}
+[12.951077] (-) TimerEvent: {}
+[13.051484] (-) TimerEvent: {}
+[13.151926] (-) TimerEvent: {}
+[13.252344] (-) TimerEvent: {}
+[13.352721] (-) TimerEvent: {}
+[13.453119] (-) TimerEvent: {}
+[13.553528] (-) TimerEvent: {}
+[13.578026] (safety_node) StdoutLine: {'line': b'[100%] Built target safety_node\n'}
+[13.597980] (safety_node) CommandEnded: {'returncode': 0}
+[13.634164] (safety_node) JobProgress: {'identifier': 'safety_node', 'progress': 'install'}
+[13.655377] (safety_node) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/judson35/f1_tenth/sim_ws/build/safety_node'], 'cwd': '/home/judson35/f1_tenth/sim_ws/build/safety_node', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'judson35'), ('SSH_AGENT_PID', '1359'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/judson35'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1110'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5772'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'judson35'), ('JOURNAL_STREAM', '8:40994'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'judson35'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/judson35/.local/bin:/home/judson35/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/judson35-XPS-13-7390:@/tmp/.ICE-unix/1422,unix/judson35-XPS-13-7390:/tmp/.ICE-unix/1422'), ('INVOCATION_ID', '879333b9be3a4203a85737b487af5c56'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '35'), ('AMENT_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:bf114ab9-3d51-4d13-a0e0-2fab00907f05'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/judson35/f1_tenth/sim_ws/build/safety_node'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/judson35/f1_tenth/sim_ws/install/safety_node:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[13.657426] (-) TimerEvent: {}
+[13.670206] (safety_node) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[13.670760] (safety_node) StdoutLine: {'line': b'-- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/safety_node/safety_node\n'}
+[13.676028] (safety_node) StdoutLine: {'line': b'-- Set runtime path of "/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/safety_node/safety_node" to ""\n'}
+[13.676629] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.sh\n'}
+[13.676901] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.dsv\n'}
+[13.677154] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node\n'}
+[13.677389] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py\n'}
+[13.736935] (safety_node) StdoutLine: {'line': b"Listing '/home/judson35/f1_tenth/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node'...\n"}
+[13.747501] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/lib/safety_node/safety_node.py\n'}
+[13.748086] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/ament_index/resource_index/package_run_dependencies/safety_node\n'}
+[13.748306] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/ament_index/resource_index/parent_prefix_path/safety_node\n'}
+[13.748453] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.sh\n'}
+[13.748627] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.dsv\n'}
+[13.748753] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/path.sh\n'}
+[13.748873] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/environment/path.dsv\n'}
+[13.749070] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.bash\n'}
+[13.749185] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.sh\n'}
+[13.749328] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.zsh\n'}
+[13.749480] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/local_setup.dsv\n'}
+[13.749683] (safety_node) StdoutLine: {'line': b'-- Installing: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/package.dsv\n'}
+[13.749804] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/ament_index/resource_index/packages/safety_node\n'}
+[13.749919] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig.cmake\n'}
+[13.750044] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig-version.cmake\n'}
+[13.750231] (safety_node) StdoutLine: {'line': b'-- Up-to-date: /home/judson35/f1_tenth/sim_ws/install/safety_node/share/safety_node/package.xml\n'}
+[13.753129] (safety_node) CommandEnded: {'returncode': 0}
+[13.757762] (-) TimerEvent: {}
+[13.858422] (safety_node) JobEnded: {'identifier': 'safety_node', 'rc': 0}
+[13.859549] (-) TimerEvent: {}
+[13.859703] (-) EventReactorShutdown: {}

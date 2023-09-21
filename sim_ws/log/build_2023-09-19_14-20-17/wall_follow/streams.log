@@ -1,0 +1,15 @@
+[0.030s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8
+[0.107s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[0.154s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[0.360s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:20:30:[m[K [01;35m[Kwarning: [m[Kcharacter constant too long for its type
+[0.361s]    20 |     std::string scan_range = [01;35m[K'scan_range'[m[K;
+[0.361s]       |                              [01;35m[K^~~~~~~~~~~~[m[K
+[2.524s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:20:30:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[Kint[m[K’ to non-scalar type ‘[01m[Kstd::string[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’} requested
+[2.575s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In constructor ‘[01m[KWallFollow::WallFollow()[m[K’:
+[2.575s] [01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:40:33:[m[K [01;31m[Kerror: [m[K‘[01m[KSCAN_RANGE[m[K’ was not declared in this scope
+[2.575s]    40 |         this->declare_parameter([01;31m[KSCAN_RANGE[m[K, 4.7);
+[2.575s]       |                                 [01;31m[K^~~~~~~~~~[m[K
+[5.414s] make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+[5.414s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+[5.414s] make: *** [Makefile:141: all] Error 2
+[5.417s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/wall_follow' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/wall_follow -- -j8 -l8

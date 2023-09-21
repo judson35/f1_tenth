@@ -1,0 +1,17 @@
+[35m[1mScanning dependencies of target wall_follow_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:217:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kvelocity[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  217 |     void pid_control(double error, [01;35m[Kdouble velocity[m[K)
+      |                                    [01;35m[K~~~~~~~^~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:262:32:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KWallFollow::pid_control(double&)[m[K’
+  262 |         this->pid_control(error[01;31m[K)[m[K;
+      |                                [01;31m[K^[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:217:10:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’
+  217 |     void [01;36m[Kpid_control[m[K(double error, double velocity)
+      |          [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:217:10:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 1 provided
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

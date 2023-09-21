@@ -1,0 +1,11 @@
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:130:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst ConstSharedPtr[m[K’ {aka ‘[01m[Kconst class std::shared_ptr<const sensor_msgs::msg::LaserScan_<std::allocator<void> > >[m[K’} has no member named ‘[01m[Kranges[m[K’
+  130 |         double error = get_eror(scan_msg.[01;31m[Kranges[m[K, 90.0); //angle at 90 deg
+      |                                          [01;31m[K^~~~~~[m[K
+[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:130:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kget_eror[m[K’ was not declared in this scope; did you mean ‘[01m[Kget_error[m[K’?
+  130 |         double error = [01;31m[Kget_eror[m[K(scan_msg.ranges, 90.0); //angle at 90 deg
+      |                        [01;31m[K^~~~~~~~[m[K
+      |                        [32m[Kget_error[m[K
+make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

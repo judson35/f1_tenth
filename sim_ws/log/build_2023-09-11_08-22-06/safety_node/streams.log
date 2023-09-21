@@ -1,0 +1,7 @@
+[0.032s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/safety_node -- -j8 -l8
+[0.113s] [35m[1mScanning dependencies of target safety_node[0m
+[0.173s] [ 50%] [32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o[0m
+[9.062s] make[2]: *** [CMakeFiles/safety_node.dir/build.make:63: CMakeFiles/safety_node.dir/src/safety_node.cpp.o] Interrupt
+[9.062s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/safety_node.dir/all] Interrupt
+[9.063s] make: *** [Makefile:141: all] Interrupt
+[9.112s] Invoked command in '/home/judson35/f1_tenth/sim_ws/build/safety_node' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/judson35/f1_tenth/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/safety_node -- -j8 -l8
