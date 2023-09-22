@@ -23,7 +23,8 @@ def generate_launch_description():
                     {'lookahead': config_dict['lookahead']},
                     {'velocity_gain': config_dict['velocity_gain']},
                     {'scan_beams': config_dict['scan_beams']},
-                    {'scan_range': config_dict['scan_range']}]
+                    {'scan_range': config_dict['scan_range']},
+                    {'wall_dist': config_dict['wall_dist']}]
     )
 
     # finalize

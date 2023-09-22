@@ -17,6 +17,7 @@ namespace {
     std::string INTEGRAL_CAP = "integral_cap";
 
     std::string LOOKAHEAD = "lookahead";
+    std::string WALL_DIST = "wall_dist";
     std::string VELOCITY_GAIN = "velocity_gain";
 
     std::string SCAN_BEAMS = "scan_beams";
@@ -37,6 +38,7 @@ public:
         this->declare_parameter(INTEGRAL_CAP, 0.0);
 
         this->declare_parameter(LOOKAHEAD, 0.0);
+        this->declare_parameter(WALL_DIST, 1.0);
         this->declare_parameter(VELOCITY_GAIN, 0.0);
 
         this->declare_parameter(SCAN_BEAMS, 1080);
@@ -48,6 +50,7 @@ public:
         integral_cap = this->get_parameter(INTEGRAL_CAP).as_double();
 
         lookahead = this->get_parameter(LOOKAHEAD).as_double();
+        wall_dist = this->get_parameter(WALL_DIST).as_double();
         velocity_gain = this->get_parameter(VELOCITY_GAIN).as_double();
 
         scan_beams = this->get_parameter(SCAN_BEAMS).as_int();
@@ -60,6 +63,7 @@ public:
         RCLCPP_INFO(this->get_logger(), INTEGRAL_CAP + ": %f", integral_cap);
 
         RCLCPP_INFO(this->get_logger(), LOOKAHEAD + ": %f", lookahead);
+        RCLCPP_INFO(this->get_logger(), WALL_DIST + ": %f", wall_dist);
         RCLCPP_INFO(this->get_logger(), VELOCITY_GAIN + ": %f", velocity_gain);
 
         RCLCPP_INFO(this->get_logger(), SCAN_BEAMS + ": %i", scan_beams);
@@ -81,6 +85,7 @@ private:
     
     double velocity_gain;
     double lookahead;
+    double wall_dist;
     
     double servo_offset = 0.0;
     double prev_error = 0.0;
@@ -209,15 +214,15 @@ private:
             error: calculated error
         */
         // TODO:implement
-        static double start_angle = (M_PI / 2);
+        static double start_angle = (M_PI / 2) - (M_PI / 6);
         double b = get_range(range_data, start_angle);
 
         double alpha = 0.0;
 
-        int num_measurements = 100;
-        // RCLCPP_INFO(this->get_logger(), "Max Angle: %f", (num_measurements*scan_angle_increment));
+        int num_measurements = 110;
+        // RCLCPP_INFO(this->get_logger(), "Max Angle: %f", ((float)start_angle + ((num_measurements+0)*scan_angle_increment)));
         for (int i = 0; i < num_measurements; i++) {
-            double theta = ((i+50)*scan_angle_increment);
+            double theta = ((i+0)*scan_angle_increment);
             double a = get_range(range_data, start_angle - theta);
             alpha += atan2((a * cos(theta) - b), (a * cos(theta)));
         }
@@ -253,9 +258,10 @@ private:
 
         auto drive_msg = ackermann_msgs::msg::AckermannDriveStamped();
         drive_msg.drive.steering_angle = -steering_angle;
-        drive_msg.drive.speed = velocity_gain / abs(steering_angle);
+        drive_msg.drive.speed = velocity_gain / sqrt(abs(-steering_angle));
 
         RCLCPP_INFO(this->get_logger(), "Error: %f\tIntergal: %f\tDerivative: %f", error, this->integral, derivative);
+        // RCLCPP_INFO(this->get_logger(), "Velocity: %f", drive_msg.drive.speed);
 
         this->drive_publisher_->publish(drive_msg);
     }
@@ -276,7 +282,7 @@ private:
 
         // const int length = (scan_msg->angle_max - scan_msg->angle_min) / scan_msg->angle_increment;
 
-        double error = get_error(scan_msg->ranges, 1.0);
+        double error = get_error(scan_msg->ranges, wall_dist);
 
         this->pid_control(error);
 

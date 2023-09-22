@@ -1,11 +1,12 @@
 PID:
   kp: 0.5
-  ki: 0.000
-  kd: 0.0
+  ki: 0.00
+  kd: 0.05
   integral_cap: 0.5
 
-lookahead: 1.0
-velocity_gain: 0.03
+lookahead: 3.0
+wall_dist: 1.7
+velocity_gain: 0.3
 
 scan_range: 4.7
 scan_beams: 1080
