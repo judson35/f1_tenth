@@ -1,8 +1,0 @@
-[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
-[01m[K/home/judson35/f1_tenth/sim_ws/src/safety_node/src/safety_node.cpp:52:80:[m[K [01;31m[Kerror: [m[K‘[01m[Knan[m[K’ is not a member of ‘[01m[Kstd::numeric_limits<float>[m[K’
-   52 | n_msg->ranges[i] == std::numeric_limits<float>::[01;31m[Knan[m[K();
-      |                                                 [01;31m[K^~~[m[K
-
-make[2]: *** [CMakeFiles/safety_node.dir/build.make:63: CMakeFiles/safety_node.dir/src/safety_node.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/safety_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

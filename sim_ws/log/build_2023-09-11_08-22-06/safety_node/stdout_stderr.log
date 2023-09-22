@@ -1,5 +1,0 @@
-[35m[1mScanning dependencies of target safety_node[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o[0m
-make[2]: *** [CMakeFiles/safety_node.dir/build.make:63: CMakeFiles/safety_node.dir/src/safety_node.cpp.o] Interrupt
-make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/safety_node.dir/all] Interrupt
-make: *** [Makefile:141: all] Interrupt

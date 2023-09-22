@@ -1,4 +1,0 @@
-[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_error(std::vector<float>, double)[m[K’:
-[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:223:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kalpha_average[m[K’ [[01;35m[K-Wunused-variable[m[K]
-  223 |         double [01;35m[Kalpha_average[m[K = alpha / num_measurements;
-      |                [01;35m[K^~~~~~~~~~~~~[m[K

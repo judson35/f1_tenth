@@ -1,7 +1,0 @@
-[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:9:10:[m[K [01;31m[Kfatal error: [m[Ktime: No such file or directory
-    9 | #include [01;31m[K<time>[m[K
-      |          [01;31m[K^~~~~~[m[K
-compilation terminated.
-make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

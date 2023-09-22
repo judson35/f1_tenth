@@ -1,4 +1,0 @@
-[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_range(std::vector<float>, double)[m[K’:
-[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:186:5:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
-  186 |     [01;35m[K}[m[K
-      |     [01;35m[K^[m[K

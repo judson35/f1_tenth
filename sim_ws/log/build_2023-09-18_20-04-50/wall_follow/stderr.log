@@ -1,7 +1,0 @@
-[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’:
-[01m[K/home/judson35/f1_tenth/sim_ws/src/wall_follow/src/wall_follow_node.cpp:126:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass WallFollow[m[K’ has no member named ‘[01m[Kspeed_gain[m[K’
-  126 |         drive_msg.drive.speed = this->[01;31m[Kspeed_gain[m[K / abs(steering_angle);
-      |                                       [01;31m[K^~~~~~~~~~[m[K
-make[2]: *** [CMakeFiles/wall_follow_node.dir/build.make:63: CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wall_follow_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

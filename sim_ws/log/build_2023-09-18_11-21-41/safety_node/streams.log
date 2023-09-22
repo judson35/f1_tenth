@@ -1,5 +1,0 @@
-[0.544s] Invoking command in '/home/judson35/f1_tenth/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/judson35/f1_tenth/sim_ws/build/safety_node -- -j8 -l8
-[0.652s] [35m[1mScanning dependencies of target safety_node[0m
-[0.721s] [ 50%] [32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o[0m
-[12.209s] [100%] [32m[1mLinking CXX executable safety_node[0m
-[12.810s] [100%] Built target safety_node
