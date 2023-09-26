@@ -1,6 +1,6 @@
 # Lab 3: Wall Following
 
 ## YouTube video links
-Simulator (individual) : [FILL ME IN](https://youtu.be/gx5rz7Fhpss)
+Simulator (individual) : [Link](https://youtu.be/gx5rz7Fhpss)
 
-Hardware (group) : [FILL ME IN]()
+Hardware (group) : [Link](https://www.youtube.com/shorts/i32GX4bEYwo)
