@@ -36,6 +36,10 @@ namespace {
     std::string SCAN_FOV = "scan_fov";
 
     std::string VELOCITY_GAIN = "velocity_gain";
+
+    std::string SAFETY_THRESHOLD = "safety_threshold";
+
+    std::string MIN_GAP_LENGTH = "min_gap_length";
 }
 
 class ReactiveFollowGap : public rclcpp::Node {
@@ -57,6 +61,8 @@ public:
         this->declare_parameter(SCAN_BEAMS, 0);
         this->declare_parameter(SCAN_FOV, 0.0);
         this->declare_parameter(VELOCITY_GAIN, 0.0);
+        this->declare_parameter(SAFETY_THRESHOLD, 0.0);
+        this->declare_parameter(MIN_GAP_LENGTH, 0);
 
         scan_cutoff_range = this->get_parameter(SCAN_CUTOFF_RANGE).as_double();
         reject_threshold = this->get_parameter(REJECT_THRESHOLD).as_double();
@@ -67,6 +73,8 @@ public:
         scan_beams = this->get_parameter(SCAN_BEAMS).as_int();
         scan_fov = this->get_parameter(SCAN_FOV).as_double();
         velocity_gain = this->get_parameter(VELOCITY_GAIN).as_double();
+        safety_threshold = this->get_parameter(SAFETY_THRESHOLD).as_double();
+        min_gap_length = this->get_parameter(MIN_GAP_LENGTH).as_int();
         scan_angle_min = -scan_fov / 2;
         scan_angle_min_adjusted = -scan_cutoff_range/2;
         scan_angle_increment = scan_fov / scan_beams;
@@ -80,7 +88,9 @@ public:
         RCLCPP_INFO(this->get_logger(), MEAN_WINDOW + ": %i", mean_window);
         RCLCPP_INFO(this->get_logger(), DISPARITY_BUBBLE + ": %i", disparity_bubble);
         RCLCPP_INFO(this->get_logger(), SCAN_BEAMS + ": %i", scan_beams);
-        RCLCPP_INFO(this->get_logger(), VELOCITY_GAIN + ": %i", velocity_gain);
+        RCLCPP_INFO(this->get_logger(), VELOCITY_GAIN + ": %f", velocity_gain);
+        RCLCPP_INFO(this->get_logger(), SAFETY_THRESHOLD + ": %f", safety_threshold);
+        RCLCPP_INFO(this->get_logger(), MIN_GAP_LENGTH + ": %i", min_gap_length);
 
         drive_publisher_ = this->create_publisher<ackermann_msgs::msg::AckermannDriveStamped>(drive_topic, 1);
 
@@ -107,13 +117,19 @@ private:
     double scan_angle_min = 0.0;
     double scan_angle_min_adjusted = 0.0;
     double scan_angle_increment = 0.0;
+    int range_min_i = 0;
     int start_i = 0;
     int end_i = 0;
     int max_gap_start = 0;
     int max_gap_end = 0;
+    int max_gap_max_i = 0;
+
+    int min_gap_length = 0;
 
     double velocity_gain = 0.0;
     double car_width = 0.25;
+
+    double safety_threshold = 0.0;
 
     Gap *max_gap;
 
@@ -127,41 +143,40 @@ private:
 
         std::vector<float> temp((end_i - start_i), 0.0f);
 
-        double mean_range = 0;
-        for (int i = 0; i < mean_window; i++) {
-            mean_range += ranges[i] / mean_window;
+        double total_range = 0.0;
+        range_min_i = std::numeric_limits<int>::infinity();
+        int mean_size = 0;
+        for (int i = start_i-mean_window; i < start_i + mean_window + 1; i++) {
+            total_range += ranges[i];
+            mean_size++;
         }
-        
-        for(int i = start_i; i < end_i; i++) {
-            if ((i < mean_window)) {
-                mean_range = ((mean_range * (mean_window + (i-1))) + ranges[i+mean_window]) / (mean_window + i);
-            } else if (i > (ranges.size() - mean_window)) {
-                mean_range = (mean_range * (mean_window + (ranges.size()-i)) - ranges[i-mean_window]) / (mean_window + (ranges.size()-(i+1)));
-            } else {
-                mean_range += ranges[i+mean_window]/(mean_window*2); //Add new range data to mean
-                mean_range -= ranges[i-mean_window]/(mean_window*2); //Delete out of scope range data
-            }
-            temp[i-start_i] = (std::min(mean_range, reject_threshold));
-            RCLCPP_INFO(this->get_logger(), "Actual: %f\tAveraged: %f", ranges[i], temp[i-start_i]);
+        temp[0] = (std::min(total_range/mean_size, reject_threshold));
+        // RCLCPP_INFO(this->get_logger(), "Actual: %f\fTotal Range: %f\tThresholded: %f\tMean Size: %i", ranges[start_i], total_range, temp[0], mean_size);
+        for(int i = start_i+1; i < end_i; i++) {
+            total_range += ranges[i+mean_window];
+            total_range -= ranges[i-mean_window-1];
+            temp[i-start_i] = (std::min(total_range/mean_size, reject_threshold));
+            range_min_i = (temp[i-start_i] < temp[range_min_i]) * (i-start_i) + (temp[i-start_i] >= temp[range_min_i]) * range_min_i;
+            // RCLCPP_INFO(this->get_logger(), "Actual: %f\fTotal Range: %f\tThresholded: %f\tMean Size: %i", ranges[i], total_range, temp[i-start_i], mean_size);
+            
         }
 
         processed_ranges = {temp.begin(), temp.end()};
 
+        // processed_ranges[range_min_i] = 0.0;
+
         int i = disparity_bubble;
 
         while (i < processed_ranges.size()) {
-            // RCLCPP_INFO(this->get_logger(), "Range: %f\tDifference: %f\tDisparity Thresh: %f", processed_ranges[i], (processed_ranges[i] - processed_ranges[i-1]), disparity_threshold);
-            bool DISPARITY = abs(processed_ranges[i] - processed_ranges[i-1]) > disparity_threshold;
+            bool DISPARITY = abs(processed_ranges[i] - processed_ranges[i-1]) > disparity_threshold || i == range_min_i;
             if (DISPARITY) {
                 // RCLCPP_INFO(this->get_logger(), "Disparity found: %i", i);
-                for (int j = i-disparity_bubble; j < i+disparity_bubble; j++) {
-                    try {
-                        processed_ranges.at(j) = 0.0;
-                    } catch (std::out_of_range) {
-                        return;
-                    }
+                int end = (i+disparity_bubble < processed_ranges.size()) * (i+disparity_bubble) + (i+disparity_bubble >= processed_ranges.size()) * (processed_ranges.size());
+                for (int j = i-disparity_bubble; j < end; j++) {
+                    processed_ranges[j] = 0.0;
+                    
                 }
-                i = i + disparity_bubble;
+                i = i + disparity_bubble+1;
             } else {
                 i++;
             }
@@ -176,27 +191,45 @@ private:
 
         bool IN_GAP = false;
         int gap_start_i = 0;
+        int gap_max_i = 0;
+        double gap_range_total = 0.0;
+        double max_gap_range_avg = 0.0;
+        double max_range = 0.0;
         max_gap_start = gap_start_i;
         max_gap_end = end_i - start_i;
         int num_gaps = 0;
 
         int max_gap_length = 0;
 
-        for (size_t i = 0; i < processed_ranges.size(); i++) {
+        for (int i = 0; i < processed_ranges.size(); i++) {
+            // RCLCPP_INFO(this->get_logger(), "Range: %f", processed_ranges[i]);
+            bool UPDATE_MAX = (IN_GAP && processed_ranges[i] > processed_ranges[gap_max_i]);
+            gap_max_i = (UPDATE_MAX) * i + (!UPDATE_MAX) * gap_max_i;
+            gap_range_total += (IN_GAP) * processed_ranges[i];
             if (!IN_GAP && (processed_ranges[i] > gap_threshold)) {
                 IN_GAP = true;
                 gap_start_i = i;
-            } else if (IN_GAP && (processed_ranges[i] < gap_threshold) || i == processed_ranges.size()-1) {
+            } else if (IN_GAP && (processed_ranges[i] < gap_threshold) || (i == processed_ranges.size()-1)) {
                 IN_GAP = false;
                 num_gaps++;
-                bool UPDATE = (i - start_i) > max_gap_length;
-                max_gap_length = (UPDATE) * (i - gap_start_i) + (!UPDATE) * max_gap_length;
-                max_gap_length = (UPDATE) * (gap_start_i) + (!UPDATE) * max_gap_start;
-                max_gap_length = (UPDATE) * (i) + (!UPDATE) * max_gap_end;
+                int gap_length = i - gap_start_i;
+                double gap_range_avg = gap_range_total/gap_length;
+                // bool UPDATE = (gap_length) > max_gap_length;
+                // bool UPDATE = (gap_range_avg > max_gap_range_avg) && (gap_length > min_gap_length);
+                bool UPDATE = (processed_ranges[gap_max_i] > max_range) && (gap_length > min_gap_length);
+                max_gap_length = (UPDATE) * (gap_length) + (!UPDATE) * max_gap_length;
+                max_gap_start = (UPDATE) * (gap_start_i) + (!UPDATE) * max_gap_start;
+                max_gap_end = (UPDATE) * (i) + (!UPDATE) * max_gap_end;
+                max_gap_max_i = (UPDATE) * (gap_max_i) + (!UPDATE) * max_gap_max_i;
+                max_range = (UPDATE) * (processed_ranges[gap_max_i]) + (!UPDATE) * max_range;
+                max_gap_range_avg = (UPDATE) * (gap_range_avg) + (!UPDATE) * max_gap_range_avg;
+                gap_range_total = 0.0;
+                gap_max_i = 0;
             }
+            // RCLCPP_INFO(this->get_logger(), "IN_GAP: %i\tRange: %f\tMax Gap Avg: %f\tMax Gap Start: %i\ti: %i", IN_GAP, processed_ranges[i], max_gap_range_avg, max_gap_start, i);
         }
-        // RCLCPP_INFO(this->get_logger(), "Num Gaps: %i\tMax Gap Length: %i\tMax Gap Start: %i\tMax Gap End: %i", num_gaps, max_gap_length, max_gap_start, max_gap_end);
-        
+        RCLCPP_INFO(this->get_logger(), "Num Gaps: %i\tMax Gap Length: %i\tMax Gap Start: %i\tMax Gap End: %i", num_gaps, max_gap_length, max_gap_start, max_gap_end);
+        // while(true){}
         return;
     }
 
@@ -216,7 +249,10 @@ private:
         // }
         // RCLCPP_INFO(this->get_logger(), "Best point found");
 
-        return scan_angle_min_adjusted + ((int)((max_gap_end + max_gap_start)/2))*scan_angle_increment;
+        return scan_angle_min_adjusted + (int)((max_gap_end + max_gap_start)/2)*scan_angle_increment;
+        // abs(processed_ranges[max_gap_max_i]*sin(scan_angle_min_adjusted + (int)(max_gap_max_i)*scan_angle_increment) - processed_ranges[max_gap_max_i]*sin(scan_angle_min_adjusted + (int)(max_gap_max_i)*scan_angle_increment)) > car_width
+        // while (scan_angle_min_adjusted + (int)(max_gap_max_i)*scan_angle_increment - )
+        // return scan_angle_min_adjusted + (int)(max_gap_max_i)*scan_angle_increment;
 
         // float max_range = 0.0;
         // float max_range_angle = 0.0;
@@ -230,6 +266,22 @@ private:
         // }
         // RCLCPP_INFO(this->get_logger(), "Steering Angle: %f", max_range_angle);
         // return max_range_angle;
+    }
+
+    double check_steering_angle_adjustment(const std::vector<float> ranges) {
+        for (int i = 0; i < (int)((-M_PI/6 - scan_angle_min)/scan_angle_increment); i++) {
+            if (ranges[i] < safety_threshold) {
+                RCLCPP_INFO(this->get_logger(), "below threshold");
+                return M_PI/6;
+            }
+        }
+        for (int i = (int)((M_PI/6- scan_angle_min)/scan_angle_increment); i < ranges.size(); i++) {
+            if (ranges[i] < safety_threshold) {
+                RCLCPP_INFO(this->get_logger(), "below threshold");
+                return -M_PI/6;
+            }
+        }
+        return 0.0;
     }
 
 
@@ -251,7 +303,11 @@ private:
 
         // Publish Drive message
         auto drive_msg = ackermann_msgs::msg::AckermannDriveStamped();
-        drive_msg.drive.steering_angle = steering_angle;
+        // double steering_angle_adjustment = (scan_msg->ranges[(int)(-M_PI/2 - scan_angle_min)/scan_angle_increment] < car_width/2) * M_PI/3;
+        // steering_angle_adjustment -= (scan_msg->ranges[(int)(M_PI/2 - scan_angle_min)/scan_angle_increment] < car_width/2) * M_PI/3;
+
+        drive_msg.drive.steering_angle = steering_angle + check_steering_angle_adjustment(scan_msg->ranges);
+        drive_msg.drive.steering_angle_velocity = 0.1;
         drive_msg.drive.speed = velocity_gain / sqrt(abs(-steering_angle));
         drive_publisher_->publish(drive_msg);
     }

@@ -325,8 +325,11 @@ ament_cmake_symlink_install_directory("/home/judson35/f1_tenth/sim_ws/src/wall_f
 # install(PROGRAMS "scripts/wall_follow_node.py" "DESTINATION" "lib/wall_follow")
 ament_cmake_symlink_install_programs("/home/judson35/f1_tenth/sim_ws/src/wall_follow" PROGRAMS "scripts/wall_follow_node.py" "DESTINATION" "lib/wall_follow")
 
-# install(DIRECTORY "launch" "DIRECTORY" "config" "DESTINATION" "share/wall_follow")
-ament_cmake_symlink_install_directory("/home/judson35/f1_tenth/sim_ws/src/wall_follow" DIRECTORY "launch" "DIRECTORY" "config" "DESTINATION" "share/wall_follow")
+# install(DIRECTORY "launch" "DESTINATION" "share/wall_follow")
+ament_cmake_symlink_install_directory("/home/judson35/f1_tenth/sim_ws/src/wall_follow" DIRECTORY "launch" "DESTINATION" "share/wall_follow")
+
+# install(DIRECTORY "config" "DESTINATION" "share/wall_follow")
+ament_cmake_symlink_install_directory("/home/judson35/f1_tenth/sim_ws/src/wall_follow" DIRECTORY "config" "DESTINATION" "share/wall_follow")
 
 # install(FILES "/home/judson35/f1_tenth/sim_ws/build/wall_follow/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wall_follow" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/judson35/f1_tenth/sim_ws/src/wall_follow" FILES "/home/judson35/f1_tenth/sim_ws/build/wall_follow/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/wall_follow" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

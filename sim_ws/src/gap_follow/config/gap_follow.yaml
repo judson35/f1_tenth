@@ -1,0 +1,31 @@
+scan_cutoff_range: 3.14159
+
+reject_threshold: 4.0
+disparity_threshold: 0.4
+gap_threshold: 1.2
+mean_window: 5
+disparity_bubble: 5
+
+min_gap_length: 20
+
+safety_threshold: 0.25
+
+velocity_gain: 0.4
+
+
+
+# scan_cutoff_range: 3.14159
+
+# reject_threshold: 4.0
+# disparity_threshold: 0.4
+# gap_threshold: 1.2
+# mean_window: 5
+# disparity_bubble: 5
+
+# min_gap_length: 20
+
+# safety_threshold: 0.2
+
+# velocity_gain: 0.2
+
+#Works on 2 obstacles
