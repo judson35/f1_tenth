@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build",
+  "command": "/bin/c++  -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -I/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/include -I/usr/include/eigen3 -isystem /opt/ros/foxy/include  -g   -Wall -Wextra -Wpedantic -std=gnu++14 -o CMakeFiles/car_tf2_broadcaster.dir/src/pose_transform_node.cpp.o -c /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pose_transform_node.cpp",
+  "file": "/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pose_transform_node.cpp"
+},
+{
+  "directory": "/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build",
+  "command": "/bin/c++  -DDEFAULT_RMW_IMPLEMENTATION=rmw_fastrtps_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -DSPDLOG_COMPILED_LIB -I/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/include -I/usr/include/eigen3 -isystem /opt/ros/foxy/include  -g   -Wall -Wextra -Wpedantic -std=gnu++14 -o CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o -c /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp",
+  "file": "/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp"
+}
+]
