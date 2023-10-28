@@ -4,7 +4,6 @@
 /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles/rebuild_cache.dir
 /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles/edit_cache.dir
 /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles/test.dir
-/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles/car_tf2_broadcaster.dir
 /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles/pure_pursuit_node.dir
 /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles/install/local.dir
 /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles/pure_pursuit_uninstall.dir

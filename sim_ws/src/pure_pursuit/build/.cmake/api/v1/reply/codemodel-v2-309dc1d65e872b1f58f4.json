@@ -17,8 +17,7 @@
 					[
 						0,
 						1,
-						2,
-						3
+						2
 					]
 				}
 			],
@@ -35,8 +34,7 @@
 					[
 						0,
 						1,
-						2,
-						3
+						2
 					]
 				}
 			],
@@ -44,15 +42,8 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "car_tf2_broadcaster::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-car_tf2_broadcaster-Debug-6976dffc3ac2f61997df.json",
-					"name" : "car_tf2_broadcaster",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
 					"id" : "pure_pursuit_node::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-pure_pursuit_node-Debug-aa44a9985fd5d3b71c9a.json",
+					"jsonFile" : "target-pure_pursuit_node-Debug-96bf60ea361ac1f02def.json",
 					"name" : "pure_pursuit_node",
 					"projectIndex" : 0
 				},

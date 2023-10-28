@@ -168,19 +168,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named car_tf2_broadcaster
-
-# Build rule for target.
-car_tf2_broadcaster: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 car_tf2_broadcaster
-.PHONY : car_tf2_broadcaster
-
-# fast build rule for target.
-car_tf2_broadcaster/fast:
-	$(MAKE) -f CMakeFiles/car_tf2_broadcaster.dir/build.make CMakeFiles/car_tf2_broadcaster.dir/build
-.PHONY : car_tf2_broadcaster/fast
-
-#=============================================================================
 # Target rules for targets named pure_pursuit_node
 
 # Build rule for target.
@@ -218,33 +205,6 @@ uninstall: cmake_check_build_system
 uninstall/fast:
 	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
-
-src/pose_transform_node.o: src/pose_transform_node.cpp.o
-
-.PHONY : src/pose_transform_node.o
-
-# target to build an object file
-src/pose_transform_node.cpp.o:
-	$(MAKE) -f CMakeFiles/car_tf2_broadcaster.dir/build.make CMakeFiles/car_tf2_broadcaster.dir/src/pose_transform_node.cpp.o
-.PHONY : src/pose_transform_node.cpp.o
-
-src/pose_transform_node.i: src/pose_transform_node.cpp.i
-
-.PHONY : src/pose_transform_node.i
-
-# target to preprocess a source file
-src/pose_transform_node.cpp.i:
-	$(MAKE) -f CMakeFiles/car_tf2_broadcaster.dir/build.make CMakeFiles/car_tf2_broadcaster.dir/src/pose_transform_node.cpp.i
-.PHONY : src/pose_transform_node.cpp.i
-
-src/pose_transform_node.s: src/pose_transform_node.cpp.s
-
-.PHONY : src/pose_transform_node.s
-
-# target to generate assembly for a file
-src/pose_transform_node.cpp.s:
-	$(MAKE) -f CMakeFiles/car_tf2_broadcaster.dir/build.make CMakeFiles/car_tf2_broadcaster.dir/src/pose_transform_node.cpp.s
-.PHONY : src/pose_transform_node.cpp.s
 
 src/pure_pursuit_node.o: src/pure_pursuit_node.cpp.o
 
@@ -285,14 +245,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... car_tf2_broadcaster"
 	@echo "... pure_pursuit_node"
 	@echo "... install/local"
 	@echo "... pure_pursuit_uninstall"
 	@echo "... uninstall"
-	@echo "... src/pose_transform_node.o"
-	@echo "... src/pose_transform_node.i"
-	@echo "... src/pose_transform_node.s"
 	@echo "... src/pure_pursuit_node.o"
 	@echo "... src/pure_pursuit_node.i"
 	@echo "... src/pure_pursuit_node.s"

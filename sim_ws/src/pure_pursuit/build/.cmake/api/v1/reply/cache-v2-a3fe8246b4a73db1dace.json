@@ -239,11 +239,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/c++"
+			"value" : "/bin/x86_64-linux-gnu-g++-9"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -371,7 +371,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/x86_64-linux-gnu-gcc-8"
+			"value" : "/bin/x86_64-linux-gnu-gcc-9"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -387,7 +387,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/gcc-ar-8"
+			"value" : "/bin/gcc-ar-9"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -403,7 +403,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/bin/gcc-ranlib-8"
+			"value" : "/bin/gcc-ranlib-9"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",

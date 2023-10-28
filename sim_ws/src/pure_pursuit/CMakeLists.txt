@@ -37,13 +37,8 @@ include_directories(
 
 # Create Cpp executable
 add_executable(pure_pursuit_node src/pure_pursuit_node.cpp)
-add_executable(car_tf2_broadcaster src/pose_transform_node.cpp)
 
 ament_target_dependencies(pure_pursuit_node 
-  rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs visualization_msgs tf2_ros Eigen3
-)
-
-ament_target_dependencies(car_tf2_broadcaster 
   rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs visualization_msgs tf2_ros Eigen3
 )
 
@@ -52,9 +47,14 @@ install(TARGETS
   pure_pursuit_node
   DESTINATION lib/${PROJECT_NAME})
 
-install(TARGETS
-  car_tf2_broadcaster
-  DESTINATION lib/${PROJECT_NAME})
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
+install(
+  DIRECTORY config
+  DESTINATION share/${PROJECT_NAME}
+)
 
 # Install Python modules
 ament_python_install_package(${PROJECT_NAME})

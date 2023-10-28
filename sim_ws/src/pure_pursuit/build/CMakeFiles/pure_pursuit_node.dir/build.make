@@ -60,15 +60,15 @@ include CMakeFiles/pure_pursuit_node.dir/flags.make
 CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o: CMakeFiles/pure_pursuit_node.dir/flags.make
 CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o: ../src/pure_pursuit_node.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/judson35/f1_tenth/sim_ws/src/pure_pursuit/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o"
-	/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o -c /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o -c /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp
 
 CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.i"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp > CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.i
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp > CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.i
 
 CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.s"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp -o CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.s
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/judson35/f1_tenth/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp -o CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.s
 
 # Object files for target pure_pursuit_node
 pure_pursuit_node_OBJECTS = \

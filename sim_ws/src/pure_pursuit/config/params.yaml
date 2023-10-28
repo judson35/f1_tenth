@@ -1,0 +1,9 @@
+topics:
+  pose_topic: "/ego_racecar/odom"
+  target_waypoint_topic: "/target_waypoint"
+  drive_topic: "/drive"
+
+waypoints_filename: "waypoint_data.txt"
+
+lookahead: 0.4
+speed_gain: 1.0

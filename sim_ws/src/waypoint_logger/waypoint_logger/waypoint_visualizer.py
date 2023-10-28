@@ -12,7 +12,7 @@ class WaypointPublisher(Node):
     def __init__(self):
         super().__init__('waypoint_publisher')
 
-        self.waypoint_publisher = self.create_publisher(Marker, 'waypoint_array', 100)
+        self.waypoint_publisher = self.create_publisher(Marker, 'target_waypoint', 100)
 
         self.waypoints = []
 
@@ -51,12 +51,12 @@ class WaypointPublisher(Node):
             marker.pose.position.x = waypoint[0]
             marker.pose.position.y = waypoint[1]
 
-            marker.lifetime.sec = 100
+            marker.lifetime.sec = 1
 
             # marker_array.markers.append(marker)
             # print(0)
             self.waypoint_publisher.publish(marker)
-            time.sleep(1)
+            time.sleep(1/10)
         # self.waypoint_publisher.publish(marker_array)
 
 def main(args=None):
