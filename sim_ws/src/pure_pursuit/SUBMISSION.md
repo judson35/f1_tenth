@@ -1,4 +1,6 @@
-# Lab 6: SLAM and Pure Pursuit
+# Lab 5: SLAM and Pure Pursuit
 
 ## YouTube video link
-[FILL ME IN](https://tinyurl.com/22mts2ax)
+[Hardware Rviz Screen Grab](https://www.youtube.com/watch?v=02THTvCCxG4)
+[Hardware Video](https://youtu.be/gU81UWBPVlA)
+[Simulation Demo](https://youtu.be/8UTO6xSsDQo)
