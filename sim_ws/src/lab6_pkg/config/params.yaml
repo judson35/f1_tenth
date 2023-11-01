@@ -1,0 +1,16 @@
+topics:
+  pose_topic: "/ego_racecar/odom"
+  drive_topic: "/drive"
+  scan_topic: "/scan"
+  occupancy_grid_topic: "/occupancy_grid"
+
+waypoints_filename: "waypoint_data.txt"
+
+occupancy_grid:
+  density: 0.1
+  obstacle_padding: 1
+  max_range: 5.0
+  threshold: 5.0
+
+lookahead: 0.4
+speed_gain: 1.0
