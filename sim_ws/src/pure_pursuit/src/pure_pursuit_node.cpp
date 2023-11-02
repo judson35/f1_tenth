@@ -56,28 +56,6 @@ public:
         auto param_desc = rcl_interfaces::msg::ParameterDescriptor{};           
         param_desc.description = "Pure Pursuit Parameters";
 
-        this->declare_parameter(POSE_TOPIC, "");
-        this->declare_parameter(TARGET_WAYPOINT_TOPIC, "");
-        this->declare_parameter(DRIVE_TOPIC, "");
-        this->declare_parameter(WAYPOINTS_FILENAME, "");
-
-        this->declare_parameter(LOOKAHEAD, 0.0);
-        this->declare_parameter(SPEED_GAIN, 0.0);
-
-        pose_topic = this->get_parameter(POSE_TOPIC).as_string();
-        target_waypoint_topic = this->get_parameter(TARGET_WAYPOINT_TOPIC).as_string();
-        drive_topic = this->get_parameter(DRIVE_TOPIC).as_string();
-        waypoints_filename = this->get_parameter(WAYPOINTS_FILENAME).as_string();
-        L = this->get_parameter(LOOKAHEAD).as_double();
-        speed_gain = this->get_parameter(SPEED_GAIN).as_double();
-
-        RCLCPP_INFO(this->get_logger(), POSE_TOPIC + ": " + pose_topic);
-        RCLCPP_INFO(this->get_logger(), TARGET_WAYPOINT_TOPIC + ": " + target_waypoint_topic);
-        RCLCPP_INFO(this->get_logger(), DRIVE_TOPIC + ": " + drive_topic);
-        RCLCPP_INFO(this->get_logger(), WAYPOINTS_FILENAME + ": " + waypoints_filename);
-        RCLCPP_INFO(this->get_logger(), LOOKAHEAD + ": %f", L);
-        RCLCPP_INFO(this->get_logger(), SPEED_GAIN + ": %f", speed_gain);
-
         load_waypoints(waypoints_filename);
         
         drive_publisher_ = this->create_publisher<ackermann_msgs::msg::AckermannDriveStamped>(drive_topic, 1);
