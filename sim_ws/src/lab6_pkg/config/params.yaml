@@ -2,9 +2,12 @@ topics:
   pose_topic: "/ego_racecar/odom"
   drive_topic: "/drive"
   scan_topic: "/scan"
-  occupancy_grid_topic: "/occupancy_grid"
+  occupancy_grid_visualization_topic: "/occupancy_grid"
+  rrt_tree_visualization_topic: "/rrt_tree"
+  waypoints_visualization_topic: "/waypoints"
+  target_waypoint_visualization_topic: "/target_waypoint"
 
-waypoints_filename: "waypoint_data.txt"
+waypoints_filename: "waypoint_data_map2.txt"
 
 occupancy_grid:
   density: 0.1
@@ -12,5 +15,12 @@ occupancy_grid:
   max_range: 5.0
   threshold: 5.0
 
-lookahead: 0.4
+rrt:
+  goal_dist_threshold: 0.01
+  max_expansion_dist: 2.0
+  tree_visualization:
+    point_scale: 0.2
+    edge_scale: 0.1
+
+L: 0.4
 speed_gain: 1.0
