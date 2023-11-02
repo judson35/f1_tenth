@@ -61,5 +61,7 @@
     "cmake.sourceDirectory": ["/home/judson35/f1_tenth/sim_ws/src/wall_follow", 
                                 "/home/judson35/f1_tenth/sim_ws/src/safety_node",
                                 "/home/judson35/f1_tenth/sim_ws/src/gap_follow",
-                                "/home/judson35/f1_tenth/sim_ws/src/f1tenth_gym"]
+                                "/home/judson35/f1_tenth/sim_ws/src/f1tenth_gym",
+                                "/home/judson35/f1_tenth/sim_ws/src/lab6_pkg/include",
+                                "/opt/ros/foxy/include"]
 }

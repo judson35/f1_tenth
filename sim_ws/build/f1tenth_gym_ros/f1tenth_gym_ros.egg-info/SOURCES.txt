@@ -11,8 +11,12 @@ f1tenth_gym_ros.egg-info/entry_points.txt
 f1tenth_gym_ros.egg-info/requires.txt
 f1tenth_gym_ros.egg-info/top_level.txt
 f1tenth_gym_ros.egg-info/zip-safe
+launch/RRT_sim_launch.py
 launch/ego_racecar.xacro
 launch/gym_bridge.rviz
 launch/gym_bridge_launch.py
+launch/gym_bridge_pure_pursuit_launch.py
 launch/opp_racecar.xacro
+launch/pure_pursuit.rviz
+launch/rrt_sim.rviz
 resource/f1tenth_gym_ros
