@@ -20,10 +20,11 @@ def generate_launch_description():
                     {'scan_topic': config_dict['topics']['scan_topic']},
                     {'drive_topic': config_dict['topics']['drive_topic']},
                     {'occupancy_grid_visualization_topic': config_dict['topics']['occupancy_grid_visualization_topic']},
-                    {'rrt_tree_visualization_topic': config_dict['topics']['rrt_tree_visualization_topic']},
+                    {'rrt_tree_nodes_visualization_topic': config_dict['topics']['rrt_tree_nodes_visualization_topic']},
+                    {'rrt_tree_edges_visualization_topic': config_dict['topics']['rrt_tree_edges_visualization_topic']},
                     {'waypoints_visualization_topic': config_dict['topics']['waypoints_visualization_topic']},
                     {'target_waypoint_visualization_topic': config_dict['topics']['target_waypoint_visualization_topic']},
-                    {'waypoints_filename': config_dict['waypoints_filename']},
+                    {'waypoints_filename': "/home/judson35/f1_tenth/sim_ws/waypoint_data_map2.txt"},
                     {'occupancy_grid_density': config_dict['occupancy_grid']['density']},
                     {'occupancy_grid_obstacle_padding': config_dict['occupancy_grid']['obstacle_padding']},
                     {'occupancy_grid_max_range': config_dict['occupancy_grid']['max_range']},
@@ -32,7 +33,9 @@ def generate_launch_description():
                     {'rrt_max_expansion_dist': config_dict['rrt']['max_expansion_dist']},
                     {'rrt_tree_visualization_point_scale': config_dict['rrt']['tree_visualization']['point_scale']},
                     {'rrt_tree_visualization_edge_scale': config_dict['rrt']['tree_visualization']['edge_scale']},
-                    {'L': config_dict['L']}]
+                    {'global_lookahead': config_dict['global_lookahead']},
+                    {'local_lookahead': config_dict['local_lookahead']},
+                    {'speed_gain': config_dict['speed_gain']}]
     )
 
     # finalize

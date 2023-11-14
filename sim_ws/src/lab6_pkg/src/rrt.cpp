@@ -11,11 +11,42 @@ RRT::~RRT() {
 }
 
 // Constructor of the RRT class
-RRT::RRT(): rclcpp::Node("rrt_node"), gen((std::random_device())()), x_dist(-4.0,4.0), y_dist(0.0,5.0) {
+RRT::RRT(): rclcpp::Node("rrt_node"), gen((std::random_device())()), x_dist(0.0, 4.0), y_dist(-1.5,1.5) {
     auto param_desc = rcl_interfaces::msg::ParameterDescriptor{};           
     param_desc.description = "Pure Pursuit Parameters";
 
     this->initialize_parameters();
+    // this->declare_parameter(POSE_TOPIC, "");
+    // this->declare_parameter(SCAN_TOPIC, "");
+    // this->declare_parameter(DRIVE_TOPIC, "");
+    // this->declare_parameter(OCCUPANCY_GRID_VISUALIZATION_TOPIC, "");
+    // this->declare_parameter(RRT_TREE_NODES_VISUALIZATION_TOPIC, "");
+    // this->declare_parameter(RRT_TREE_EDGES_VISUALIZATION_TOPIC, "");
+    // this->declare_parameter(WAYPOINTS_VISUALIZATION_TOPIC, "");
+    // this->declare_parameter(TARGET_WAYPOINT_VISUALIZATION_TOPIC, "");
+    // this->declare_parameter(WAYPOINTS_FILENAME, "");
+
+    // this->pose_topic = this->get_parameter(POSE_TOPIC).as_string();
+    // this->scan_topic = this->get_parameter(SCAN_TOPIC).as_string();
+    // this->drive_topic = this->get_parameter(DRIVE_TOPIC).as_string();
+    // this->occupancy_grid_visualization_topic = this->get_parameter(OCCUPANCY_GRID_VISUALIZATION_TOPIC).as_string();
+    // this->rrt_tree_nodes_visualization_topic = this->get_parameter(RRT_TREE_NODES_VISUALIZATION_TOPIC).as_string();
+    // this->rrt_tree_edges_visualization_topic = this->get_parameter(RRT_TREE_EDGES_VISUALIZATION_TOPIC).as_string();
+    // this->waypoints_visualization_topic = this->get_parameter(WAYPOINTS_VISUALIZATION_TOPIC).as_string();
+    // this->target_waypoint_visualization_topic = this->get_parameter(TARGET_WAYPOINT_VISUALIZATION_TOPIC).as_string();
+    // this->waypoints_filename = this->get_parameter(WAYPOINTS_FILENAME).as_string();
+
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", SCAN_TOPIC, this->scan_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", POSE_TOPIC, this->pose_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", DRIVE_TOPIC, this->drive_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", OCCUPANCY_GRID_VISUALIZATION_TOPIC, this->occupancy_grid_visualization_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", RRT_TREE_NODES_VISUALIZATION_TOPIC, this->rrt_tree_nodes_visualization_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", RRT_TREE_EDGES_VISUALIZATION_TOPIC, this->rrt_tree_edges_visualization_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", WAYPOINTS_VISUALIZATION_TOPIC, this->waypoints_visualization_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", TARGET_WAYPOINT_VISUALIZATION_TOPIC, this->target_waypoint_visualization_topic);
+    // RCLCPP_INFO(this->get_logger(), "%s: %s", WAYPOINTS_FILENAME, this->waypoints_filename);
+
+
     this->occupancy_grid_point_spacing = (2*this->occupancy_grid_max_range)/(this->occupancy_grid_density-1);
 
     load_waypoints(this->waypoints_filename);
@@ -23,8 +54,10 @@ RRT::RRT(): rclcpp::Node("rrt_node"), gen((std::random_device())()), x_dist(-4.0
     // ROS publishers
     // TODO: create publishers for the the drive topic, and other topics you might need
     this->occupancy_grid_visualization_publisher_ = this->create_publisher<visualization_msgs::msg::Marker>(this->occupancy_grid_visualization_topic, 1);
-    rrt_tree_visualization_publisher_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(this->rrt_tree_visualization_topic, 1);
+    this->rrt_tree_nodes_visualization_publisher_ = this->create_publisher<visualization_msgs::msg::Marker>(this->rrt_tree_nodes_visualization_topic, 1);
+    this->rrt_tree_edges_visualization_publisher_ = this->create_publisher<visualization_msgs::msg::Marker>(this->rrt_tree_edges_visualization_topic, 1);
     this->waypoints_visualization_publisher_ = this->create_publisher<visualization_msgs::msg::Marker>(this->waypoints_visualization_topic, 1);
+    this->drive_publisher_ = this->create_publisher<ackermann_msgs::msg::AckermannDriveStamped>(this->drive_topic, 1);
 
     // ROS subscribers
     // TODO: create subscribers as you need
@@ -35,77 +68,86 @@ RRT::RRT(): rclcpp::Node("rrt_node"), gen((std::random_device())()), x_dist(-4.0
     this->tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*this->tf_buffer_);
     this->tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 
-    this->occupancy_grid_visualization_timer_ = this->create_wall_timer(1ms, std::bind(&RRT::occupancy_grid_visualization_timer_callback_, this));
-    this->waypoints_visualization_timer_ = this->create_wall_timer(1ms, std::bind(&RRT::waypoints_visualization_timer_callback_, this));
-    // this->rrt_timer_ = this->create_wall_timer(1ms, std::bind(&RRT::rrt_timer_callback_, this));
+    this->occupancy_grid_visualization_timer_ = this->create_wall_timer(500ms, std::bind(&RRT::occupancy_grid_visualization_timer_callback_, this));
+    this->rrt_tree_visualization_timer_ = this->create_wall_timer(500ms, std::bind(&RRT::rrt_tree_visualization_timer_callback_, this));
+    this->waypoints_visualization_timer_ = this->create_wall_timer(500ms, std::bind(&RRT::global_waypoints_visualization_timer_callback_, this));
+    this->rrt_timer_ = this->create_wall_timer(100ms, std::bind(&RRT::rrt_timer_callback_, this));
+    this->drive_publisher_timer_ = this->create_wall_timer(10ms, std::bind(&RRT::drive_controller_timer_callback_, this));
 
     RCLCPP_INFO(rclcpp::get_logger("RRT"), "%s\n", "Created new RRT Object.");
 }
 
 void RRT::initialize_parameters() {
-    this->initialize_string_parameter(POSE_TOPIC, &this->pose_topic);
-    this->initialize_string_parameter(SCAN_TOPIC, &this->scan_topic);
-    this->initialize_string_parameter(DRIVE_TOPIC, &this->drive_topic);
-    this->initialize_string_parameter(OCCUPANCY_GRID_VISUALIZATION_TOPIC, &this->occupancy_grid_visualization_topic);
-    this->initialize_string_parameter(RRT_TREE_VISUALIZATION_TOPIC, &this->rrt_tree_visualization_topic);
-    this->initialize_string_parameter(WAYPOINTS_VISUALIZATION_TOPIC, &this->waypoints_visualization_topic);
-    this->initialize_string_parameter(TARGET_WAYPOINT_VISUALIZATION_TOPIC, &this->target_waypoint_visualization_topic);
-    this->initialize_string_parameter(WAYPOINTS_FILENAME, &this->waypoints_filename);
+    this->initialize_string_parameter(POSE_TOPIC, this->pose_topic);
+    this->initialize_string_parameter(SCAN_TOPIC, this->scan_topic);
+    this->initialize_string_parameter(DRIVE_TOPIC, this->drive_topic);
+    this->initialize_string_parameter(OCCUPANCY_GRID_VISUALIZATION_TOPIC, this->occupancy_grid_visualization_topic);
+    this->initialize_string_parameter(RRT_TREE_NODES_VISUALIZATION_TOPIC, this->rrt_tree_nodes_visualization_topic);
+    this->initialize_string_parameter(RRT_TREE_EDGES_VISUALIZATION_TOPIC, this->rrt_tree_edges_visualization_topic);
+    this->initialize_string_parameter(WAYPOINTS_VISUALIZATION_TOPIC, this->waypoints_visualization_topic);
+    this->initialize_string_parameter(TARGET_WAYPOINT_VISUALIZATION_TOPIC, this->target_waypoint_visualization_topic);
+    this->initialize_string_parameter(WAYPOINTS_FILENAME, this->waypoints_filename);
 
-    this->initialize_int_parameter(OCCUPANCY_GRID_OBSTACLE_PADDING, &this->occupancy_grid_obstacle_padding);
+    this->initialize_int_parameter(OCCUPANCY_GRID_OBSTACLE_PADDING, this->occupancy_grid_obstacle_padding);
 
-    this->initialize_double_parameter(OCCUPANCY_GRID_DENSITY, &this->occupancy_grid_density);
-    this->initialize_double_parameter(OCCUPANCY_GRID_MAX_RANGE, &this->occupancy_grid_max_range);
-    this->initialize_double_parameter(OCCUPANCY_GRID_THRESHOLD, &this->occupancy_grid_threshold);
-    this->initialize_double_parameter(RRT_GOAL_DIST_THRESHOLD, &this->rrt_goal_dist_threshold);
-    this->initialize_double_parameter(RRT_MAX_EXPANSION_DIST, &this->rrt_max_expansion_dist);
-    this->initialize_double_parameter(RRT_VISUALIZATION_POINT_SCALE, &this->rrt_tree_visualization_point_scale);
-    this->initialize_double_parameter(RRT_VISUALIZATION_EDGE_SCALE, &this->rrt_tree_visualization_edge_scale);
-    this->initialize_double_parameter(LOOKAHEAD, &this->L);
+    this->initialize_double_parameter(OCCUPANCY_GRID_DENSITY, this->occupancy_grid_density);
+    this->initialize_double_parameter(OCCUPANCY_GRID_MAX_RANGE, this->occupancy_grid_max_range);
+    this->initialize_double_parameter(OCCUPANCY_GRID_THRESHOLD, this->occupancy_grid_threshold);
+    this->initialize_double_parameter(RRT_GOAL_DIST_THRESHOLD, this->rrt_goal_dist_threshold);
+    this->initialize_double_parameter(RRT_MAX_EXPANSION_DIST, this->rrt_max_expansion_dist);
+    this->initialize_double_parameter(RRT_VISUALIZATION_POINT_SCALE, this->rrt_tree_visualization_point_scale);
+    this->initialize_double_parameter(RRT_VISUALIZATION_EDGE_SCALE, this->rrt_tree_visualization_edge_scale);
+    this->initialize_double_parameter(GLOBAL_LOOKAHEAD, this->global_lookahead);
+    this->initialize_double_parameter(LOCAL_LOOKAHEAD, this->local_lookahead);
+    this->initialize_double_parameter(SPEED_GAIN, this->speed_gain);
 }
 
-void RRT::initialize_string_parameter(std::string parameter_name, std::string *parameter) {
+void RRT::initialize_string_parameter(std::string parameter_name, std::string &parameter) {
     this->declare_parameter(parameter_name, "");
-    *parameter = this->get_parameter(parameter_name).as_string();
-    RCLCPP_INFO(this->get_logger(), parameter_name + ": " + *parameter);
+    parameter = this->get_parameter(parameter_name).as_string();
+    RCLCPP_INFO(this->get_logger(), "%s: %s", parameter_name.c_str(), parameter.c_str());
     return;
 }
 
-void RRT::initialize_int_parameter(std::string parameter_name, int *parameter) {
+void RRT::initialize_int_parameter(std::string parameter_name, int &parameter) {
     this->declare_parameter(parameter_name, 0);
-    *parameter = this->get_parameter(parameter_name).as_int();
-    RCLCPP_INFO(this->get_logger(), parameter_name + ": %f", *parameter);
+    parameter = this->get_parameter(parameter_name).as_int();
+    RCLCPP_INFO(this->get_logger(), parameter_name + ": %f", parameter);
     return;
 }
 
-void RRT::initialize_double_parameter(std::string parameter_name, double *parameter) {
+void RRT::initialize_double_parameter(std::string parameter_name, double &parameter) {
     this->declare_parameter(parameter_name, 0.0);
-    *parameter = this->get_parameter(parameter_name).as_double();
-    RCLCPP_INFO(this->get_logger(), parameter_name + ": %f", *parameter);
+    parameter = this->get_parameter(parameter_name).as_double();
+    RCLCPP_INFO(this->get_logger(), parameter_name + ": %f", parameter);
     return;
 }
 
 void RRT::load_waypoints(std::string filename) {
         RCLCPP_INFO(this->get_logger(), "Loading Waypoints");
+        RCLCPP_INFO(this->get_logger(), "Filename: %s", filename.c_str());
         
         std::fstream fin;
         fin.open(filename, std::ios::in);
 
         std::string line, value;
 
+        int idx = 0;
+
         while (!fin.eof()) {
             std::getline(fin, line);
             std::stringstream s(line);
             
-            std::vector<double> row;
-            while (std::getline(s, value, ',')) {
-                row.push_back(std::stod(value));
+            if (idx % 10 == 0) {
+                std::vector<double> row;
+                while (std::getline(s, value, ',')) {
+                    row.push_back(std::stod(value));
+                }
+                this->global_waypoints.push_back(Waypoint(row[0], row[1]));
             }
-
-            this->global_waypoints.push_back(Waypoint(row));
+            idx++;
         }
-
-        this->global_waypoints[0].is_target_waypoint = true;
+        this->target_global_waypoint_idx = 0;
         RCLCPP_INFO(this->get_logger(), "Waypoints Successfully Loaded");
     }
 
@@ -120,7 +162,7 @@ void RRT::scan_callback(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_m
         if (scan_msg->ranges[i] < this->occupancy_grid_threshold) {
             for (double j=x-(this->occupancy_grid_obstacle_padding*this->occupancy_grid_density); j <= x+(this->occupancy_grid_obstacle_padding*this->occupancy_grid_density); j+=this->occupancy_grid_density) {
                 for (double k=y-(this->occupancy_grid_obstacle_padding*this->occupancy_grid_density); k <= y+(this->occupancy_grid_obstacle_padding*this->occupancy_grid_density); k+=this->occupancy_grid_density) {
-                    occupancy_grid[j][k] = 1.0;
+                    occupancy_grid[j][k] = true;
                 }
             }
         }
@@ -130,7 +172,6 @@ void RRT::scan_callback(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_m
 }
 
 void RRT::pose_callback(const nav_msgs::msg::Odometry::ConstSharedPtr pose_msg) {
-    this->update_target_waypoint(pose_msg->pose.pose.position.x, pose_msg->pose.pose.position.y);
 
     geometry_msgs::msg::TransformStamped t;
 
@@ -157,6 +198,8 @@ void RRT::pose_callback(const nav_msgs::msg::Odometry::ConstSharedPtr pose_msg) 
     // Send the transformation
     tf_broadcaster_->sendTransform(t);
 
+    this->update_target_waypoints(pose_msg->pose.pose.position.x, pose_msg->pose.pose.position.y); //Update target waypoints and put into car frame
+    if (!this->DRIVE) this->DRIVE = true;
 }
 
 void RRT::rrt_timer_callback_() {
@@ -167,58 +210,121 @@ void RRT::rrt_timer_callback_() {
     // Returns:
     //
 
-    geometry_msgs::msg::TransformStamped tf_result;
-
-    try {// Parent --> child frame transformation
-        tf_result = this->tf_buffer_->lookupTransform(this->map_frame_id, this->car_frame_id, tf2::TimePointZero);
-    } catch (const tf2::TransformException & ex) {
-        RCLCPP_INFO(this->get_logger(), "Could not transform %s to %s: %s", this->car_frame_id.c_str(), this->map_frame_id.c_str(), ex.what());
-        return;
-    }
-
-    tf2::Quaternion q(tf_result.transform.rotation.x, tf_result.transform.rotation.y, tf_result.transform.rotation.z, tf_result.transform.rotation.w);
-    tf2::Vector3 p(tf_result.transform.translation.x, tf_result.transform.translation.y, tf_result.transform.translation.z);
-
-    tf2::Transform transform(q, p);
-    tf2::Vector3 point_in_parent_coordinates(this->global_waypoints[this->target_waypoint_idx].x, this->global_waypoints[this->target_waypoint_idx].y, 0.0);
-    tf2::Vector3 point_in_child_coordinates = transform.inverse() * point_in_parent_coordinates;
-
-    double x_goal = point_in_child_coordinates[0];
-    double y_goal = point_in_child_coordinates[1];
-
     // tree as std::vector
     std::vector<RRT_Node> tree;
 
     // TODO: fill in the RRT main loop
-    RRT_Node node(0.0, 0.0, true);
-    tree.push_back(node);
+    RRT_Node latest_added_node(0.2, 0.0, true);
+    tree.push_back(latest_added_node);
 
-    while (!is_goal(node, x_goal, y_goal)) {
+    // RCLCPP_INFO(this->get_logger(), "Searching for Goal");
+    for (int i = 0; i < 200; i++) {
         std::vector<double> x_sample = this->sample();
         int nearest_idx = this->nearest(tree, x_sample);
-        RRT_Node x_new = this->steer(tree[nearest_idx], x_sample);
-        if (!this->check_collision(tree[nearest_idx], x_new)) {
-            x_new.parent = nearest_idx;
-            tree.push_back(x_new);
+        RRT_Node check_node = this->steer(tree[nearest_idx], x_sample);
+        check_node.parent = nearest_idx;
+        if (!this->check_collision(tree[nearest_idx], check_node)) {
+            latest_added_node = check_node;
+            tree.push_back(check_node);
+            if (is_goal(check_node, this->global_target_waypoint.position[0], this->global_target_waypoint.position[1])) break;
         }
     }
 
     this->tree = tree;
-    // std::vector<RRT_Node> path = this->find_path(tree, current_node);
+
+    if (latest_added_node.parent > 0) {
+        int index = this->nearest(tree, this->global_target_waypoint.position);
+        // RCLCPP_INFO(this->get_logger(), "Check Index: %i", index);
+        // RCLCPP_INFO(this->get_logger(), "Goal found. Finding Path");
+        this->local_waypoints = this->find_path(tree, tree[index]);
+        this->target_local_waypoint_idx = 0;
+        if (!this->RRT_ACTIVE) this->RRT_ACTIVE = true;
+    }
 }
 
-void RRT::update_target_waypoint(double x, double y) { //return the index of the closest waypoint to the car
+void RRT::drive_controller_timer_callback_() {
+    if (this->DRIVE) {
+        // RCLCPP_INFO(this->get_logger(), "Sending Drive Command");
+        auto drive_msg = ackermann_msgs::msg::AckermannDriveStamped();
 
-    for (auto i = this->target_waypoint_idx; i < global_waypoints.size(); i++) {
-        double dist = sqrt(pow((x - this->global_waypoints[i].x), 2) + pow((y - this->global_waypoints[i].y), 2)); //Calculate distance to point
+        double gamma = 2*abs(this->local_target_waypoint.position[1])/pow(this->local_lookahead,2);
 
-        if (dist < this->L) { //If point is too close --> continue to next point
-            this->target_waypoint_idx = i;
+        double steering_angle = atan2(gamma * this->local_lookahead, 1.0) * ((this->local_target_waypoint.position[1] >= 0) - (this->local_target_waypoint.position[1] < 0));
 
-        } else if (dist >= this->L) { //If point is too far --> interpolate and return point
+        drive_msg.drive.steering_angle = steering_angle;
+        drive_msg.drive.speed = this->speed_gain;
+        drive_msg.drive.steering_angle_velocity = 0.001;
+
+        this->drive_publisher_->publish(drive_msg);
+        // RCLCPP_INFO(this->get_logger(), "Drive Command Sent");
+    }
+}
+
+void RRT::update_target_waypoint(double x, double y, const std::vector<Waypoint> &waypoints, int &target_index, double lookahead) { //return the index of the closest waypoint to the car
+
+    double dist = 0.0; //Calculate distance to point
+
+    for (int i = target_index; i < waypoints.size(); i++) {
+        dist = sqrt(pow((x - waypoints[i].position[0]), 2) + pow((y - waypoints[i].position[1]), 2));
+
+        if (dist < lookahead) {
+            if (i >= waypoints.size()-2) {
+                target_index = 0; //Reset start index
+                break;
+            } else {
+                target_index = i;
+            }
+        } else {
             return;
-
         }
+    }
+}
+
+tf2::Vector3 RRT::interpolate_target_waypoint(const std::vector<Waypoint> &waypoints, const int &target_waypoint_index, double lookahead) {
+    if (waypoints.size() > 0) {
+        // RCLCPP_INFO(this->get_logger(), "Waypoints Size: %i", waypoints.size());
+        double theta = atan2((waypoints[target_waypoint_index+1].position[1] - waypoints[target_waypoint_index].position[1]), (waypoints[target_waypoint_index+1].position[0] - waypoints[target_waypoint_index].position[0]));
+        return tf2::Vector3(waypoints[target_waypoint_index].position[0] + lookahead * cos(theta), waypoints[target_waypoint_index].position[1] + lookahead * sin(theta), 0.0);
+    } else {
+        return tf2::Vector3(0.0, 0.0, 0.0);
+    }
+}
+
+void RRT::update_target_waypoints(double x, double y) {
+    //Update both global and local target waypoints and transform them into car frame.
+    
+    geometry_msgs::msg::TransformStamped tf_result;
+
+    try {// Parent --> child frame transformation
+        tf_result = this->tf_buffer_->lookupTransform(this->map_frame_id, this->car_frame_id, tf2::TimePointZero);
+
+        tf2::Quaternion q(tf_result.transform.rotation.x, tf_result.transform.rotation.y, tf_result.transform.rotation.z, tf_result.transform.rotation.w);
+        tf2::Vector3 p(tf_result.transform.translation.x, tf_result.transform.translation.y, tf_result.transform.translation.z);
+
+        tf2::Transform transform(q, p);
+
+        // RCLCPP_INFO(this->get_logger(), "Updating Global Target Waypoint");
+        this->update_target_waypoint(x, y, this->global_waypoints, this->target_global_waypoint_idx, this->global_lookahead);
+
+        tf2::Vector3 global_target_waypoint_in_parent_coordinates = this->interpolate_target_waypoint(this->global_waypoints, this->target_global_waypoint_idx, this->global_lookahead);;
+        tf2::Vector3 global_target_waypoint_in_child_coordinates = transform.inverse() * global_target_waypoint_in_parent_coordinates;
+        RCLCPP_INFO(this->get_logger(), "Global Target Waypoint X: %f\t Y: %f", global_target_waypoint_in_child_coordinates[0], global_target_waypoint_in_child_coordinates[1]);
+        this->global_target_waypoint = Waypoint(global_target_waypoint_in_child_coordinates[0], global_target_waypoint_in_child_coordinates[1]);
+
+        if (this->RRT_ACTIVE) {
+            // RCLCPP_INFO(this->get_logger(), "Updating Local Target Waypoint");
+            this->update_target_waypoint(x, y, this->local_waypoints, this->target_local_waypoint_idx, this->local_lookahead);
+
+            tf2::Vector3 local_target_waypoint_in_parent_coordinates = this->interpolate_target_waypoint(this->local_waypoints, this->target_local_waypoint_idx, this->local_lookahead);;
+            tf2::Vector3 local_target_waypoint_in_child_coordinates = transform.inverse() * local_target_waypoint_in_parent_coordinates;
+            RCLCPP_INFO(this->get_logger(), "Local Target Waypoint X: %f\t Y: %f\t Index: %i", local_target_waypoint_in_child_coordinates[0], local_target_waypoint_in_child_coordinates[1], this->target_local_waypoint_idx);
+            this->local_target_waypoint = Waypoint(local_target_waypoint_in_child_coordinates[0], local_target_waypoint_in_child_coordinates[1]);
+        }
+        
+        // RCLCPP_INFO(this->get_logger(), "Waypoints Updated");
+    } catch (const tf2::TransformException & ex) {
+        RCLCPP_INFO(this->get_logger(), "Could not transform %s to %s: %s", this->car_frame_id.c_str(), this->map_frame_id.c_str(), ex.what());
+        return;
     }
 }
 
@@ -238,7 +344,6 @@ std::vector<double> RRT::sample() {
     return sampled_point;
 }
 
-
 int RRT::nearest(std::vector<RRT_Node> &tree, std::vector<double> &sampled_point) {
     // This method returns the nearest node on the tree to the sampled point
     // Args:
@@ -248,10 +353,11 @@ int RRT::nearest(std::vector<RRT_Node> &tree, std::vector<double> &sampled_point
     //     nearest_node (int): index of nearest node on the tree
 
     int nearest_node = 0;
-    double min_dist = std::numeric_limits<double>::infinity();
+    double min_dist = 100.0;
     for (int i = 0; i < tree.size(); i++) {
         double dist = EUCLIDEAN_DISTANCE((tree[i].x - sampled_point[0]), (tree[i].y - sampled_point[1]));
         nearest_node = (dist >= min_dist) * nearest_node + (dist < min_dist) * i;
+        min_dist = (dist >= min_dist) * min_dist + (dist < min_dist) * dist;
     }
 
     return nearest_node;
@@ -279,9 +385,9 @@ RRT_Node RRT::steer(RRT_Node &nearest_node, std::vector<double> &sampled_point) 
 
     double dist = EUCLIDEAN_DISTANCE((nearest_node.x - sampled_point[0]), (nearest_node.y - sampled_point[1]));
     bool CHECK_MAX_DIST = dist > this->rrt_max_expansion_dist;
-    new_node.x = ROUND((sampled_point[0] / dist) * this->rrt_max_expansion_dist, this->occupancy_grid_density) * CHECK_MAX_DIST + ROUND(sampled_point[0], this->occupancy_grid_density);
-    new_node.y = ROUND((sampled_point[1] / dist) * this->rrt_max_expansion_dist, this->occupancy_grid_density) * CHECK_MAX_DIST + ROUND(sampled_point[1], this->occupancy_grid_density);
-    
+    new_node.x = ((x_delt / dist) * this->rrt_max_expansion_dist) * CHECK_MAX_DIST + nearest_node.x;
+    new_node.y = ((y_delt / dist) * this->rrt_max_expansion_dist) * CHECK_MAX_DIST + nearest_node.y;
+
     return new_node;
 }
 
@@ -293,23 +399,56 @@ bool RRT::check_collision(RRT_Node &nearest_node, RRT_Node &new_node) {
     //    new_node (RRT_Node): new node created from steering
     // Returns:
     //    collision (bool): true if in collision, false otherwise
+    // RCLCPP_INFO(this->get_logger(), "Checking Collision");
 
-    double delta_x = new_node.x - nearest_node.x;
-    double delta_y = new_node.y - nearest_node.y;
+    bool collision = false;
+    double start_x = ROUND(nearest_node.x, this->occupancy_grid_density);
+    double start_y = ROUND(nearest_node.y, this->occupancy_grid_density);
+    double goal_x = ROUND(new_node.x, this->occupancy_grid_density);
+    double goal_y = ROUND(new_node.y, this->occupancy_grid_density);
+
+    double delta_x = goal_x - start_x;
+    double delta_y = goal_y - start_y;
     double slope = delta_y / delta_x;
+    double slope2 = delta_x / delta_y;
 
-    double check_dist = delta_x * (delta_x < delta_y) + delta_y * (delta_y <= delta_x);
-    for (double check_x = ROUND(nearest_node.x,this->occupancy_grid_density); check_x <= new_node.x; check_x += this->occupancy_grid_density) {
-        double check_y = ROUND(check_x * slope + nearest_node.y, this->occupancy_grid_density);
-        try {
-            this->occupancy_grid[check_x][check_y];
-            return true; //x and y coordinates of line are in occupancy grid so return collision true
-        } catch (...) {
-            continue;
+    int CHECK_FUNCTION = ALONG_X *  + ALONG_Y * (delta_x == 0.0);
+
+    if (delta_y == 0.0) {
+        double check_y = ROUND(start_y, this->occupancy_grid_density);
+        for (double check_x = start_x; check_x <= goal_x; check_x += this->occupancy_grid_density) {
+            // RCLCPP_INFO(this->get_logger(), "Check: %i", this->occupancy_grid[check_x][check_y]);
+            if (this->occupancy_grid[check_x][check_y]) return true;
+            // else this->occupancy_grid[check_x][check_y] = false;
+        }
+    } else if (delta_x == 0.0) {
+        double increment = this->occupancy_grid_density * (delta_y / abs(delta_y));
+        double check_x = ROUND(start_x, this->occupancy_grid_density);
+        for (double check_y = start_y; abs(check_y) <= abs(goal_y); check_y += increment) {
+            // RCLCPP_INFO(this->get_logger(), "Check: %i", this->occupancy_grid[check_x][check_y]);
+            if (this->occupancy_grid[check_x][check_y]) return true;
+            // else this->occupancy_grid[check_x][check_y] = false;;
+        }
+    } else {
+        for (double check_x = 0.0; check_x <= delta_x; check_x += this->occupancy_grid_density) {
+            double check_y = check_x * slope + start_y;
+            check_y = ROUND(check_y, this->occupancy_grid_density);
+            // RCLCPP_INFO(this->get_logger(), "Check: %i", this->occupancy_grid[check_x + start_x][check_y]);
+            if (this->occupancy_grid[check_x + start_x][check_y]) return true;
+            // else this->occupancy_grid[check_x + start_x][check_y] = false;
+        }
+
+        double increment = this->occupancy_grid_density * (delta_y / abs(delta_y));
+        for (double check_y = 0.0; abs(check_y) <= abs(delta_y); check_y += increment) {
+            double check_x = check_y * slope2 + start_x;
+            check_x = ROUND(check_x, this->occupancy_grid_density);
+            // RCLCPP_INFO(this->get_logger(), "Check X: %f\t Check Y: %f", check_x, check_y + start_y);
+            // RCLCPP_INFO(this->get_logger(), "Check: %i", this->occupancy_grid[check_x][check_y + start_y]);
+            if (this->occupancy_grid[check_x][check_y + start_y]) return true;
+            // else this->occupancy_grid[check_x][check_y + start_y] = false;;
         }
     }
-
-    return true;
+    return false;
 }
 
 bool RRT::is_goal(RRT_Node &latest_added_node, double goal_x, double goal_y) {
@@ -329,7 +468,7 @@ bool RRT::is_goal(RRT_Node &latest_added_node, double goal_x, double goal_y) {
     return close_enough;
 }
 
-std::vector<RRT_Node> RRT::find_path(std::vector<RRT_Node> &tree, RRT_Node &latest_added_node) {
+std::vector<Waypoint> RRT::find_path(std::vector<RRT_Node> &tree, RRT_Node &latest_added_node) {
     // This method traverses the tree from the node that has been determined
     // as goal
     // Args:
@@ -338,18 +477,28 @@ std::vector<RRT_Node> RRT::find_path(std::vector<RRT_Node> &tree, RRT_Node &late
     // Returns:
     //   path (std::vector<RRT_Node>): the vector that represents the order of
     //      of the nodes traversed as the found path
-    
-    std::vector<RRT_Node> found_path;
-    found_path.push_back(latest_added_node);
+    std::vector<Waypoint> found_path;
+    found_path.push_back(Waypoint(latest_added_node.x, latest_added_node.y));
+    // RCLCPP_INFO(this->get_logger(), "%i", latest_added_node.parent);
 
-    int check_idx = latest_added_node.parent;
+    try {
+        int check_idx = latest_added_node.parent;
 
-    while (!tree[check_idx].is_root) {
-        found_path.push_back(tree[check_idx]);
-        check_idx = tree[check_idx].parent;
+        // RCLCPP_INFO(this->get_logger(), "Check_idx: %i\t Is_Root: %i", check_idx, tree[check_idx].is_root);
+
+        while (!tree[check_idx].is_root) {
+            found_path.push_back(Waypoint(tree[check_idx].x, tree[check_idx].y));
+            check_idx = tree[check_idx].parent;
+        }
+
+        // RCLCPP_INFO(this->get_logger(), "Found Path Size: %i", found_path.size());
+
+        return std::vector<Waypoint>(found_path.rbegin(), found_path.rend());
+    } catch(...) {
+        RCLCPP_INFO(this->get_logger(), "No valid points found");
+        return found_path;
     }
-
-    return found_path;
+    
 }
 
 // RRT* methods
@@ -398,15 +547,26 @@ std::vector<int> RRT::near(std::vector<RRT_Node> &tree, RRT_Node &node) {
 
 //Visualization
 void RRT::occupancy_grid_visualization_timer_callback_() {
+    auto delete_msg = visualization_msgs::msg::Marker();
+    delete_msg.action = 2;
+    this->occupancy_grid_visualization_publisher_->publish(delete_msg);
     this->publish_occupancy_grid(this->occupancy_grid, "ego_racecar/base_link");
 }
 
 void RRT::rrt_tree_visualization_timer_callback_() {
-    this->publish_rrt_tree(this->tree, "ego_racecar/base_link");
+    auto delete_msg = visualization_msgs::msg::Marker();
+    delete_msg.action = 2;
+    this->rrt_tree_nodes_visualization_publisher_->publish(delete_msg);
+    this->rrt_tree_edges_visualization_publisher_->publish(delete_msg);
+    this->publish_rrt_tree_nodes(this->tree, "ego_racecar/base_link");
+    this->publish_rrt_tree_edges(this->tree, "ego_racecar/base_link");
 }
 
-void RRT::waypoints_visualization_timer_callback_() {
-    this->publish_waypoints(this->global_waypoints, "map");
+void RRT::global_waypoints_visualization_timer_callback_() {
+    auto delete_msg = visualization_msgs::msg::Marker();
+    delete_msg.action = 2;
+    this->waypoints_visualization_publisher_->publish(delete_msg);
+    this->publish_global_waypoints(this->global_waypoints, "map");
 }
 
 void RRT::publish_occupancy_grid(std::map<double,std::map<double,bool>> &occupancy_grid, std::string frame_id) {
@@ -435,133 +595,147 @@ void RRT::publish_occupancy_grid(std::map<double,std::map<double,bool>> &occupan
     for (x = this->occupancy_grid.begin(); x != this->occupancy_grid.end(); x++) {
         std::map<double,bool>::iterator y;
         for (y = x->second.begin(); y != x->second.end(); y++) {
-            auto point = geometry_msgs::msg::Point();
-            auto color = std_msgs::msg::ColorRGBA();
+            // if (y->second) {
+                auto point = geometry_msgs::msg::Point();
+                auto color = std_msgs::msg::ColorRGBA();
 
-            point.x = x->first;
-            point.y = y->first;
-            point.z = 0.0;
+                point.x = x->first;
+                point.y = y->first;
+                point.z = 0.0;
 
-            color.r = (float)y->second;
-            color.g = 0.0;
-            color.b = 0.0;
-            color.a = 1.0;
+                color.r = (float)y->second;
+                color.g = (float)!y->second;
+                color.b = 0.0;
+                color.a = 1.0;
 
-            marker.points.push_back(point);
-            marker.colors.push_back(color);
+                marker.points.push_back(point);
+                marker.colors.push_back(color);
+            // }
         }
     }
 
-    marker.lifetime.sec = 0.01;
     this->occupancy_grid_visualization_publisher_->publish(marker);
 }
 
-void RRT::publish_rrt_tree(std::vector<RRT_Node> &tree, std::string frame_id) {
-    auto tree_vis_array = visualization_msgs::msg::MarkerArray();
-    std::vector<int> closed_nodes;
-    for (RRT_Node node : tree) {
-        auto marker = visualization_msgs::msg::Marker();
-    
-        marker.type = 2;
-        marker.action = 0;
-        marker.header.frame_id = frame_id;
+void RRT::publish_rrt_tree_nodes(std::vector<RRT_Node> &tree, std::string frame_id) {
+    auto tree_nodes = visualization_msgs::msg::Marker();
 
-        marker.ns = "rrt_tree";
+    tree_nodes.type = 7;
+    tree_nodes.action = 0;
+    tree_nodes.header.frame_id = frame_id;
 
-        marker.scale.x = this->rrt_tree_visualization_point_scale;
-        marker.scale.y = this->rrt_tree_visualization_point_scale;
-        marker.scale.z = this->rrt_tree_visualization_point_scale;
+    tree_nodes.ns = "rrt_tree_nodes";
 
-        marker.pose.position.x = node.x;
-        marker.pose.position.y = node.y;
-        marker.pose.position.z = 0.0;
+    tree_nodes.scale.x = this->rrt_tree_visualization_point_scale;
+    tree_nodes.scale.y = this->rrt_tree_visualization_point_scale;
+    tree_nodes.scale.z = this->rrt_tree_visualization_point_scale;
 
-        marker.pose.orientation.x = 0.0;
-        marker.pose.orientation.y = 0.0;
-        marker.pose.orientation.z = 0.0;
-        marker.pose.orientation.w = 1.0;
+    tree_nodes.pose.position.x = 0.0;
+    tree_nodes.pose.position.y = 0.0;
+    tree_nodes.pose.position.z = 0.0;
 
-        marker.color.r = 0.0;
-        marker.color.g = 0.0;
-        marker.color.b = 1.0;
-        marker.color.a = 0.0;
+    tree_nodes.pose.orientation.x = 0.0;
+    tree_nodes.pose.orientation.y = 0.0;
+    tree_nodes.pose.orientation.z = 0.0;
+    tree_nodes.pose.orientation.w = 1.0;
 
-        marker.lifetime.sec = 1;
-        tree_vis_array.markers.push_back(marker);
+    for (int i = 0; i < this->local_waypoints.size(); i++) {
+        auto point = geometry_msgs::msg::Point();
+        auto color = std_msgs::msg::ColorRGBA();
 
-        if (!node.is_root) {
-            auto edge = visualization_msgs::msg::Marker();
-    
-            marker.type = 4;
-            marker.action = 0;
-            marker.header.frame_id = frame_id;
+        point.x = this->local_waypoints[i].position[0];
+        point.y = this->local_waypoints[i].position[1];
+        point.z = 0.0;
 
-            marker.ns = "rrt_tree";
+        color.r = 0.0;
+        color.g = (float)(this->target_local_waypoint_idx == i);
+        color.b = (float)(this->target_local_waypoint_idx != i);
+        color.a = 1.0;
 
-            marker.scale.x = this->rrt_tree_visualization_edge_scale;
-            marker.scale.y = this->rrt_tree_visualization_edge_scale;
-            marker.scale.z = this->rrt_tree_visualization_edge_scale;
-
-            marker.pose.position.x = node.x;
-            marker.pose.position.y = node.y;
-            marker.pose.position.z = 0.0;
-
-            marker.pose.orientation.x = 0.0;
-            marker.pose.orientation.y = 0.0;
-            marker.pose.orientation.z = 0.0;
-            marker.pose.orientation.w = 1.0;
-
-            //Add node to list
-            {
-                auto point = geometry_msgs::msg::Point();
-                auto color = std_msgs::msg::ColorRGBA();
-
-                point.x = node.x;
-                point.y = node.y;
-                point.z = 0.0;
-
-                color.r = 0.0;
-                color.g = 1.0;
-                color.b = 0.0;
-                color.a = 1.0;
-
-                marker.points.push_back(point);
-                marker.colors.push_back(color);
-            }
-
-            //Add parent to list
-            {
-                auto point = geometry_msgs::msg::Point();
-                auto color = std_msgs::msg::ColorRGBA();
-
-                point.x = tree[node.parent].x;
-                point.y = tree[node.parent].y;
-                point.z = 0.0;
-
-                color.r = 0.0;
-                color.g = 1.0;
-                color.b = 0.0;
-                color.a = 1.0;
-
-                marker.points.push_back(point);
-                marker.colors.push_back(color);
-            }
-
-            marker.lifetime.sec = 1;
-            tree_vis_array.markers.push_back(edge);
-        }
+        tree_nodes.points.push_back(point);
+        tree_nodes.colors.push_back(color);
     }
 
-    this->rrt_tree_visualization_publisher_->publish(tree_vis_array);
+    auto point = geometry_msgs::msg::Point();
+    auto color = std_msgs::msg::ColorRGBA();
+
+    point.x = this->global_target_waypoint.position[0];
+    point.y = this->global_target_waypoint.position[1];
+    point.z = 0.0;
+
+    color.r = 1.0;
+    color.g = 0.0;
+    color.b = 1.0;
+    color.a = 1.0;
+
+    tree_nodes.points.push_back(point);
+    tree_nodes.colors.push_back(color);
+
+    this->rrt_tree_nodes_visualization_publisher_->publish(tree_nodes);
 }
 
-void RRT::publish_waypoints(std::vector<Waypoint> &waypoints, std::string frame_id) {
+void RRT::publish_rrt_tree_edges(std::vector<RRT_Node> &tree, std::string frame_id) {
+    auto tree_edges = visualization_msgs::msg::Marker();
+
+    tree_edges.type = 5;
+    tree_edges.action = 0;
+    tree_edges.header.frame_id = frame_id;
+
+    tree_edges.ns = "rrt_tree_edges";
+
+    tree_edges.scale.x = this->rrt_tree_visualization_edge_scale;
+    tree_edges.scale.y = this->rrt_tree_visualization_edge_scale;
+    tree_edges.scale.z = this->rrt_tree_visualization_edge_scale;
+
+    tree_edges.pose.position.x = 0.0;
+    tree_edges.pose.position.y = 0.0;
+    tree_edges.pose.position.z = 0.0;
+
+    tree_edges.pose.orientation.x = 0.0;
+    tree_edges.pose.orientation.y = 0.0;
+    tree_edges.pose.orientation.z = 0.0;
+    tree_edges.pose.orientation.w = 1.0;
+
+    for (int i = 0; i < this->local_waypoints.size()-1; i++) {
+        auto point = geometry_msgs::msg::Point();
+        auto point_parent = geometry_msgs::msg::Point();
+        auto color = std_msgs::msg::ColorRGBA();
+        auto color_parent = std_msgs::msg::ColorRGBA();
+
+        point.x = this->local_waypoints[i].position[0];
+        point.y = this->local_waypoints[i].position[1];
+        point.z = 0.0;
+
+        point_parent.x = this->local_waypoints[i+1].position[0];
+        point_parent.y = this->local_waypoints[i+1].position[1];
+        point_parent.z = 0.0;
+
+        color.r = 0.0;
+        color.g = 1.0;
+        color.b = 0.0;
+        color.a = 1.0;
+
+        color_parent.r = 0.0;
+        color_parent.g = 1.0;
+        color_parent.b = 0.0;
+        color_parent.a = 1.0;
+
+        tree_edges.points.push_back(point);
+        tree_edges.points.push_back(point_parent);
+        tree_edges.colors.push_back(color);
+        tree_edges.colors.push_back(color_parent);
+    }
+
+    this->rrt_tree_edges_visualization_publisher_->publish(tree_edges);
+}
+
+void RRT::publish_global_waypoints(std::vector<Waypoint> &waypoints, std::string frame_id) {
     auto waypoints_msg = visualization_msgs::msg::Marker();
-    waypoints_msg.type = 8;
+    waypoints_msg.type = 7;
     waypoints_msg.action = 0;
     waypoints_msg.header.frame_id = frame_id;
 
-    waypoints_msg.ns = "waypoints";
+    waypoints_msg.ns = "global_waypoints";
 
     waypoints_msg.scale.x = this->rrt_tree_visualization_point_scale;
     waypoints_msg.scale.y = this->rrt_tree_visualization_point_scale;
@@ -576,18 +750,16 @@ void RRT::publish_waypoints(std::vector<Waypoint> &waypoints, std::string frame_
     waypoints_msg.pose.orientation.z = 0.0;
     waypoints_msg.pose.orientation.w = 1.0;
 
-    for (Waypoint waypoint : waypoints) {
+    for (int i = 0; i < this->global_waypoints.size(); i++) {
         auto point = geometry_msgs::msg::Point();
         auto color = std_msgs::msg::ColorRGBA();
 
-        point.x = waypoint.x;
-        point.y = waypoint.y;
+        point.x = this->global_waypoints[i].position[0];
+        point.y = this->global_waypoints[i].position[1];
         point.z = 0.0;
 
-        // RCLCPP_INFO(this->get_logger(), "x: %f\t y: %f", waypoint.x, waypoint.x);
-
-        color.r = !waypoint.is_target_waypoint;
-        color.g = waypoint.is_target_waypoint;
+        color.r = (float)(this->target_global_waypoint_idx != i);
+        color.g = (float)(this->target_global_waypoint_idx == i);
         color.b = 0.0;
         color.a = 1.0;
 
@@ -595,6 +767,5 @@ void RRT::publish_waypoints(std::vector<Waypoint> &waypoints, std::string frame_
         waypoints_msg.colors.push_back(color);
     }
 
-    waypoints_msg.lifetime.sec = 1;
     this->waypoints_visualization_publisher_->publish(waypoints_msg);
 }

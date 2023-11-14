@@ -3,24 +3,26 @@ topics:
   drive_topic: "/drive"
   scan_topic: "/scan"
   occupancy_grid_visualization_topic: "/occupancy_grid"
-  rrt_tree_visualization_topic: "/rrt_tree"
+  rrt_tree_nodes_visualization_topic: "/rrt_tree_nodes"
+  rrt_tree_edges_visualization_topic: "/rrt_tree_edges"
   waypoints_visualization_topic: "/waypoints"
   target_waypoint_visualization_topic: "/target_waypoint"
 
-waypoints_filename: "waypoint_data_map2.txt"
+waypoints_filename: "/home/judson35/f1_tenth/sim_ws/waypoint_data_map2.txt"
 
 occupancy_grid:
-  density: 0.1
-  obstacle_padding: 1
+  density: 0.05
+  obstacle_padding: 3
   max_range: 5.0
   threshold: 5.0
 
 rrt:
-  goal_dist_threshold: 0.01
-  max_expansion_dist: 2.0
+  goal_dist_threshold: 0.2
+  max_expansion_dist: 0.3
   tree_visualization:
-    point_scale: 0.2
-    edge_scale: 0.1
+    point_scale: 0.1
+    edge_scale: 0.02
 
-L: 0.4
-speed_gain: 1.0
+global_lookahead: 2.5
+local_lookahead: 1.0
+speed_gain: 0.5
