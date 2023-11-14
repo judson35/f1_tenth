@@ -1,1 +1,0 @@
-/home/judson35/f1_tenth/sim_ws/src/wall_follow/scripts/wall_follow_node.py
