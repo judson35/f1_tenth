@@ -56,6 +56,33 @@ public:
         auto param_desc = rcl_interfaces::msg::ParameterDescriptor{};           
         param_desc.description = "Pure Pursuit Parameters";
 
+        this->declare_parameter(POSE_TOPIC, "");
+        this->declare_parameter(TARGET_WAYPOINT_TOPIC, "");
+        this->declare_parameter(DRIVE_TOPIC, "");
+        this->declare_parameter(WAYPOINTS_FILENAME, "");
+
+        this->declare_parameter(LOOKAHEAD, 0.0);
+        this->declare_parameter(SPEED_GAIN, 0.0);
+
+        // this->declare_parameter(DEADMAN_SWITCH_AXIS, 0);
+        // this->declare_parameter(DEADMAN_SWITCH_THRESHOLD, 0.0);
+
+        pose_topic = this->get_parameter(POSE_TOPIC).as_string();
+        target_waypoint_topic = this->get_parameter(TARGET_WAYPOINT_TOPIC).as_string();
+        drive_topic = this->get_parameter(DRIVE_TOPIC).as_string();
+        waypoints_filename = this->get_parameter(WAYPOINTS_FILENAME).as_string();
+        L = this->get_parameter(LOOKAHEAD).as_double();
+        speed_gain = this->get_parameter(SPEED_GAIN).as_double();
+        // deadman_switch_axis = this->get_parameter(DEADMAN_SWITCH_AXIS).as_int();
+        // deadman_switch_threshold = this->get_parameter(DEADMAN_SWITCH_THRESHOLD).as_double();
+
+        RCLCPP_INFO(this->get_logger(), POSE_TOPIC + ": " + pose_topic);
+        RCLCPP_INFO(this->get_logger(), TARGET_WAYPOINT_TOPIC + ": " + target_waypoint_topic);
+        RCLCPP_INFO(this->get_logger(), DRIVE_TOPIC + ": " + drive_topic);
+        RCLCPP_INFO(this->get_logger(), WAYPOINTS_FILENAME + ": " + waypoints_filename);
+        RCLCPP_INFO(this->get_logger(), LOOKAHEAD + ": %f", L);
+        RCLCPP_INFO(this->get_logger(), SPEED_GAIN + ": %f", speed_gain);
+
         load_waypoints(waypoints_filename);
         
         drive_publisher_ = this->create_publisher<ackermann_msgs::msg::AckermannDriveStamped>(drive_topic, 1);
@@ -141,8 +168,15 @@ private:
             double dist = sqrt(pow((x - this->waypoints[i][0]), 2) + pow((y - this->waypoints[i][1]), 2)); //Calculate distance to point
 
             if (dist < L) { //If point is too close --> continue to next point
-                this->target_waypoint_index = i;
-                this->target_waypoint = this->waypoints[i];
+                if (i >= waypoints.size()-5) {
+                    RCLCPP_INFO(this->get_logger(), "Restart");
+                    this->target_waypoint_index = 0;
+                    this->target_waypoint = this->waypoints[0];
+                    break;
+                } else {
+                    this->target_waypoint_index = i;
+                    this->target_waypoint = this->waypoints[i];
+                }
             } else if (dist >= L) { //If point is too far --> interpolate and return point
                 double theta = atan2((this->waypoints[i][1] - this->target_waypoint[1]), (this->waypoints[i][0] - this->target_waypoint[0]));
                 double x_goal = this->target_waypoint[0] + L * cos(theta);

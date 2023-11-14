@@ -3,7 +3,7 @@ topics:
   target_waypoint_topic: "/target_waypoint"
   drive_topic: "/drive"
 
-waypoints_filename: "waypoint_data.txt"
+waypoints_filename: "/home/judson35/f1_tenth/sim_ws/Race_2_Map_1_Waypoints.txt"
 
-lookahead: 0.4
-speed_gain: 1.0
+lookahead: 0.5
+speed_gain: 0.3
