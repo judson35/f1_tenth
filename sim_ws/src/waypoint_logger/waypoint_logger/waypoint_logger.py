@@ -6,11 +6,12 @@ from geometry_msgs.msg import PointStamped
 from nav_msgs.msg import Odometry
 from ackermann_msgs.msg import AckermannDriveStamped
 
-filename = "waypoint_data.txt"
+filename = "Race_2_Map_1_Waypoints.txt"
 
 class WaypointLogger(Node):
     def __init__(self):
         super().__init__('waypoint_logger')
+        print(f"Filename: {filename}")
 
         self.drive_publisher = self.create_publisher(AckermannDriveStamped, '/drive', 1)
 
