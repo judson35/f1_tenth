@@ -6,15 +6,22 @@ import cvxpy
 import numpy as np
 import rclpy
 from ackermann_msgs.msg import AckermannDrive, AckermannDriveStamped
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PoseStamped, Transform, Twist, Vector3
+from tf2_geometry_msgs import do_transform_point
+from nav_msgs.msg import Odometry
+from visualization_msgs.msg import MarkerArray, Marker
+from geometry_msgs.msg import Point, PointStamped, Quaternion
+from std_msgs.msg import ColorRGBA
 from rclpy.node import Node
 from scipy.linalg import block_diag
 from scipy.sparse import block_diag, csc_matrix, diags
 from sensor_msgs.msg import LaserScan
-from utils import nearest_point
-
-# TODO CHECK: include needed ROS msg type headers and libraries
-
+from mpc.utils import nearest_point, getTrajectoryMarkerMessage
+from tf_transformations import euler_from_quaternion
+from collections.abc import Sequence
+from tf2_ros.buffer import Buffer
+from tf2_ros.transform_listener import TransformListener
+from tf2_ros import LookupException
 
 @dataclass
 class mpc_config:
@@ -44,9 +51,9 @@ class mpc_config:
     LENGTH: float = 0.58  # Length of the vehicle [m]
     WIDTH: float = 0.31  # Width of the vehicle [m]
     WB: float = 0.33  # Wheelbase [m]
-    MIN_STEER: float = -0.4189  # maximum steering angle [rad]
-    MAX_STEER: float = 0.4189  # maximum steering angle [rad]
-    MAX_DSTEER: float = np.deg2rad(180.0)  # maximum steering speed [rad/s]
+    MIN_STEER: float = -np.deg2rad(45.0)  # maximum steering angle [rad]
+    MAX_STEER: float = np.deg2rad(45.0)  # maximum steering angle [rad]
+    MAX_DSTEER: float = np.deg2rad(270.0)  # maximum steering speed [rad/s]
     MAX_SPEED: float = 6.0  # maximum speed [m/s]
     MIN_SPEED: float = 0.0  # minimum backward speed [m/s]
     MAX_ACCEL: float = 3.0  # maximum acceleration [m/ss]
@@ -58,7 +65,19 @@ class State:
     y: float = 0.0
     v: float = 0.0
     yaw: float = 0.0
-    
+
+def reference_trajectory_init(filename : str) -> np.ndarray:
+    waypoints = []
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+        for i, line in enumerate(lines):
+            if (i % 12 == 0):
+                data = line.split(',')
+                data = [float(val) for val in data]
+                data[2] = data[2]*3
+                waypoints.append(data)
+    return np.array(waypoints)
+
 class MPC(Node):
     """ 
     Implement Kinematic MPC on the car
@@ -66,44 +85,99 @@ class MPC(Node):
     """
     def __init__(self):
         super().__init__('mpc_node')
-        # TODO: create ROS subscribers and publishers
-        #       use the MPC as a tracker (similar to pure pursuit)
-        # TODO: get waypoints here
-        self.waypoints = None
 
-        self.config = mpc_config()
+        self.drive_topic = "/drive"
+        self.pose_topic = "/ego_racecar/odom"
+        self.mpc_input_visualization_topic = "/mpc_input_traj"
+        self.mpc_visualization_topic = "/mpc_traj"
+        self.reference_trajectory_filename = "/home/judson35/f1_tenth/sim_ws/Mpc_Waypoints.txt"
+
+        self.drive_publisher = self.create_publisher(AckermannDriveStamped, self.drive_topic, 1)
+        self.mpc_input_traj_publisher = self.create_publisher(Marker, self.mpc_input_visualization_topic, 1)
+        self.mpc_traj_publisher = self.create_publisher(Marker, self.mpc_visualization_topic, 1)
+        self.pose_subscriber = self.create_subscription(Odometry, self.pose_topic, self.pose_callback, 1)
+
+        self.waypoints = reference_trajectory_init(self.reference_trajectory_filename)
+        # self.waypoints = np.flip(self.waypoints, axis=0)
+
+        self.mpc_traj_timer = self.create_timer(0.5, self.mpc_traj_timer_callback)
+        self.dt_mpc = 0.005
+        self.mpc_control_timer = self.create_timer(self.dt_mpc, self.mpc_callback)
+
+        self.tf_buffer = Buffer()
+        self.transform_listener = TransformListener(self.tf_buffer, self)
+
+        self.config = mpc_config(Qk=np.diag([20, 20, 1, 5]), Qfk=np.diag([30, 30, 1, 10]))
         self.odelta = None
         self.oa = None
         self.init_flag = 0
+        self.ref_path = []
+
+        self.position = Point()
+        self.orientation = Quaternion()
+        self.v = 0
+        self.yaw = 0
+
+        self.transform = Transform()
+
+        self.ox = []
+        self.oy = []
+        self.x_guess = []
+        self.y_guess = []
 
         # initialize MPC problem
         self.mpc_prob_init()
 
-    def pose_callback(self, pose_msg):
-        pass
-        # TODO: extract pose from ROS msg
-        vehicle_state = None
+    def pose_callback(self, pose_msg : Odometry):
+
+        # calculate linear velocity
+        # calculate yaw
+
+        self.position = pose_msg.pose.pose.position
+        self.orientation = pose_msg.pose.pose.orientation
+        self.v = pose_msg.twist.twist.linear.x
+
+        _, _, self.yaw = euler_from_quaternion([pose_msg.pose.pose.orientation.x,
+                                                pose_msg.pose.pose.orientation.y,
+                                                pose_msg.pose.pose.orientation.z,
+                                                pose_msg.pose.pose.orientation.w])
+
+        # self.transform = Transform(rotation=pose_msg.pose.pose.orientation, translation=pose_msg.pose.pose.position)
+
+    def mpc_callback(self):
+
+        vehicle_state = State(self.position.x, self.position.y, self.v, self.yaw)
 
         # TODO: Calculate the next reference trajectory for the next T steps
         #       with current vehicle pose.
         #       ref_x, ref_y, ref_yaw, ref_v are columns of self.waypoints
-        ref_path = self.calc_ref_trajectory(self, vehicle_state, ref_x, ref_y, ref_yaw, ref_v)
+        self.ref_path = self.calc_ref_trajectory(vehicle_state, self.waypoints[:, 0],
+                                                                    self.waypoints[:, 1],
+                                                                    self.waypoints[:, 3],
+                                                                    self.waypoints[:, 2])
         x0 = [vehicle_state.x, vehicle_state.y, vehicle_state.v, vehicle_state.yaw]
+
+        # print(self.ref_path)
 
         # TODO: solve the MPC control problem
         (
             self.oa,
             self.odelta,
-            ox,
-            oy,
+            self.ox,
+            self.oy,
             oyaw,
             ov,
             state_predict,
-        ) = self.linear_mpc_control(ref_path, x0, self.oa, self.odelta)
+        ) = self.linear_mpc_control(self.ref_path, x0, self.oa, self.odelta)
 
         # TODO: publish drive message.
         steer_output = self.odelta[0]
         speed_output = vehicle_state.v + self.oa[0] * self.config.DTK
+
+        drive_msg = AckermannDriveStamped()
+        drive_msg.drive.steering_angle = steer_output
+        drive_msg.drive.speed = speed_output
+        self.drive_publisher.publish(drive_msg)
 
     def mpc_prob_init(self):
         """
@@ -148,12 +222,9 @@ class MPC(Node):
 
         # --------------------------------------------------------
         # TODO: fill in the objectives here, you should be using cvxpy.quad_form() somehwhere
-
-        # TODO: Objective part 1: Influence of the control inputs: Inputs u multiplied by the penalty R
-
-        # TODO: Objective part 2: Deviation of the vehicle from the reference trajectory weighted by Q, including final Timestep T weighted by Qf
-
-        # TODO: Objective part 3: Difference from one control input to the next control input weighted by Rd
+        objective += cvxpy.quad_form((self.ref_traj_k.flatten() - self.xk.flatten()), Q_block)      #State objective
+        objective += cvxpy.quad_form(self.uk.flatten(), R_block)                          #Control objective
+        objective += cvxpy.quad_form((self.uk[:,1:].flatten() - self.uk[:,:-1].flatten()), Rd_block)    #Slew rate objective
 
         # --------------------------------------------------------
 
@@ -210,17 +281,27 @@ class MPC(Node):
         #       Add dynamics constraints to the optimization problem
         #       This constraint should be based on a few variables:
         #       self.xk, self.Ak_, self.Bk_, self.uk, and self.Ck_
+        dynamics = self.Ak_ @ self.xk[:,:-1].flatten() + self.Bk_ @ self.uk.flatten() + self.Ck_
+        constraints += [xk1 == xk for xk1, xk in zip(self.xk[:,1:].flatten(), dynamics)]
         
         # TODO: Constraint part 2:
         #       Add constraints on steering, change in steering angle
         #       cannot exceed steering angle speed limit. Should be based on:
         #       self.uk, self.config.MAX_DSTEER, self.config.DTK
+        constraints += [uk <= self.config.MAX_ACCEL for uk in self.uk[0,:].flatten()]
+        constraints += [(uk1 - uk)/self.config.DTK <= self.config.MAX_DSTEER for uk, uk1 in zip(self.uk[1,:-1].flatten(), self.uk[1,1:].flatten())]
 
         # TODO: Constraint part 3:
         #       Add constraints on upper and lower bounds of states and inputs
         #       and initial state constraint, should be based on:
         #       self.xk, self.x0k, self.config.MAX_SPEED, self.config.MIN_SPEED,
         #       self.uk, self.config.MAX_ACCEL, self.config.MAX_STEER
+        constraints += [xk <= self.config.MAX_SPEED for xk in self.xk[2,:].flatten()]
+        constraints += [xk >= self.config.MIN_SPEED for xk in self.xk[2,:].flatten()]
+        constraints += [(xk1 - xk)/self.config.DTK <= self.config.MAX_ACCEL for xk, xk1 in zip(self.xk[2,:-1].flatten(), self.xk[2,1:].flatten())]
+        constraints += [uk >= self.config.MIN_STEER for uk in self.uk[0,:].flatten()]
+        constraints += [uk <= self.config.MAX_STEER for uk in self.uk[0,:].flatten()]
+        constraints += [xk0 == x0k for xk0, x0k in zip(self.xk[:,0], self.x0k)]
         
         # -------------------------------------------------------------
 
@@ -228,14 +309,14 @@ class MPC(Node):
         # Optimization goal: minimize the objective function
         self.MPC_prob = cvxpy.Problem(cvxpy.Minimize(objective), constraints)
 
-    def calc_ref_trajectory(self, state, cx, cy, cyaw, sp):
+    def calc_ref_trajectory(self, state: State, cx: list, cy: list, sp: list, cyaw: list):
         """
         calc referent trajectory ref_traj in T steps: [x, y, v, yaw]
         using the current velocity, calc the T points along the reference path
         :param cx: Course X-Position
         :param cy: Course y-Position
-        :param cyaw: Course Heading
         :param sp: speed profile
+        :param cyaw: Course Heading
         :dl: distance step
         :pind: Setpoint Index
         :return: reference trajectory ref_traj, reference steering angle
@@ -272,6 +353,14 @@ class MPC(Node):
         )
         ref_traj[3, :] = cyaw[ind_list]
 
+        ref_traj[0, 1:] = cx[ind:(ind+self.config.TK)]
+        ref_traj[1, 1:] = cy[ind:(ind+self.config.TK)]
+        ref_traj[2, 1:] = sp[ind:(ind+self.config.TK)]
+        ref_traj[3, 1:] = cyaw[ind:(ind+self.config.TK)]
+
+        self.x_guess = self.waypoints[ind:(ind+self.config.TK),0]
+        self.y_guess = self.waypoints[ind:(ind+self.config.TK),1]
+
         return ref_traj
 
     def predict_motion(self, x0, oa, od, xref):
@@ -289,7 +378,7 @@ class MPC(Node):
 
         return path_predict
 
-    def update_state(self, state, a, delta):
+    def update_state(self, state: State, a: float, delta: float):
 
         # input check
         if delta >= self.config.MAX_STEER:
@@ -414,6 +503,33 @@ class MPC(Node):
         )
 
         return mpc_a, mpc_delta, mpc_x, mpc_y, mpc_yaw, mpc_v, path_predict
+    
+    def mpc_traj_timer_callback(self):
+        # x_ref = self.ref_path[0,:]
+        # y_ref = self.ref_path[1,:]
+        # x_ref = self.x_guess
+        # y_ref = self.y_guess
+        x_ref = []
+        y_ref = []
+        try:
+            trans = self.tf_buffer.lookup_transform("ego_racecar/base_link", "map", rclpy.time.Time())
+            x_ref = np.add(x_ref, trans.transform.translation.x)
+            y_ref = np.add(x_ref, trans.transform.translation.y)
+            for x,y in zip(x_ref, y_ref):
+                point_in_parent_coords = PointStamped()
+                point_in_parent_coords.point.x = x
+                point_in_parent_coords.point.y = y
+                point = do_transform_point(point_in_parent_coords, trans)
+                x_ref.append(point.point.x)
+                y_ref.append(point.point.y)
+        except LookupException as e:
+            self.get_logger().error('failed to get transform {} \n'.format(repr(e)))
+        # print(x_ref)
+        mpc_input_traj = getTrajectoryMarkerMessage("/ego_racecar/base_link", "mpc_input_waypoints", x_ref, y_ref, ColorRGBA(r=1.0, g=0.0, b=0.0, a=1.0))
+        mpc_traj = getTrajectoryMarkerMessage("/map", "mpc_waypoints", self.ox, self.oy, ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0))
+
+        self.mpc_input_traj_publisher.publish(mpc_input_traj)
+        self.mpc_traj_publisher.publish(mpc_traj)
 
 def main(args=None):
     rclpy.init(args=args)
@@ -423,3 +539,7 @@ def main(args=None):
 
     mpc_node.destroy_node()
     rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()

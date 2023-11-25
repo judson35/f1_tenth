@@ -24,7 +24,7 @@ class MPC : public rclcpp::Node
 private:
 
 public:
-    MPC() : Node("mpc_node")
+    MPC() : Node("mpc_node_cpp")
     {
         // TODO: create ROS subscribers and publishers
     }

@@ -35,16 +35,25 @@ include_directories(
   ${EIGEN3_INCLUDE_DIRS}
 )
 
-# Create Cpp executable
-add_executable(mpc_node src/mpc_node.cpp)
+foreach(DIR
+  launch
+  config
+  )
 
-ament_target_dependencies(mpc_node 
+  install(DIRECTORY ${DIR}
+          DESTINATION share/${PROJECT_NAME})
+endforeach()
+
+# Create Cpp executable
+add_executable(mpc_node_cpp src/mpc_node.cpp)
+
+ament_target_dependencies(mpc_node_cpp 
   rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs visualization_msgs tf2_ros
 )
 
 # Install Cpp executables
 install(TARGETS
-  mpc_node
+  mpc_node_cpp
   DESTINATION lib/${PROJECT_NAME})
 
 # Install Python modules
