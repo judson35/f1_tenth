@@ -10,6 +10,9 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+set(OSQP_EIGEN_LIBRARY_DIRS /usr/local/lib)
+set(OSQP_EIGEN_INCLUDE_DIRS /usr/local/include/OsqpEigen)
+
 # Find dependencies
 foreach(PACKAGE 
   ament_cmake 
@@ -23,11 +26,25 @@ foreach(PACKAGE
   std_msgs
   visualization_msgs
   Eigen3
-  tf2_ros)
+  tf2_ros
+  OsqpEigen)
 
   find_package(${PACKAGE} REQUIRED)
 
 endforeach()
+
+find_package(PkgConfig)
+pkg_search_module(CASADI casadi)
+
+include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
+include_directories(${OSQP_EIGEN_INCLUDE_DIRS})
+link_directories(${OSQP_EIGEN_LIBRARY_DIRS})
+
+if (NOT CASADI_LIBRARIES)
+  message(SEND_ERROR "Could not find casadi.pc - did you set PKG_CONFIG_PATH?")
+endif()
+
+link_directories(${CASADI_LIBRARY_DIRS})
 
 # Include Cpp "include" directory
 include_directories(include)
@@ -45,7 +62,12 @@ foreach(DIR
 endforeach()
 
 # Create Cpp executable
-add_executable(mpc_node_cpp src/mpc_node.cpp)
+add_executable(mpc_node_cpp src/mpc_node.cpp src/mpc.cpp)
+
+target_link_libraries(mpc_node_cpp ${CASADI_LIBRARIES})
+target_include_directories(mpc_node_cpp PRIVATE ${CASADI_INCLUDEDIR})
+target_link_libraries(mpc_node_cpp ipopt_interface)
+target_link_libraries(mpc_node_cpp ipopt)
 
 ament_target_dependencies(mpc_node_cpp 
   rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs visualization_msgs tf2_ros

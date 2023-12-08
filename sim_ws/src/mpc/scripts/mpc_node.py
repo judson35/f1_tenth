@@ -16,7 +16,7 @@ from rclpy.node import Node
 from scipy.linalg import block_diag
 from scipy.sparse import block_diag, csc_matrix, diags
 from sensor_msgs.msg import LaserScan
-from mpc.utils import nearest_point, getTrajectoryMarkerMessage
+from mpc.utils import nearest_point, getTrajectoryMarkerMessage, getTrajectoryMarkerArrayMessage
 from tf_transformations import euler_from_quaternion
 from collections.abc import Sequence
 from tf2_ros.buffer import Buffer
@@ -71,11 +71,10 @@ def reference_trajectory_init(filename : str) -> np.ndarray:
     with open(filename, 'r') as f:
         lines = f.readlines()
         for i, line in enumerate(lines):
-            if (i % 12 == 0):
+            if (i % 10 == 0):
                 data = line.split(',')
                 data = [float(val) for val in data]
-                data[2] = data[2]*3
-                waypoints.append(data)
+                waypoints.append((float(data[0]), float(data[1]), float(data[2]), 3 * float(data[3])))
     return np.array(waypoints)
 
 class MPC(Node):
@@ -88,18 +87,20 @@ class MPC(Node):
 
         self.drive_topic = "/drive"
         self.pose_topic = "/ego_racecar/odom"
-        self.mpc_input_visualization_topic = "/mpc_input_traj"
-        self.mpc_visualization_topic = "/mpc_traj"
+        self.mpc_input_visualization_topic = "/mpc_input_traj_arr"
+        self.mpc_visualization_topic = "/mpc_traj_arr"
         self.reference_trajectory_filename = "/home/judson35/f1_tenth/sim_ws/Mpc_Waypoints.txt"
 
         self.drive_publisher = self.create_publisher(AckermannDriveStamped, self.drive_topic, 1)
-        self.mpc_input_traj_publisher = self.create_publisher(Marker, self.mpc_input_visualization_topic, 1)
-        self.mpc_traj_publisher = self.create_publisher(Marker, self.mpc_visualization_topic, 1)
+        self.mpc_input_traj_publisher = self.create_publisher(MarkerArray, self.mpc_input_visualization_topic, 1)
+        self.mpc_traj_publisher = self.create_publisher(MarkerArray, self.mpc_visualization_topic, 1)
         self.pose_subscriber = self.create_subscription(Odometry, self.pose_topic, self.pose_callback, 1)
 
         self.waypoints = reference_trajectory_init(self.reference_trajectory_filename)
         # self.waypoints = np.flip(self.waypoints, axis=0)
 
+        # self.mpc_traj_timer_callback = self.mpc_traj_no_yaw_timer_callback
+        self.mpc_traj_timer_callback = self.mpc_traj_yaw_timer_callback
         self.mpc_traj_timer = self.create_timer(0.5, self.mpc_traj_timer_callback)
         self.dt_mpc = 0.005
         self.mpc_control_timer = self.create_timer(self.dt_mpc, self.mpc_callback)
@@ -107,7 +108,7 @@ class MPC(Node):
         self.tf_buffer = Buffer()
         self.transform_listener = TransformListener(self.tf_buffer, self)
 
-        self.config = mpc_config(Qk=np.diag([20, 20, 1, 5]), Qfk=np.diag([30, 30, 1, 10]))
+        self.config = mpc_config(Qk=np.diag([100, 100, 1, 1]), Qfk=np.diag([100, 100, 1, 1]))
         self.odelta = None
         self.oa = None
         self.init_flag = 0
@@ -122,8 +123,10 @@ class MPC(Node):
 
         self.ox = []
         self.oy = []
+        self.oyaw = []
         self.x_guess = []
         self.y_guess = []
+        self.yaw_guess = []
 
         # initialize MPC problem
         self.mpc_prob_init()
@@ -146,7 +149,7 @@ class MPC(Node):
 
     def mpc_callback(self):
 
-        vehicle_state = State(self.position.x, self.position.y, self.v, self.yaw)
+        vehicle_state = State(x=self.position.x, y=self.position.y, v=self.v, yaw=self.yaw)
 
         # TODO: Calculate the next reference trajectory for the next T steps
         #       with current vehicle pose.
@@ -165,7 +168,7 @@ class MPC(Node):
             self.odelta,
             self.ox,
             self.oy,
-            oyaw,
+            self.oyaw,
             ov,
             state_predict,
         ) = self.linear_mpc_control(self.ref_path, x0, self.oa, self.odelta)
@@ -345,12 +348,12 @@ class MPC(Node):
         ref_traj[0, :] = cx[ind_list]
         ref_traj[1, :] = cy[ind_list]
         ref_traj[2, :] = sp[ind_list]
-        cyaw[cyaw - state.yaw > 4.5] = np.abs(
-            cyaw[cyaw - state.yaw > 4.5] - (2 * np.pi)
-        )
-        cyaw[cyaw - state.yaw < -4.5] = np.abs(
-            cyaw[cyaw - state.yaw < -4.5] + (2 * np.pi)
-        )
+        # cyaw[cyaw - state.yaw > 4.5] = np.abs(
+        #     cyaw[cyaw - state.yaw > 4.5] - (2 * np.pi)
+        # )
+        # cyaw[cyaw - state.yaw < -4.5] = np.abs(
+        #     cyaw[cyaw - state.yaw < -4.5] + (2 * np.pi)
+        # )
         ref_traj[3, :] = cyaw[ind_list]
 
         ref_traj[0, 1:] = cx[ind:(ind+self.config.TK)]
@@ -360,6 +363,7 @@ class MPC(Node):
 
         self.x_guess = self.waypoints[ind:(ind+self.config.TK),0]
         self.y_guess = self.waypoints[ind:(ind+self.config.TK),1]
+        self.yaw_guess = self.waypoints[ind:(ind+self.config.TK),2]
 
         return ref_traj
 
@@ -504,29 +508,45 @@ class MPC(Node):
 
         return mpc_a, mpc_delta, mpc_x, mpc_y, mpc_yaw, mpc_v, path_predict
     
-    def mpc_traj_timer_callback(self):
+    def mpc_traj_no_yaw_timer_callback(self):
         # x_ref = self.ref_path[0,:]
         # y_ref = self.ref_path[1,:]
-        # x_ref = self.x_guess
-        # y_ref = self.y_guess
-        x_ref = []
-        y_ref = []
-        try:
-            trans = self.tf_buffer.lookup_transform("ego_racecar/base_link", "map", rclpy.time.Time())
-            x_ref = np.add(x_ref, trans.transform.translation.x)
-            y_ref = np.add(x_ref, trans.transform.translation.y)
-            for x,y in zip(x_ref, y_ref):
-                point_in_parent_coords = PointStamped()
-                point_in_parent_coords.point.x = x
-                point_in_parent_coords.point.y = y
-                point = do_transform_point(point_in_parent_coords, trans)
-                x_ref.append(point.point.x)
-                y_ref.append(point.point.y)
-        except LookupException as e:
-            self.get_logger().error('failed to get transform {} \n'.format(repr(e)))
+        x_ref = self.x_guess
+        y_ref = self.y_guess
+        # x_ref = []
+        # y_ref = []
+        # try:
+        #     trans = self.tf_buffer.lookup_transform("ego_racecar/base_link", "map", rclpy.time.Time())
+        #     x_ref = np.add(x_ref, trans.transform.translation.x)
+        #     y_ref = np.add(x_ref, trans.transform.translation.y)
+        #     for x,y in zip(x_ref, y_ref):
+        #         point_in_parent_coords = PointStamped()
+        #         point_in_parent_coords.point.x = x
+        #         point_in_parent_coords.point.y = y
+        #         point = do_transform_point(point_in_parent_coords, trans)
+        #         x_ref.append(point.point.x)
+        #         y_ref.append(point.point.y)
+        # except LookupException as e:
+        #     self.get_logger().error('failed to get transform {} \n'.format(repr(e)))
         # print(x_ref)
-        mpc_input_traj = getTrajectoryMarkerMessage("/ego_racecar/base_link", "mpc_input_waypoints", x_ref, y_ref, ColorRGBA(r=1.0, g=0.0, b=0.0, a=1.0))
+        mpc_input_traj = getTrajectoryMarkerMessage("/map", "mpc_input_waypoints", x_ref, y_ref, ColorRGBA(r=1.0, g=0.0, b=0.0, a=1.0))
         mpc_traj = getTrajectoryMarkerMessage("/map", "mpc_waypoints", self.ox, self.oy, ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0))
+
+        self.mpc_input_traj_publisher.publish(mpc_input_traj)
+        self.mpc_traj_publisher.publish(mpc_traj)
+
+    def mpc_traj_yaw_timer_callback(self):
+        # x_ref = self.ref_path[0,:]
+        # y_ref = self.ref_path[1,:]
+        # yaw_ref = self.ref_path[3,:]
+        # # x_ref = self.x_guess
+        # # y_ref = self.y_guess
+        # # yaw_ref = self.yaw_guess
+        x_ref = self.waypoints[:,0]
+        y_ref = self.waypoints[:,1]
+        yaw_ref = self.waypoints[:,2]
+        mpc_input_traj = getTrajectoryMarkerArrayMessage("/map", "mpc_input_waypoints", x_ref, y_ref, yaw_ref, ColorRGBA(r=1.0, g=0.0, b=0.0, a=1.0))
+        mpc_traj = getTrajectoryMarkerArrayMessage("/map", "mpc_waypoints", self.ox, self.oy, self.oyaw, ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0))
 
         self.mpc_input_traj_publisher.publish(mpc_input_traj)
         self.mpc_traj_publisher.publish(mpc_traj)

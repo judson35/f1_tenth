@@ -31,7 +31,7 @@ import numpy as np
 from visualization_msgs.msg import MarkerArray, Marker
 from geometry_msgs.msg import Point
 from std_msgs.msg import ColorRGBA
-# from numba import njit
+from tf_transformations import quaternion_from_euler
 
 # @njit(cache=True)
 def nearest_point(point, trajectory):
@@ -63,7 +63,7 @@ def nearest_point(point, trajectory):
     min_dist_segment = np.argmin(dists)
     return projections[min_dist_segment], dists[min_dist_segment], t[min_dist_segment], min_dist_segment
 
-def getTrajectoryMarkerMessage(frame_id: str, ns: str, x_traj: list, y_traj: list, color: ColorRGBA) -> Marker:
+def getTrajectoryMarkerMessage(frame_id: str, ns: str, x_traj: list, y_traj: list, yaw_traj: list, color: ColorRGBA) -> Marker:
     marker = Marker()
     marker.type = 7
     marker.action = 0
@@ -105,3 +105,41 @@ def getTrajectoryMarkerMessage(frame_id: str, ns: str, x_traj: list, y_traj: lis
     marker.lifetime.sec = 1
 
     return marker
+
+def getTrajectoryMarkerArrayMessage(frame_id: str, ns: str, x_traj: list, y_traj: list, yaw_traj: list, color: ColorRGBA) -> MarkerArray:
+    waypoints = MarkerArray()
+    i = 0
+    for x,y,yaw in zip(x_traj, y_traj, yaw_traj):
+        marker = Marker()
+
+        marker.type = 0
+        marker.action = 0
+        marker.header.frame_id = "/map"
+
+        marker.ns = "mpc_waypoints"
+        marker.id = i
+        i += 1
+
+        marker.scale.x = 0.5
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+
+        marker.color.r = color.r
+        marker.color.g = color.g
+        marker.color.b = color.b
+        marker.color.a = color.a
+
+        marker.pose.position.x = x
+        marker.pose.position.y = y
+        marker.pose.position.z = 0.0
+
+        angle = quaternion_from_euler(0.0, 0.0, yaw)
+
+        marker.pose.orientation.x = angle[0]
+        marker.pose.orientation.y = angle[1]
+        marker.pose.orientation.z = angle[2]
+        marker.pose.orientation.w = angle[3]
+
+        waypoints.markers.append(marker)
+
+    return waypoints
